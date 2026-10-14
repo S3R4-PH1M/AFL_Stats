@@ -87,6 +87,20 @@ export const PlayerMatchRow = z.strictObject({
 });
 export type PlayerMatchRow = z.infer<typeof PlayerMatchRow>;
 
+/**
+ * A player as named on a match page (M1). Bio fields from the player page (dob, height, weight,
+ * debut) arrive in M2.
+ */
+export const PlayerRow = z.strictObject({
+  player_id: PlayerId,
+  /** "First Surname"; match pages show "Surname, First". */
+  display_name: z.string().min(1),
+  /** NULL only when the page name has no "Surname, First" comma. */
+  first_name: z.string().min(1).nullable(),
+  surname: z.string().min(1).nullable(),
+});
+export type PlayerRow = z.infer<typeof PlayerRow>;
+
 // ---------------------------------------------------------------------------
 // Published files (apps/web/public/data/v1)
 

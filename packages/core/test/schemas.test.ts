@@ -5,6 +5,7 @@ import {
   MatchRow,
   MetaFile,
   PlayerMatchRow,
+  PlayerRow,
   QuarterRow,
   SeasonLadderFile,
   SeasonMatchesFile,
@@ -115,6 +116,27 @@ describe('parsed row schemas', () => {
     ['non-ISO start', { start_utc: '11 May 2025' }],
   ])('rejects a match row with %s', (_, patch) => {
     expect(MatchRow.safeParse({ ...matchRow, ...patch }).success).toBe(false);
+  });
+
+  const person: PlayerRow = {
+    player_id: 'T/Tom_Lynch1',
+    display_name: 'Tom Lynch',
+    first_name: 'Tom',
+    surname: 'Lynch',
+  };
+
+  it('accepts a player row, with NULL name parts when the page name has no comma', () => {
+    expect(PlayerRow.parse(person)).toEqual(person);
+    expect(PlayerRow.safeParse({ ...person, first_name: null, surname: null }).success).toBe(true);
+  });
+
+  it.each([
+    ['bad player_id', { player_id: 'Tom_Lynch1' }],
+    ['empty display_name', { display_name: '' }],
+    ['empty first_name', { first_name: '' }],
+    ['unknown key', { dob: '1993-04-10' }],
+  ])('rejects a player row with %s', (_, patch) => {
+    expect(PlayerRow.safeParse({ ...person, ...patch }).success).toBe(false);
   });
 });
 
