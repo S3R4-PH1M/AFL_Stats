@@ -8,6 +8,7 @@
   },
   "dependencies": {
     "@afl/core": "*",
+    "@afl/ingest": "*",
     "@duckdb/node-api": "1.5.6-r.1"
   }
 }
