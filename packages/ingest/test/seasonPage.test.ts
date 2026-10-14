@@ -30,6 +30,12 @@ describe.each([
   const links = parseSeasonPage(readAfltables(`seas-${season}.html`), season);
   const labels = links.map((l) => l.roundLabel);
 
+  it('matches the golden file', async () => {
+    await expect(`${JSON.stringify(links, null, 2)}\n`).toMatchFileSnapshot(
+      `./golden/seas-${season}.json`,
+    );
+  });
+
   it(`returns ${total} unique match keys with absolute URLs`, () => {
     expect(links).toHaveLength(total);
     expect(new Set(links.map((l) => l.matchKey)).size).toBe(total);
@@ -125,6 +131,23 @@ describe('parseSeasonPage on synthetic pages', () => {
   it('ignores bold numbers that are not "Round N" headings', () => {
     const html = `${heading('Round 1')}<table><tr><td><b>7</b></td>${link('../stats/games/2025/101620250307.html')}</tr></table>`;
     expect(parseSeasonPage(html, 2025)[0]?.roundLabel).toBe('Round 1');
+  });
+
+  it.each(['Wildcard Final', 'Grand Final Replay', 'Round Robin'])(
+    'throws on an unrecognised round heading %j instead of reusing the previous label',
+    (label) => {
+      const html = `${heading('Round 24')}<table><tr>${link('../stats/games/2025/101620250307.html')}</tr></table>
+      ${heading(label)}<table><tr>${link('../stats/games/2025/010520250322.html')}</tr></table>`;
+      expect(() => parseSeasonPage(html, 2025)).toThrow(/unrecognised round heading/);
+    },
+  );
+
+  it('accepts a match link with a query or fragment, and drops it from the URL', () => {
+    const html = `${heading('Round 1')}<table><tr>${link('../stats/games/2025/101620250307.html#p0')}${link('../stats/games/2025/010520250322.html?x=1')}</tr></table>`;
+    expect(parseSeasonPage(html, 2025).map((l) => l.url)).toEqual([
+      'https://afltables.com/afl/stats/games/2025/101620250307.html',
+      'https://afltables.com/afl/stats/games/2025/010520250322.html',
+    ]);
   });
 
   it('throws on a link to another season', () => {

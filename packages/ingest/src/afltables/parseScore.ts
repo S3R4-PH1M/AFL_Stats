@@ -4,6 +4,7 @@
  * Input is one team's score cells joined by whitespace, e.g. "3.2.20 5.4.34 9.7.61 15.10.100"
  * (match page header) or "4.3. 27  6.4. 40 …". A fifth and later period is extra time.
  */
+import { cleanText } from './decode.ts';
 
 export interface QuarterScoreParsed {
   /** 1–4; 5 and above is extra time. */
@@ -26,10 +27,8 @@ export class ScoreParseError extends Error {
 const PERIOD = /(\d+)\.(\d+)\.\s*(\d+)/y;
 
 export function parseQuarterScores(text: string): QuarterScoreParsed[] {
-  const input = text
-    .replace(/&nbsp;/g, ' ')
-    .replace(/\s+/g, ' ')
-    .trim();
+  // A literal "&nbsp;" is accepted for raw strings; cheerio text already has U+00A0 instead.
+  const input = cleanText(text.replaceAll('&nbsp;', ' '));
   const quarters: QuarterScoreParsed[] = [];
   let pos = 0;
   while (pos < input.length) {

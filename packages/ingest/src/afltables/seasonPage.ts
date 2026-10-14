@@ -23,11 +23,14 @@ export class SeasonPageError extends Error {
   }
 }
 
-const MATCH_HREF = /games\/(\d{4})\/(\d{12})\.html$/;
+/** A match link; a trailing query or fragment is tolerated and dropped from the URL. */
+const MATCH_HREF = /games\/(\d{4})\/(\d{12})\.html(?:[?#].*)?$/;
+/** Bold text that claims to be a round or final heading. */
+const LOOKS_LIKE_ROUND = /^Round\b|\bFinal\b/;
 
 export function parseSeasonPage(html: string, season: number): SeasonMatchLink[] {
   const $ = load(html);
-  const base = `https://afltables.com/afl/seas/${season}.html`;
+  const base = 'https://afltables.com/afl/stats/games';
   const links = new Map<string, SeasonMatchLink>();
   let roundLabel: string | undefined;
 
@@ -41,8 +44,12 @@ export function parseSeasonPage(html: string, season: number): SeasonMatchLink[]
         // Headings always say "Round N" here; a bare bold number (e.g. in the ladder) is not one.
         if (round.isFinal || text.startsWith('Round ')) roundLabel = round.roundLabel;
       } catch (error) {
-        // Other bold cells (the "Finals" banner, ladder headings, winners) aren't rounds.
         if (!(error instanceof UnknownRoundError)) throw error;
+        // Other bold cells (the "Finals" banner, ladder headings, winners) aren't rounds, but an
+        // unrecognised round or final heading must fail rather than inherit the previous label.
+        if (LOOKS_LIKE_ROUND.test(text)) {
+          throw new SeasonPageError(`unrecognised round heading "${text}"`, season);
+        }
       }
       continue;
     }
@@ -54,7 +61,7 @@ export function parseSeasonPage(html: string, season: number): SeasonMatchLink[]
     }
     if (!roundLabel) throw new SeasonPageError(`match ${matchKey} before any round`, season);
     if (!links.has(matchKey)) {
-      links.set(matchKey, { matchKey, url: new URL(href, base).href, roundLabel });
+      links.set(matchKey, { matchKey, url: `${base}/${year}/${matchKey}.html`, roundLabel });
     }
   }
 

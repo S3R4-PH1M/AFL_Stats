@@ -293,6 +293,15 @@ describe('parseMatchPage robustness (in-memory edits; fixtures are never changed
     expect({ ...edited, warnings: [] }).toEqual(original);
   });
 
+  it('ignores blank spacer header cells', () => {
+    const $ = load(html);
+    statTables($).each((_, table) => {
+      $(table).find('thead tr').last().append('<th></th><th>&nbsp;</th>');
+      $(table).find('tbody tr').append('<td></td><td>&nbsp;</td>');
+    });
+    expect(parseMatchPage($.html(), opts)).toEqual(parseMatchPage(html, opts));
+  });
+
   it('warns and stores NULL when a stat column is missing', () => {
     const $ = load(html);
     statTables($).each((_, table) => {
@@ -315,6 +324,9 @@ describe('parseMatchPage robustness (in-memory edits; fixtures are never changed
     );
     expect(() => parseMatchPage(html, { season: 2024, matchKey: '010520250322' })).toThrow(
       MatchPageError,
+    );
+    expect(() => parseMatchPage(html, { season: 2025, matchKey: '0105-2025032' })).toThrow(
+      /invalid match key/,
     );
   });
 

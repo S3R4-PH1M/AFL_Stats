@@ -10,6 +10,7 @@
  * Pure: no network or cache. `source_fetched_at` and `squiggle_id` are added when loading (M1d).
  */
 import {
+  MatchId,
   MatchRow,
   PlayerMatchRow,
   PlayerRow,
@@ -24,7 +25,7 @@ import {
 } from '@afl/core';
 import { type Cheerio, type CheerioAPI, load } from 'cheerio';
 import { cleanText } from './decode.ts';
-import { parseQuarterScores } from './parseScore.ts';
+import { parseQuarterScores, type QuarterScoreParsed } from './parseScore.ts';
 import { normaliseRound } from './rounds.ts';
 import { parsePageDateTime } from './time.ts';
 
@@ -89,7 +90,7 @@ export function parseMatchPage(html: string, opts: MatchPageOptions): ParsedMatc
   const fail: Fail = (message) => {
     throw new MatchPageError(matchKey, message);
   };
-  if (!/^\d{12}$/.test(matchKey)) fail('match key must be 12 digits');
+  if (!MatchId.safeParse(matchKey).success) fail('invalid match key');
   if (Number(matchKey.slice(4, 8)) !== season) fail(`match key is not in season ${season}`);
 
   const $ = load(html);
@@ -125,7 +126,8 @@ export function parseMatchPage(html: string, opts: MatchPageOptions): ParsedMatc
       .get()
       .join(' ');
     const quarters = attempt(fail, () => parseQuarterScores(scoreText));
-    return { name, teamId, quarters, final: quarters.at(-1) ?? fail('no quarters') };
+    // parseQuarterScores guarantees at least 4 periods.
+    return { name, teamId, quarters, final: quarters.at(-1) as QuarterScoreParsed };
   }) as [Side, Side];
   const [home, away] = sides;
   if (home.teamId === away.teamId) fail('home and away are the same team');
@@ -156,12 +158,13 @@ export function parseMatchPage(html: string, opts: MatchPageOptions): ParsedMatc
   for (const [i, side] of sides.entries()) {
     const box = ordered[i] as Box;
     const sum = (col: StatColumn) => box.players.reduce((t, p) => t + (p[col] ?? 0), 0);
+    const [goals, behinds, rushed] = [sum('gl'), sum('bh'), box.totals.rushed_behinds];
     const { cumGoals, cumBehinds } = side.final;
-    if (sum('gl') !== cumGoals) fail(`${side.name}: Σ GL ${sum('gl')} ≠ team goals ${cumGoals}`);
-    if (sum('bh') > cumBehinds)
-      fail(`${side.name}: Σ BH ${sum('bh')} > team behinds ${cumBehinds}`);
-    if (sum('bh') + box.totals.rushed_behinds !== cumBehinds) {
-      fail(`${side.name}: Σ BH + rushed ≠ team behinds ${cumBehinds}`);
+    if (goals !== cumGoals) fail(`${side.name}: Σ GL ${goals} ≠ team goals ${cumGoals}`);
+    // The §12 check, reported separately because it pinpoints over-credited behinds.
+    if (behinds > cumBehinds) fail(`${side.name}: Σ BH ${behinds} > team behinds ${cumBehinds}`);
+    if (behinds + rushed !== cumBehinds) {
+      fail(`${side.name}: Σ BH ${behinds} + rushed ${rushed} ≠ team behinds ${cumBehinds}`);
     }
     if (box.totals.stats.gl !== cumGoals || box.totals.stats.bh !== cumBehinds) {
       fail(`${side.name}: Totals row disagrees with the header score`);
@@ -215,8 +218,8 @@ export function parseMatchPage(html: string, opts: MatchPageOptions): ParsedMatc
 interface Side {
   name: string;
   teamId: string;
-  quarters: ReturnType<typeof parseQuarterScores>;
-  final: ReturnType<typeof parseQuarterScores>[number];
+  quarters: QuarterScoreParsed[];
+  final: QuarterScoreParsed;
 }
 
 interface Box {
@@ -248,6 +251,7 @@ function readBox(
   const posOf = new Map<string, number>();
   for (const [pos, cell] of headers) {
     const code = cleanText(cell.text());
+    if (code === '') continue; // spacer cell, not a column
     if (posOf.has(code)) fail(`${side.name}: duplicate column "${code}"`);
     posOf.set(code, pos);
     if (!REQUIRED_HEADERS.includes(code) && !STAT_BY_CODE.has(code)) {
