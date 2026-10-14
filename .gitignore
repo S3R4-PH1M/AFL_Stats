@@ -6,7 +6,7 @@ node_modules/
 dist/
 *.tsbuildinfo
 
-# Data (raw cache lives on the `data` branch; DuckDB is a build artifact)
+# Data (data/raw is the local mirror of the private R2 raw cache; DuckDB is a build artifact)
 data/
 apps/web/public/data/
 

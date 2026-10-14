@@ -27,8 +27,9 @@ Workspace packages export their TypeScript source directly (`exports` → `src/i
 ## Rules
 
 - TypeScript strict, ES modules. **No new dependencies without asking.** Pin exact versions.
-- **Never fetch from afltables.com or api.squiggle.com.au in tests.** Use fixtures in `packages/ingest/test/fixtures`.
-- All network access goes through `packages/ingest/src/http.ts` (UA + contact email, throttle, retry, cache).
+- **zod v4 syntax only** (`import { z } from 'zod'`; e.g. `z.int()`, `z.iso.datetime()`, `z.strictObject()`). Many online examples are v3.
+- **Never fetch from afltables.com or api.squiggle.com.au in tests.** Use fixtures in `packages/ingest/test/fixtures`. The ingest test setup stubs the global `fetch` to throw; inject a fake.
+- All network access goes through `packages/ingest/src/http.ts` (UA + contact email, throttle, retry, cache). It reads the email from `CONTACT_EMAIL` (git-ignored `.env` locally, a repo variable in Actions) and never logs it.
 - Every parser change needs a golden-file test. Commit fixtures before the parser.
 - Generate SQL models from `stat_definition` where possible.
 - Respect the published data contract in `packages/core/src/schemas.ts`. Changing it means bumping `data/v1` to `v2`.
