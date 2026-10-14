@@ -2,1081 +2,2161 @@
   {
     "matchKey": "101620250307",
     "url": "https://afltables.com/afl/stats/games/2025/101620250307.html",
-    "roundLabel": "Round 1"
+    "roundLabel": "Round 1",
+    "homeTeamId": "sydney",
+    "awayTeamId": "hawthorn",
+    "date": "2025-03-07",
+    "localTime": "Fri 07-Mar-2025 7:40 PM",
+    "startUtc": "2025-03-07T08:40:00.000Z"
   },
   {
     "matchKey": "042120250309",
     "url": "https://afltables.com/afl/stats/games/2025/042120250309.html",
-    "roundLabel": "Round 1"
+    "roundLabel": "Round 1",
+    "homeTeamId": "gws",
+    "awayTeamId": "collingwood",
+    "date": "2025-03-09",
+    "localTime": "Sun 09-Mar-2025 3:20 PM",
+    "startUtc": "2025-03-09T04:20:00.000Z"
   },
   {
     "matchKey": "091920250329",
     "url": "https://afltables.com/afl/stats/games/2025/091920250329.html",
-    "roundLabel": "Round 1"
+    "roundLabel": "Round 1",
+    "homeTeamId": "brisbane-lions",
+    "awayTeamId": "geelong",
+    "date": "2025-03-29",
+    "localTime": "Sat 29-Mar-2025 6:35 PM",
+    "startUtc": "2025-03-29T08:35:00.000Z"
   },
   {
     "matchKey": "052020250827",
     "url": "https://afltables.com/afl/stats/games/2025/052020250827.html",
-    "roundLabel": "Round 1"
+    "roundLabel": "Round 1",
+    "homeTeamId": "gold-coast",
+    "awayTeamId": "essendon",
+    "date": "2025-08-27",
+    "localTime": "Wed 27-Aug-2025 7:20 PM",
+    "startUtc": "2025-08-27T09:20:00.000Z"
   },
   {
     "matchKey": "031420250313",
     "url": "https://afltables.com/afl/stats/games/2025/031420250313.html",
-    "roundLabel": "Round 2"
+    "roundLabel": "Round 2",
+    "homeTeamId": "richmond",
+    "awayTeamId": "carlton",
+    "date": "2025-03-13",
+    "localTime": "Thu 13-Mar-2025 7:30 PM",
+    "startUtc": "2025-03-13T08:30:00.000Z"
   },
   {
     "matchKey": "051020250314",
     "url": "https://afltables.com/afl/stats/games/2025/051020250314.html",
-    "roundLabel": "Round 2"
+    "roundLabel": "Round 2",
+    "homeTeamId": "hawthorn",
+    "awayTeamId": "essendon",
+    "date": "2025-03-14",
+    "localTime": "Fri 14-Mar-2025 7:40 PM",
+    "startUtc": "2025-03-14T08:40:00.000Z"
   },
   {
     "matchKey": "080920250315",
     "url": "https://afltables.com/afl/stats/games/2025/080920250315.html",
-    "roundLabel": "Round 2"
+    "roundLabel": "Round 2",
+    "homeTeamId": "geelong",
+    "awayTeamId": "fremantle",
+    "date": "2025-03-15",
+    "localTime": "Sat 15-Mar-2025 1:20 PM",
+    "startUtc": "2025-03-15T02:20:00.000Z"
   },
   {
     "matchKey": "161920250315",
     "url": "https://afltables.com/afl/stats/games/2025/161920250315.html",
-    "roundLabel": "Round 2"
+    "roundLabel": "Round 2",
+    "homeTeamId": "sydney",
+    "awayTeamId": "brisbane-lions",
+    "date": "2025-03-15",
+    "localTime": "Sat 15-Mar-2025 4:15 PM",
+    "startUtc": "2025-03-15T05:15:00.000Z"
   },
   {
     "matchKey": "041320250315",
     "url": "https://afltables.com/afl/stats/games/2025/041320250315.html",
-    "roundLabel": "Round 2"
+    "roundLabel": "Round 2",
+    "homeTeamId": "collingwood",
+    "awayTeamId": "port-adelaide",
+    "date": "2025-03-15",
+    "localTime": "Sat 15-Mar-2025 7:35 PM",
+    "startUtc": "2025-03-15T08:35:00.000Z"
   },
   {
     "matchKey": "071220250315",
     "url": "https://afltables.com/afl/stats/games/2025/071220250315.html",
-    "roundLabel": "Round 2"
+    "roundLabel": "Round 2",
+    "homeTeamId": "western-bulldogs",
+    "awayTeamId": "north-melbourne",
+    "date": "2025-03-15",
+    "localTime": "Sat 15-Mar-2025 7:35 PM",
+    "startUtc": "2025-03-15T08:35:00.000Z"
   },
   {
     "matchKey": "011520250316",
     "url": "https://afltables.com/afl/stats/games/2025/011520250316.html",
-    "roundLabel": "Round 2"
+    "roundLabel": "Round 2",
+    "homeTeamId": "adelaide",
+    "awayTeamId": "st-kilda",
+    "date": "2025-03-16",
+    "localTime": "Sun 16-Mar-2025 12:05 PM",
+    "startUtc": "2025-03-16T01:35:00.000Z"
   },
   {
     "matchKey": "112120250316",
     "url": "https://afltables.com/afl/stats/games/2025/112120250316.html",
-    "roundLabel": "Round 2"
+    "roundLabel": "Round 2",
+    "homeTeamId": "melbourne",
+    "awayTeamId": "gws",
+    "date": "2025-03-16",
+    "localTime": "Sun 16-Mar-2025 3:20 PM",
+    "startUtc": "2025-03-16T04:20:00.000Z"
   },
   {
     "matchKey": "182020250316",
     "url": "https://afltables.com/afl/stats/games/2025/182020250316.html",
-    "roundLabel": "Round 2"
+    "roundLabel": "Round 2",
+    "homeTeamId": "west-coast",
+    "awayTeamId": "gold-coast",
+    "date": "2025-03-16",
+    "localTime": "Sun 16-Mar-2025 3:10 PM",
+    "startUtc": "2025-03-16T07:10:00.000Z"
   },
   {
     "matchKey": "031020250320",
     "url": "https://afltables.com/afl/stats/games/2025/031020250320.html",
-    "roundLabel": "Round 3"
+    "roundLabel": "Round 3",
+    "homeTeamId": "carlton",
+    "awayTeamId": "hawthorn",
+    "date": "2025-03-20",
+    "localTime": "Thu 20-Mar-2025 7:30 PM",
+    "startUtc": "2025-03-20T08:30:00.000Z"
   },
   {
     "matchKey": "040720250321",
     "url": "https://afltables.com/afl/stats/games/2025/040720250321.html",
-    "roundLabel": "Round 3"
+    "roundLabel": "Round 3",
+    "homeTeamId": "western-bulldogs",
+    "awayTeamId": "collingwood",
+    "date": "2025-03-21",
+    "localTime": "Fri 21-Mar-2025 7:40 PM",
+    "startUtc": "2025-03-21T08:40:00.000Z"
   },
   {
     "matchKey": "010520250322",
     "url": "https://afltables.com/afl/stats/games/2025/010520250322.html",
-    "roundLabel": "Round 3"
+    "roundLabel": "Round 3",
+    "homeTeamId": "essendon",
+    "awayTeamId": "adelaide",
+    "date": "2025-03-22",
+    "localTime": "Sat 22-Mar-2025 1:20 PM",
+    "startUtc": "2025-03-22T02:20:00.000Z"
   },
   {
     "matchKey": "131420250322",
     "url": "https://afltables.com/afl/stats/games/2025/131420250322.html",
-    "roundLabel": "Round 3"
+    "roundLabel": "Round 3",
+    "homeTeamId": "port-adelaide",
+    "awayTeamId": "richmond",
+    "date": "2025-03-22",
+    "localTime": "Sat 22-Mar-2025 3:45 PM",
+    "startUtc": "2025-03-22T05:15:00.000Z"
   },
   {
     "matchKey": "091520250322",
     "url": "https://afltables.com/afl/stats/games/2025/091520250322.html",
-    "roundLabel": "Round 3"
+    "roundLabel": "Round 3",
+    "homeTeamId": "st-kilda",
+    "awayTeamId": "geelong",
+    "date": "2025-03-22",
+    "localTime": "Sat 22-Mar-2025 7:35 PM",
+    "startUtc": "2025-03-22T08:35:00.000Z"
   },
   {
     "matchKey": "181920250323",
     "url": "https://afltables.com/afl/stats/games/2025/181920250323.html",
-    "roundLabel": "Round 3"
+    "roundLabel": "Round 3",
+    "homeTeamId": "brisbane-lions",
+    "awayTeamId": "west-coast",
+    "date": "2025-03-23",
+    "localTime": "Sun 23-Mar-2025 12:10 PM",
+    "startUtc": "2025-03-23T02:10:00.000Z"
   },
   {
     "matchKey": "111220250323",
     "url": "https://afltables.com/afl/stats/games/2025/111220250323.html",
-    "roundLabel": "Round 3"
+    "roundLabel": "Round 3",
+    "homeTeamId": "north-melbourne",
+    "awayTeamId": "melbourne",
+    "date": "2025-03-23",
+    "localTime": "Sun 23-Mar-2025 3:20 PM",
+    "startUtc": "2025-03-23T04:20:00.000Z"
   },
   {
     "matchKey": "081620250323",
     "url": "https://afltables.com/afl/stats/games/2025/081620250323.html",
-    "roundLabel": "Round 3"
+    "roundLabel": "Round 3",
+    "homeTeamId": "fremantle",
+    "awayTeamId": "sydney",
+    "date": "2025-03-23",
+    "localTime": "Sun 23-Mar-2025 3:10 PM",
+    "startUtc": "2025-03-23T07:10:00.000Z"
   },
   {
     "matchKey": "051320250327",
     "url": "https://afltables.com/afl/stats/games/2025/051320250327.html",
-    "roundLabel": "Round 4"
+    "roundLabel": "Round 4",
+    "homeTeamId": "essendon",
+    "awayTeamId": "port-adelaide",
+    "date": "2025-03-27",
+    "localTime": "Thu 27-Mar-2025 7:30 PM",
+    "startUtc": "2025-03-27T08:30:00.000Z"
   },
   {
     "matchKey": "030720250328",
     "url": "https://afltables.com/afl/stats/games/2025/030720250328.html",
-    "roundLabel": "Round 4"
+    "roundLabel": "Round 4",
+    "homeTeamId": "carlton",
+    "awayTeamId": "western-bulldogs",
+    "date": "2025-03-28",
+    "localTime": "Fri 28-Mar-2025 7:40 PM",
+    "startUtc": "2025-03-28T08:40:00.000Z"
   },
   {
     "matchKey": "112020250329",
     "url": "https://afltables.com/afl/stats/games/2025/112020250329.html",
-    "roundLabel": "Round 4"
+    "roundLabel": "Round 4",
+    "homeTeamId": "melbourne",
+    "awayTeamId": "gold-coast",
+    "date": "2025-03-29",
+    "localTime": "Sat 29-Mar-2025 1:20 PM",
+    "startUtc": "2025-03-29T02:20:00.000Z"
   },
   {
     "matchKey": "141520250329",
     "url": "https://afltables.com/afl/stats/games/2025/141520250329.html",
-    "roundLabel": "Round 4"
+    "roundLabel": "Round 4",
+    "homeTeamId": "st-kilda",
+    "awayTeamId": "richmond",
+    "date": "2025-03-29",
+    "localTime": "Sat 29-Mar-2025 4:15 PM",
+    "startUtc": "2025-03-29T05:15:00.000Z"
   },
   {
     "matchKey": "102120250329",
     "url": "https://afltables.com/afl/stats/games/2025/102120250329.html",
-    "roundLabel": "Round 4"
+    "roundLabel": "Round 4",
+    "homeTeamId": "hawthorn",
+    "awayTeamId": "gws",
+    "date": "2025-03-29",
+    "localTime": "Sat 29-Mar-2025 7:35 PM",
+    "startUtc": "2025-03-29T08:35:00.000Z"
   },
   {
     "matchKey": "011220250330",
     "url": "https://afltables.com/afl/stats/games/2025/011220250330.html",
-    "roundLabel": "Round 4"
+    "roundLabel": "Round 4",
+    "homeTeamId": "adelaide",
+    "awayTeamId": "north-melbourne",
+    "date": "2025-03-30",
+    "localTime": "Sun 30-Mar-2025 2:50 PM",
+    "startUtc": "2025-03-30T04:20:00.000Z"
   },
   {
     "matchKey": "081820250330",
     "url": "https://afltables.com/afl/stats/games/2025/081820250330.html",
-    "roundLabel": "Round 4"
+    "roundLabel": "Round 4",
+    "homeTeamId": "west-coast",
+    "awayTeamId": "fremantle",
+    "date": "2025-03-30",
+    "localTime": "Sun 30-Mar-2025 3:10 PM",
+    "startUtc": "2025-03-30T07:10:00.000Z"
   },
   {
     "matchKey": "030420250403",
     "url": "https://afltables.com/afl/stats/games/2025/030420250403.html",
-    "roundLabel": "Round 5"
+    "roundLabel": "Round 5",
+    "homeTeamId": "collingwood",
+    "awayTeamId": "carlton",
+    "date": "2025-04-03",
+    "localTime": "Thu 03-Apr-2025 7:30 PM",
+    "startUtc": "2025-04-03T08:30:00.000Z"
   },
   {
     "matchKey": "091120250404",
     "url": "https://afltables.com/afl/stats/games/2025/091120250404.html",
-    "roundLabel": "Round 5"
+    "roundLabel": "Round 5",
+    "homeTeamId": "geelong",
+    "awayTeamId": "melbourne",
+    "date": "2025-04-04",
+    "localTime": "Fri 04-Apr-2025 7:40 PM",
+    "startUtc": "2025-04-04T08:40:00.000Z"
   },
   {
     "matchKey": "012020250405",
     "url": "https://afltables.com/afl/stats/games/2025/012020250405.html",
-    "roundLabel": "Round 5"
+    "roundLabel": "Round 5",
+    "homeTeamId": "gold-coast",
+    "awayTeamId": "adelaide",
+    "date": "2025-04-05",
+    "localTime": "Sat 05-Apr-2025 12:20 PM",
+    "startUtc": "2025-04-05T02:20:00.000Z"
   },
   {
     "matchKey": "141920250405",
     "url": "https://afltables.com/afl/stats/games/2025/141920250405.html",
-    "roundLabel": "Round 5"
+    "roundLabel": "Round 5",
+    "homeTeamId": "richmond",
+    "awayTeamId": "brisbane-lions",
+    "date": "2025-04-05",
+    "localTime": "Sat 05-Apr-2025 4:15 PM",
+    "startUtc": "2025-04-05T05:15:00.000Z"
   },
   {
     "matchKey": "121620250405",
     "url": "https://afltables.com/afl/stats/games/2025/121620250405.html",
-    "roundLabel": "Round 5"
+    "roundLabel": "Round 5",
+    "homeTeamId": "north-melbourne",
+    "awayTeamId": "sydney",
+    "date": "2025-04-05",
+    "localTime": "Sat 05-Apr-2025 7:35 PM",
+    "startUtc": "2025-04-05T08:35:00.000Z"
   },
   {
     "matchKey": "182120250406",
     "url": "https://afltables.com/afl/stats/games/2025/182120250406.html",
-    "roundLabel": "Round 5"
+    "roundLabel": "Round 5",
+    "homeTeamId": "gws",
+    "awayTeamId": "west-coast",
+    "date": "2025-04-06",
+    "localTime": "Sun 06-Apr-2025 1:10 PM",
+    "startUtc": "2025-04-06T03:10:00.000Z"
   },
   {
     "matchKey": "131520250406",
     "url": "https://afltables.com/afl/stats/games/2025/131520250406.html",
-    "roundLabel": "Round 5"
+    "roundLabel": "Round 5",
+    "homeTeamId": "port-adelaide",
+    "awayTeamId": "st-kilda",
+    "date": "2025-04-06",
+    "localTime": "Sun 06-Apr-2025 2:50 PM",
+    "startUtc": "2025-04-06T05:20:00.000Z"
   },
   {
     "matchKey": "070820250406",
     "url": "https://afltables.com/afl/stats/games/2025/070820250406.html",
-    "roundLabel": "Round 5"
+    "roundLabel": "Round 5",
+    "homeTeamId": "fremantle",
+    "awayTeamId": "western-bulldogs",
+    "date": "2025-04-06",
+    "localTime": "Sun 06-Apr-2025 3:10 PM",
+    "startUtc": "2025-04-06T07:10:00.000Z"
   },
   {
     "matchKey": "010920250410",
     "url": "https://afltables.com/afl/stats/games/2025/010920250410.html",
-    "roundLabel": "Round 6"
+    "roundLabel": "Round 6",
+    "homeTeamId": "adelaide",
+    "awayTeamId": "geelong",
+    "date": "2025-04-10",
+    "localTime": "Thu 10-Apr-2025 7:10 PM",
+    "startUtc": "2025-04-10T09:40:00.000Z"
   },
   {
     "matchKey": "041620250411",
     "url": "https://afltables.com/afl/stats/games/2025/041620250411.html",
-    "roundLabel": "Round 6"
+    "roundLabel": "Round 6",
+    "homeTeamId": "collingwood",
+    "awayTeamId": "sydney",
+    "date": "2025-04-11",
+    "localTime": "Fri 11-Apr-2025 7:10 PM",
+    "startUtc": "2025-04-11T09:40:00.000Z"
   },
   {
     "matchKey": "122020250412",
     "url": "https://afltables.com/afl/stats/games/2025/122020250412.html",
-    "roundLabel": "Round 6"
+    "roundLabel": "Round 6",
+    "homeTeamId": "north-melbourne",
+    "awayTeamId": "gold-coast",
+    "date": "2025-04-12",
+    "localTime": "Sat 12-Apr-2025 12:05 PM",
+    "startUtc": "2025-04-12T02:35:00.000Z"
   },
   {
     "matchKey": "031820250412",
     "url": "https://afltables.com/afl/stats/games/2025/031820250412.html",
-    "roundLabel": "Round 6"
+    "roundLabel": "Round 6",
+    "homeTeamId": "carlton",
+    "awayTeamId": "west-coast",
+    "date": "2025-04-12",
+    "localTime": "Sat 12-Apr-2025 12:50 PM",
+    "startUtc": "2025-04-12T03:20:00.000Z"
   },
   {
     "matchKey": "071920250412",
     "url": "https://afltables.com/afl/stats/games/2025/071920250412.html",
-    "roundLabel": "Round 6"
+    "roundLabel": "Round 6",
+    "homeTeamId": "western-bulldogs",
+    "awayTeamId": "brisbane-lions",
+    "date": "2025-04-12",
+    "localTime": "Sat 12-Apr-2025 3:45 PM",
+    "startUtc": "2025-04-12T06:15:00.000Z"
   },
   {
     "matchKey": "051120250412",
     "url": "https://afltables.com/afl/stats/games/2025/051120250412.html",
-    "roundLabel": "Round 6"
+    "roundLabel": "Round 6",
+    "homeTeamId": "melbourne",
+    "awayTeamId": "essendon",
+    "date": "2025-04-12",
+    "localTime": "Sat 12-Apr-2025 7:05 PM",
+    "startUtc": "2025-04-12T09:35:00.000Z"
   },
   {
     "matchKey": "081420250413",
     "url": "https://afltables.com/afl/stats/games/2025/081420250413.html",
-    "roundLabel": "Round 6"
+    "roundLabel": "Round 6",
+    "homeTeamId": "richmond",
+    "awayTeamId": "fremantle",
+    "date": "2025-04-13",
+    "localTime": "Sun 13-Apr-2025 12:05 PM",
+    "startUtc": "2025-04-13T02:35:00.000Z"
   },
   {
     "matchKey": "152120250413",
     "url": "https://afltables.com/afl/stats/games/2025/152120250413.html",
-    "roundLabel": "Round 6"
+    "roundLabel": "Round 6",
+    "homeTeamId": "st-kilda",
+    "awayTeamId": "gws",
+    "date": "2025-04-13",
+    "localTime": "Sun 13-Apr-2025 2:50 PM",
+    "startUtc": "2025-04-13T05:20:00.000Z"
   },
   {
     "matchKey": "101320250413",
     "url": "https://afltables.com/afl/stats/games/2025/101320250413.html",
-    "roundLabel": "Round 6"
+    "roundLabel": "Round 6",
+    "homeTeamId": "port-adelaide",
+    "awayTeamId": "hawthorn",
+    "date": "2025-04-13",
+    "localTime": "Sun 13-Apr-2025 6:50 PM",
+    "startUtc": "2025-04-13T09:20:00.000Z"
   },
   {
     "matchKey": "041920250417",
     "url": "https://afltables.com/afl/stats/games/2025/041920250417.html",
-    "roundLabel": "Round 7"
+    "roundLabel": "Round 7",
+    "homeTeamId": "brisbane-lions",
+    "awayTeamId": "collingwood",
+    "date": "2025-04-17",
+    "localTime": "Thu 17-Apr-2025 7:30 PM",
+    "startUtc": "2025-04-17T09:30:00.000Z"
   },
   {
     "matchKey": "031220250418",
     "url": "https://afltables.com/afl/stats/games/2025/031220250418.html",
-    "roundLabel": "Round 7"
+    "roundLabel": "Round 7",
+    "homeTeamId": "north-melbourne",
+    "awayTeamId": "carlton",
+    "date": "2025-04-18",
+    "localTime": "Fri 18-Apr-2025 3:20 PM",
+    "startUtc": "2025-04-18T05:20:00.000Z"
   },
   {
     "matchKey": "051820250418",
     "url": "https://afltables.com/afl/stats/games/2025/051820250418.html",
-    "roundLabel": "Round 7"
+    "roundLabel": "Round 7",
+    "homeTeamId": "west-coast",
+    "awayTeamId": "essendon",
+    "date": "2025-04-18",
+    "localTime": "Fri 18-Apr-2025 4:10 PM",
+    "startUtc": "2025-04-18T08:10:00.000Z"
   },
   {
     "matchKey": "081120250419",
     "url": "https://afltables.com/afl/stats/games/2025/081120250419.html",
-    "roundLabel": "Round 7"
+    "roundLabel": "Round 7",
+    "homeTeamId": "melbourne",
+    "awayTeamId": "fremantle",
+    "date": "2025-04-19",
+    "localTime": "Sat 19-Apr-2025 1:20 PM",
+    "startUtc": "2025-04-19T03:20:00.000Z"
   },
   {
     "matchKey": "012120250419",
     "url": "https://afltables.com/afl/stats/games/2025/012120250419.html",
-    "roundLabel": "Round 7"
+    "roundLabel": "Round 7",
+    "homeTeamId": "adelaide",
+    "awayTeamId": "gws",
+    "date": "2025-04-19",
+    "localTime": "Sat 19-Apr-2025 3:45 PM",
+    "startUtc": "2025-04-19T06:15:00.000Z"
   },
   {
     "matchKey": "142020250419",
     "url": "https://afltables.com/afl/stats/games/2025/142020250419.html",
-    "roundLabel": "Round 7"
+    "roundLabel": "Round 7",
+    "homeTeamId": "richmond",
+    "awayTeamId": "gold-coast",
+    "date": "2025-04-19",
+    "localTime": "Sat 19-Apr-2025 7:35 PM",
+    "startUtc": "2025-04-19T09:35:00.000Z"
   },
   {
     "matchKey": "131620250420",
     "url": "https://afltables.com/afl/stats/games/2025/131620250420.html",
-    "roundLabel": "Round 7"
+    "roundLabel": "Round 7",
+    "homeTeamId": "sydney",
+    "awayTeamId": "port-adelaide",
+    "date": "2025-04-20",
+    "localTime": "Sun 20-Apr-2025 3:20 PM",
+    "startUtc": "2025-04-20T05:20:00.000Z"
   },
   {
     "matchKey": "071520250420",
     "url": "https://afltables.com/afl/stats/games/2025/071520250420.html",
-    "roundLabel": "Round 7"
+    "roundLabel": "Round 7",
+    "homeTeamId": "western-bulldogs",
+    "awayTeamId": "st-kilda",
+    "date": "2025-04-20",
+    "localTime": "Sun 20-Apr-2025 7:20 PM",
+    "startUtc": "2025-04-20T09:20:00.000Z"
   },
   {
     "matchKey": "091020250421",
     "url": "https://afltables.com/afl/stats/games/2025/091020250421.html",
-    "roundLabel": "Round 7"
+    "roundLabel": "Round 7",
+    "homeTeamId": "geelong",
+    "awayTeamId": "hawthorn",
+    "date": "2025-04-21",
+    "localTime": "Mon 21-Apr-2025 3:20 PM",
+    "startUtc": "2025-04-21T05:20:00.000Z"
   },
   {
     "matchKey": "111420250424",
     "url": "https://afltables.com/afl/stats/games/2025/111420250424.html",
-    "roundLabel": "Round 8"
+    "roundLabel": "Round 8",
+    "homeTeamId": "melbourne",
+    "awayTeamId": "richmond",
+    "date": "2025-04-24",
+    "localTime": "Thu 24-Apr-2025 7:30 PM",
+    "startUtc": "2025-04-24T09:30:00.000Z"
   },
   {
     "matchKey": "040520250425",
     "url": "https://afltables.com/afl/stats/games/2025/040520250425.html",
-    "roundLabel": "Round 8"
+    "roundLabel": "Round 8",
+    "homeTeamId": "collingwood",
+    "awayTeamId": "essendon",
+    "date": "2025-04-25",
+    "localTime": "Fri 25-Apr-2025 3:20 PM",
+    "startUtc": "2025-04-25T05:20:00.000Z"
   },
   {
     "matchKey": "010820250425",
     "url": "https://afltables.com/afl/stats/games/2025/010820250425.html",
-    "roundLabel": "Round 8"
+    "roundLabel": "Round 8",
+    "homeTeamId": "fremantle",
+    "awayTeamId": "adelaide",
+    "date": "2025-04-25",
+    "localTime": "Fri 25-Apr-2025 6:10 PM",
+    "startUtc": "2025-04-25T10:10:00.000Z"
   },
   {
     "matchKey": "151920250426",
     "url": "https://afltables.com/afl/stats/games/2025/151920250426.html",
-    "roundLabel": "Round 8"
+    "roundLabel": "Round 8",
+    "homeTeamId": "st-kilda",
+    "awayTeamId": "brisbane-lions",
+    "date": "2025-04-26",
+    "localTime": "Sat 26-Apr-2025 1:20 PM",
+    "startUtc": "2025-04-26T03:20:00.000Z"
   },
   {
     "matchKey": "121320250426",
     "url": "https://afltables.com/afl/stats/games/2025/121320250426.html",
-    "roundLabel": "Round 8"
+    "roundLabel": "Round 8",
+    "homeTeamId": "port-adelaide",
+    "awayTeamId": "north-melbourne",
+    "date": "2025-04-26",
+    "localTime": "Sat 26-Apr-2025 3:45 PM",
+    "startUtc": "2025-04-26T06:15:00.000Z"
   },
   {
     "matchKey": "072120250426",
     "url": "https://afltables.com/afl/stats/games/2025/072120250426.html",
-    "roundLabel": "Round 8"
+    "roundLabel": "Round 8",
+    "homeTeamId": "gws",
+    "awayTeamId": "western-bulldogs",
+    "date": "2025-04-26",
+    "localTime": "Sat 26-Apr-2025 7:35 PM",
+    "startUtc": "2025-04-26T09:35:00.000Z"
   },
   {
     "matchKey": "162020250427",
     "url": "https://afltables.com/afl/stats/games/2025/162020250427.html",
-    "roundLabel": "Round 8"
+    "roundLabel": "Round 8",
+    "homeTeamId": "gold-coast",
+    "awayTeamId": "sydney",
+    "date": "2025-04-27",
+    "localTime": "Sun 27-Apr-2025 1:15 PM",
+    "startUtc": "2025-04-27T03:15:00.000Z"
   },
   {
     "matchKey": "030920250427",
     "url": "https://afltables.com/afl/stats/games/2025/030920250427.html",
-    "roundLabel": "Round 8"
+    "roundLabel": "Round 8",
+    "homeTeamId": "carlton",
+    "awayTeamId": "geelong",
+    "date": "2025-04-27",
+    "localTime": "Sun 27-Apr-2025 3:20 PM",
+    "startUtc": "2025-04-27T05:20:00.000Z"
   },
   {
     "matchKey": "101820250427",
     "url": "https://afltables.com/afl/stats/games/2025/101820250427.html",
-    "roundLabel": "Round 8"
+    "roundLabel": "Round 8",
+    "homeTeamId": "hawthorn",
+    "awayTeamId": "west-coast",
+    "date": "2025-04-27",
+    "localTime": "Sun 27-Apr-2025 4:45 PM",
+    "startUtc": "2025-04-27T06:45:00.000Z"
   },
   {
     "matchKey": "051220250501",
     "url": "https://afltables.com/afl/stats/games/2025/051220250501.html",
-    "roundLabel": "Round 9"
+    "roundLabel": "Round 9",
+    "homeTeamId": "essendon",
+    "awayTeamId": "north-melbourne",
+    "date": "2025-05-01",
+    "localTime": "Thu 01-May-2025 7:30 PM",
+    "startUtc": "2025-05-01T09:30:00.000Z"
   },
   {
     "matchKey": "081520250502",
     "url": "https://afltables.com/afl/stats/games/2025/081520250502.html",
-    "roundLabel": "Round 9"
+    "roundLabel": "Round 9",
+    "homeTeamId": "st-kilda",
+    "awayTeamId": "fremantle",
+    "date": "2025-05-02",
+    "localTime": "Fri 02-May-2025 7:40 PM",
+    "startUtc": "2025-05-02T09:40:00.000Z"
   },
   {
     "matchKey": "071320250503",
     "url": "https://afltables.com/afl/stats/games/2025/071320250503.html",
-    "roundLabel": "Round 9"
+    "roundLabel": "Round 9",
+    "homeTeamId": "western-bulldogs",
+    "awayTeamId": "port-adelaide",
+    "date": "2025-05-03",
+    "localTime": "Sat 03-May-2025 1:20 PM",
+    "startUtc": "2025-05-03T03:20:00.000Z"
   },
   {
     "matchKey": "010320250503",
     "url": "https://afltables.com/afl/stats/games/2025/010320250503.html",
-    "roundLabel": "Round 9"
+    "roundLabel": "Round 9",
+    "homeTeamId": "adelaide",
+    "awayTeamId": "carlton",
+    "date": "2025-05-03",
+    "localTime": "Sat 03-May-2025 3:45 PM",
+    "startUtc": "2025-05-03T06:15:00.000Z"
   },
   {
     "matchKey": "111820250503",
     "url": "https://afltables.com/afl/stats/games/2025/111820250503.html",
-    "roundLabel": "Round 9"
+    "roundLabel": "Round 9",
+    "homeTeamId": "west-coast",
+    "awayTeamId": "melbourne",
+    "date": "2025-05-03",
+    "localTime": "Sat 03-May-2025 5:35 PM",
+    "startUtc": "2025-05-03T09:35:00.000Z"
   },
   {
     "matchKey": "040920250503",
     "url": "https://afltables.com/afl/stats/games/2025/040920250503.html",
-    "roundLabel": "Round 9"
+    "roundLabel": "Round 9",
+    "homeTeamId": "collingwood",
+    "awayTeamId": "geelong",
+    "date": "2025-05-03",
+    "localTime": "Sat 03-May-2025 7:35 PM",
+    "startUtc": "2025-05-03T09:35:00.000Z"
   },
   {
     "matchKey": "162120250504",
     "url": "https://afltables.com/afl/stats/games/2025/162120250504.html",
-    "roundLabel": "Round 9"
+    "roundLabel": "Round 9",
+    "homeTeamId": "sydney",
+    "awayTeamId": "gws",
+    "date": "2025-05-04",
+    "localTime": "Sun 04-May-2025 1:10 PM",
+    "startUtc": "2025-05-04T03:10:00.000Z"
   },
   {
     "matchKey": "101420250504",
     "url": "https://afltables.com/afl/stats/games/2025/101420250504.html",
-    "roundLabel": "Round 9"
+    "roundLabel": "Round 9",
+    "homeTeamId": "hawthorn",
+    "awayTeamId": "richmond",
+    "date": "2025-05-04",
+    "localTime": "Sun 04-May-2025 3:20 PM",
+    "startUtc": "2025-05-04T05:20:00.000Z"
   },
   {
     "matchKey": "192020250504",
     "url": "https://afltables.com/afl/stats/games/2025/192020250504.html",
-    "roundLabel": "Round 9"
+    "roundLabel": "Round 9",
+    "homeTeamId": "brisbane-lions",
+    "awayTeamId": "gold-coast",
+    "date": "2025-05-04",
+    "localTime": "Sun 04-May-2025 7:20 PM",
+    "startUtc": "2025-05-04T09:20:00.000Z"
   },
   {
     "matchKey": "040820250508",
     "url": "https://afltables.com/afl/stats/games/2025/040820250508.html",
-    "roundLabel": "Round 10"
+    "roundLabel": "Round 10",
+    "homeTeamId": "fremantle",
+    "awayTeamId": "collingwood",
+    "date": "2025-05-08",
+    "localTime": "Thu 08-May-2025 6:10 PM",
+    "startUtc": "2025-05-08T10:10:00.000Z"
   },
   {
     "matchKey": "031520250509",
     "url": "https://afltables.com/afl/stats/games/2025/031520250509.html",
-    "roundLabel": "Round 10"
+    "roundLabel": "Round 10",
+    "homeTeamId": "st-kilda",
+    "awayTeamId": "carlton",
+    "date": "2025-05-09",
+    "localTime": "Fri 09-May-2025 7:40 PM",
+    "startUtc": "2025-05-09T09:40:00.000Z"
   },
   {
     "matchKey": "101120250510",
     "url": "https://afltables.com/afl/stats/games/2025/101120250510.html",
-    "roundLabel": "Round 10"
+    "roundLabel": "Round 10",
+    "homeTeamId": "melbourne",
+    "awayTeamId": "hawthorn",
+    "date": "2025-05-10",
+    "localTime": "Sat 10-May-2025 1:20 PM",
+    "startUtc": "2025-05-10T03:20:00.000Z"
   },
   {
     "matchKey": "051620250510",
     "url": "https://afltables.com/afl/stats/games/2025/051620250510.html",
-    "roundLabel": "Round 10"
+    "roundLabel": "Round 10",
+    "homeTeamId": "essendon",
+    "awayTeamId": "sydney",
+    "date": "2025-05-10",
+    "localTime": "Sat 10-May-2025 4:15 PM",
+    "startUtc": "2025-05-10T06:15:00.000Z"
   },
   {
     "matchKey": "072020250510",
     "url": "https://afltables.com/afl/stats/games/2025/072020250510.html",
-    "roundLabel": "Round 10"
+    "roundLabel": "Round 10",
+    "homeTeamId": "gold-coast",
+    "awayTeamId": "western-bulldogs",
+    "date": "2025-05-10",
+    "localTime": "Sat 10-May-2025 7:05 PM",
+    "startUtc": "2025-05-10T09:35:00.000Z"
   },
   {
     "matchKey": "011320250510",
     "url": "https://afltables.com/afl/stats/games/2025/011320250510.html",
-    "roundLabel": "Round 10"
+    "roundLabel": "Round 10",
+    "homeTeamId": "port-adelaide",
+    "awayTeamId": "adelaide",
+    "date": "2025-05-10",
+    "localTime": "Sat 10-May-2025 7:40 PM",
+    "startUtc": "2025-05-10T10:10:00.000Z"
   },
   {
     "matchKey": "141820250511",
     "url": "https://afltables.com/afl/stats/games/2025/141820250511.html",
-    "roundLabel": "Round 10"
+    "roundLabel": "Round 10",
+    "homeTeamId": "richmond",
+    "awayTeamId": "west-coast",
+    "date": "2025-05-11",
+    "localTime": "Sun 11-May-2025 1:10 PM",
+    "startUtc": "2025-05-11T03:10:00.000Z"
   },
   {
     "matchKey": "092120250511",
     "url": "https://afltables.com/afl/stats/games/2025/092120250511.html",
-    "roundLabel": "Round 10"
+    "roundLabel": "Round 10",
+    "homeTeamId": "geelong",
+    "awayTeamId": "gws",
+    "date": "2025-05-11",
+    "localTime": "Sun 11-May-2025 3:20 PM",
+    "startUtc": "2025-05-11T05:20:00.000Z"
   },
   {
     "matchKey": "121920250511",
     "url": "https://afltables.com/afl/stats/games/2025/121920250511.html",
-    "roundLabel": "Round 10"
+    "roundLabel": "Round 10",
+    "homeTeamId": "north-melbourne",
+    "awayTeamId": "brisbane-lions",
+    "date": "2025-05-11",
+    "localTime": "Sun 11-May-2025 4:40 PM",
+    "startUtc": "2025-05-11T06:40:00.000Z"
   },
   {
     "matchKey": "102020250515",
     "url": "https://afltables.com/afl/stats/games/2025/102020250515.html",
-    "roundLabel": "Round 11"
+    "roundLabel": "Round 11",
+    "homeTeamId": "gold-coast",
+    "awayTeamId": "hawthorn",
+    "date": "2025-05-15",
+    "localTime": "Thu 15-May-2025 7:00 PM",
+    "startUtc": "2025-05-15T09:30:00.000Z"
   },
   {
     "matchKey": "031620250516",
     "url": "https://afltables.com/afl/stats/games/2025/031620250516.html",
-    "roundLabel": "Round 11"
+    "roundLabel": "Round 11",
+    "homeTeamId": "sydney",
+    "awayTeamId": "carlton",
+    "date": "2025-05-16",
+    "localTime": "Fri 16-May-2025 7:40 PM",
+    "startUtc": "2025-05-16T09:40:00.000Z"
   },
   {
     "matchKey": "010420250517",
     "url": "https://afltables.com/afl/stats/games/2025/010420250517.html",
-    "roundLabel": "Round 11"
+    "roundLabel": "Round 11",
+    "homeTeamId": "collingwood",
+    "awayTeamId": "adelaide",
+    "date": "2025-05-17",
+    "localTime": "Sat 17-May-2025 1:20 PM",
+    "startUtc": "2025-05-17T03:20:00.000Z"
   },
   {
     "matchKey": "091320250517",
     "url": "https://afltables.com/afl/stats/games/2025/091320250517.html",
-    "roundLabel": "Round 11"
+    "roundLabel": "Round 11",
+    "homeTeamId": "port-adelaide",
+    "awayTeamId": "geelong",
+    "date": "2025-05-17",
+    "localTime": "Sat 17-May-2025 3:45 PM",
+    "startUtc": "2025-05-17T06:15:00.000Z"
   },
   {
     "matchKey": "082120250517",
     "url": "https://afltables.com/afl/stats/games/2025/082120250517.html",
-    "roundLabel": "Round 11"
+    "roundLabel": "Round 11",
+    "homeTeamId": "gws",
+    "awayTeamId": "fremantle",
+    "date": "2025-05-17",
+    "localTime": "Sat 17-May-2025 4:15 PM",
+    "startUtc": "2025-05-17T06:15:00.000Z"
   },
   {
     "matchKey": "050720250517",
     "url": "https://afltables.com/afl/stats/games/2025/050720250517.html",
-    "roundLabel": "Round 11"
+    "roundLabel": "Round 11",
+    "homeTeamId": "western-bulldogs",
+    "awayTeamId": "essendon",
+    "date": "2025-05-17",
+    "localTime": "Sat 17-May-2025 7:35 PM",
+    "startUtc": "2025-05-17T09:35:00.000Z"
   },
   {
     "matchKey": "121420250518",
     "url": "https://afltables.com/afl/stats/games/2025/121420250518.html",
-    "roundLabel": "Round 11"
+    "roundLabel": "Round 11",
+    "homeTeamId": "richmond",
+    "awayTeamId": "north-melbourne",
+    "date": "2025-05-18",
+    "localTime": "Sun 18-May-2025 1:10 PM",
+    "startUtc": "2025-05-18T03:10:00.000Z"
   },
   {
     "matchKey": "111920250518",
     "url": "https://afltables.com/afl/stats/games/2025/111920250518.html",
-    "roundLabel": "Round 11"
+    "roundLabel": "Round 11",
+    "homeTeamId": "brisbane-lions",
+    "awayTeamId": "melbourne",
+    "date": "2025-05-18",
+    "localTime": "Sun 18-May-2025 3:20 PM",
+    "startUtc": "2025-05-18T05:20:00.000Z"
   },
   {
     "matchKey": "151820250518",
     "url": "https://afltables.com/afl/stats/games/2025/151820250518.html",
-    "roundLabel": "Round 11"
+    "roundLabel": "Round 11",
+    "homeTeamId": "west-coast",
+    "awayTeamId": "st-kilda",
+    "date": "2025-05-18",
+    "localTime": "Sun 18-May-2025 2:40 PM",
+    "startUtc": "2025-05-18T06:40:00.000Z"
   },
   {
     "matchKey": "070920250522",
     "url": "https://afltables.com/afl/stats/games/2025/070920250522.html",
-    "roundLabel": "Round 12"
+    "roundLabel": "Round 12",
+    "homeTeamId": "geelong",
+    "awayTeamId": "western-bulldogs",
+    "date": "2025-05-22",
+    "localTime": "Thu 22-May-2025 7:30 PM",
+    "startUtc": "2025-05-22T09:30:00.000Z"
   },
   {
     "matchKey": "051420250523",
     "url": "https://afltables.com/afl/stats/games/2025/051420250523.html",
-    "roundLabel": "Round 12"
+    "roundLabel": "Round 12",
+    "homeTeamId": "essendon",
+    "awayTeamId": "richmond",
+    "date": "2025-05-23",
+    "localTime": "Fri 23-May-2025 7:40 PM",
+    "startUtc": "2025-05-23T09:40:00.000Z"
   },
   {
     "matchKey": "032120250524",
     "url": "https://afltables.com/afl/stats/games/2025/032120250524.html",
-    "roundLabel": "Round 12"
+    "roundLabel": "Round 12",
+    "homeTeamId": "carlton",
+    "awayTeamId": "gws",
+    "date": "2025-05-24",
+    "localTime": "Sat 24-May-2025 12:35 PM",
+    "startUtc": "2025-05-24T02:35:00.000Z"
   },
   {
     "matchKey": "101920250524",
     "url": "https://afltables.com/afl/stats/games/2025/101920250524.html",
-    "roundLabel": "Round 12"
+    "roundLabel": "Round 12",
+    "homeTeamId": "hawthorn",
+    "awayTeamId": "brisbane-lions",
+    "date": "2025-05-24",
+    "localTime": "Sat 24-May-2025 4:15 PM",
+    "startUtc": "2025-05-24T06:15:00.000Z"
   },
   {
     "matchKey": "041220250524",
     "url": "https://afltables.com/afl/stats/games/2025/041220250524.html",
-    "roundLabel": "Round 12"
+    "roundLabel": "Round 12",
+    "homeTeamId": "north-melbourne",
+    "awayTeamId": "collingwood",
+    "date": "2025-05-24",
+    "localTime": "Sat 24-May-2025 7:35 PM",
+    "startUtc": "2025-05-24T09:35:00.000Z"
   },
   {
     "matchKey": "081320250524",
     "url": "https://afltables.com/afl/stats/games/2025/081320250524.html",
-    "roundLabel": "Round 12"
+    "roundLabel": "Round 12",
+    "homeTeamId": "fremantle",
+    "awayTeamId": "port-adelaide",
+    "date": "2025-05-24",
+    "localTime": "Sat 24-May-2025 6:10 PM",
+    "startUtc": "2025-05-24T10:10:00.000Z"
   },
   {
     "matchKey": "011820250525",
     "url": "https://afltables.com/afl/stats/games/2025/011820250525.html",
-    "roundLabel": "Round 12"
+    "roundLabel": "Round 12",
+    "homeTeamId": "adelaide",
+    "awayTeamId": "west-coast",
+    "date": "2025-05-25",
+    "localTime": "Sun 25-May-2025 12:40 PM",
+    "startUtc": "2025-05-25T03:10:00.000Z"
   },
   {
     "matchKey": "111620250525",
     "url": "https://afltables.com/afl/stats/games/2025/111620250525.html",
-    "roundLabel": "Round 12"
+    "roundLabel": "Round 12",
+    "homeTeamId": "melbourne",
+    "awayTeamId": "sydney",
+    "date": "2025-05-25",
+    "localTime": "Sun 25-May-2025 3:20 PM",
+    "startUtc": "2025-05-25T05:20:00.000Z"
   },
   {
     "matchKey": "152020250525",
     "url": "https://afltables.com/afl/stats/games/2025/152020250525.html",
-    "roundLabel": "Round 12"
+    "roundLabel": "Round 12",
+    "homeTeamId": "st-kilda",
+    "awayTeamId": "gold-coast",
+    "date": "2025-05-25",
+    "localTime": "Sun 25-May-2025 4:40 PM",
+    "startUtc": "2025-05-25T06:40:00.000Z"
   },
   {
     "matchKey": "051920250529",
     "url": "https://afltables.com/afl/stats/games/2025/051920250529.html",
-    "roundLabel": "Round 13"
+    "roundLabel": "Round 13",
+    "homeTeamId": "brisbane-lions",
+    "awayTeamId": "essendon",
+    "date": "2025-05-29",
+    "localTime": "Thu 29-May-2025 7:30 PM",
+    "startUtc": "2025-05-29T09:30:00.000Z"
   },
   {
     "matchKey": "041020250530",
     "url": "https://afltables.com/afl/stats/games/2025/041020250530.html",
-    "roundLabel": "Round 13"
+    "roundLabel": "Round 13",
+    "homeTeamId": "collingwood",
+    "awayTeamId": "hawthorn",
+    "date": "2025-05-30",
+    "localTime": "Fri 30-May-2025 7:40 PM",
+    "startUtc": "2025-05-30T09:40:00.000Z"
   },
   {
     "matchKey": "082020250531",
     "url": "https://afltables.com/afl/stats/games/2025/082020250531.html",
-    "roundLabel": "Round 13"
+    "roundLabel": "Round 13",
+    "homeTeamId": "gold-coast",
+    "awayTeamId": "fremantle",
+    "date": "2025-05-31",
+    "localTime": "Sat 31-May-2025 1:20 PM",
+    "startUtc": "2025-05-31T03:20:00.000Z"
   },
   {
     "matchKey": "142120250531",
     "url": "https://afltables.com/afl/stats/games/2025/142120250531.html",
-    "roundLabel": "Round 13"
+    "roundLabel": "Round 13",
+    "homeTeamId": "gws",
+    "awayTeamId": "richmond",
+    "date": "2025-05-31",
+    "localTime": "Sat 31-May-2025 4:15 PM",
+    "startUtc": "2025-05-31T06:15:00.000Z"
   },
   {
     "matchKey": "011620250531",
     "url": "https://afltables.com/afl/stats/games/2025/011620250531.html",
-    "roundLabel": "Round 13"
+    "roundLabel": "Round 13",
+    "homeTeamId": "sydney",
+    "awayTeamId": "adelaide",
+    "date": "2025-05-31",
+    "localTime": "Sat 31-May-2025 7:35 PM",
+    "startUtc": "2025-05-31T09:35:00.000Z"
   },
   {
     "matchKey": "111520250601",
     "url": "https://afltables.com/afl/stats/games/2025/111520250601.html",
-    "roundLabel": "Round 13"
+    "roundLabel": "Round 13",
+    "homeTeamId": "melbourne",
+    "awayTeamId": "st-kilda",
+    "date": "2025-06-01",
+    "localTime": "Sun 01-Jun-2025 2:50 PM",
+    "startUtc": "2025-06-01T05:20:00.000Z"
   },
   {
     "matchKey": "091820250601",
     "url": "https://afltables.com/afl/stats/games/2025/091820250601.html",
-    "roundLabel": "Round 13"
+    "roundLabel": "Round 13",
+    "homeTeamId": "west-coast",
+    "awayTeamId": "geelong",
+    "date": "2025-06-01",
+    "localTime": "Sun 01-Jun-2025 5:20 PM",
+    "startUtc": "2025-06-01T09:20:00.000Z"
   },
   {
     "matchKey": "071020250605",
     "url": "https://afltables.com/afl/stats/games/2025/071020250605.html",
-    "roundLabel": "Round 14"
+    "roundLabel": "Round 14",
+    "homeTeamId": "western-bulldogs",
+    "awayTeamId": "hawthorn",
+    "date": "2025-06-05",
+    "localTime": "Thu 05-Jun-2025 7:30 PM",
+    "startUtc": "2025-06-05T09:30:00.000Z"
   },
   {
     "matchKey": "011920250606",
     "url": "https://afltables.com/afl/stats/games/2025/011920250606.html",
-    "roundLabel": "Round 14"
+    "roundLabel": "Round 14",
+    "homeTeamId": "adelaide",
+    "awayTeamId": "brisbane-lions",
+    "date": "2025-06-06",
+    "localTime": "Fri 06-Jun-2025 7:10 PM",
+    "startUtc": "2025-06-06T09:40:00.000Z"
   },
   {
     "matchKey": "141620250607",
     "url": "https://afltables.com/afl/stats/games/2025/141620250607.html",
-    "roundLabel": "Round 14"
+    "roundLabel": "Round 14",
+    "homeTeamId": "richmond",
+    "awayTeamId": "sydney",
+    "date": "2025-06-07",
+    "localTime": "Sat 07-Jun-2025 1:20 PM",
+    "startUtc": "2025-06-07T03:20:00.000Z"
   },
   {
     "matchKey": "092020250607",
     "url": "https://afltables.com/afl/stats/games/2025/092020250607.html",
-    "roundLabel": "Round 14"
+    "roundLabel": "Round 14",
+    "homeTeamId": "geelong",
+    "awayTeamId": "gold-coast",
+    "date": "2025-06-07",
+    "localTime": "Sat 07-Jun-2025 4:15 PM",
+    "startUtc": "2025-06-07T06:15:00.000Z"
   },
   {
     "matchKey": "132120250607",
     "url": "https://afltables.com/afl/stats/games/2025/132120250607.html",
-    "roundLabel": "Round 14"
+    "roundLabel": "Round 14",
+    "homeTeamId": "gws",
+    "awayTeamId": "port-adelaide",
+    "date": "2025-06-07",
+    "localTime": "Sat 07-Jun-2025 7:35 PM",
+    "startUtc": "2025-06-07T09:35:00.000Z"
   },
   {
     "matchKey": "121820250608",
     "url": "https://afltables.com/afl/stats/games/2025/121820250608.html",
-    "roundLabel": "Round 14"
+    "roundLabel": "Round 14",
+    "homeTeamId": "north-melbourne",
+    "awayTeamId": "west-coast",
+    "date": "2025-06-08",
+    "localTime": "Sun 08-Jun-2025 1:20 PM",
+    "startUtc": "2025-06-08T05:20:00.000Z"
   },
   {
     "matchKey": "030520250608",
     "url": "https://afltables.com/afl/stats/games/2025/030520250608.html",
-    "roundLabel": "Round 14"
+    "roundLabel": "Round 14",
+    "homeTeamId": "carlton",
+    "awayTeamId": "essendon",
+    "date": "2025-06-08",
+    "localTime": "Sun 08-Jun-2025 7:20 PM",
+    "startUtc": "2025-06-08T09:20:00.000Z"
   },
   {
     "matchKey": "041120250609",
     "url": "https://afltables.com/afl/stats/games/2025/041120250609.html",
-    "roundLabel": "Round 14"
+    "roundLabel": "Round 14",
+    "homeTeamId": "melbourne",
+    "awayTeamId": "collingwood",
+    "date": "2025-06-09",
+    "localTime": "Mon 09-Jun-2025 3:20 PM",
+    "startUtc": "2025-06-09T05:20:00.000Z"
   },
   {
     "matchKey": "071520250612",
     "url": "https://afltables.com/afl/stats/games/2025/071520250612.html",
-    "roundLabel": "Round 15"
+    "roundLabel": "Round 15",
+    "homeTeamId": "st-kilda",
+    "awayTeamId": "western-bulldogs",
+    "date": "2025-06-12",
+    "localTime": "Thu 12-Jun-2025 7:30 PM",
+    "startUtc": "2025-06-12T09:30:00.000Z"
   },
   {
     "matchKey": "011020250613",
     "url": "https://afltables.com/afl/stats/games/2025/011020250613.html",
-    "roundLabel": "Round 15"
+    "roundLabel": "Round 15",
+    "homeTeamId": "hawthorn",
+    "awayTeamId": "adelaide",
+    "date": "2025-06-13",
+    "localTime": "Fri 13-Jun-2025 7:40 PM",
+    "startUtc": "2025-06-13T09:40:00.000Z"
   },
   {
     "matchKey": "192120250614",
     "url": "https://afltables.com/afl/stats/games/2025/192120250614.html",
-    "roundLabel": "Round 15"
+    "roundLabel": "Round 15",
+    "homeTeamId": "brisbane-lions",
+    "awayTeamId": "gws",
+    "date": "2025-06-14",
+    "localTime": "Sat 14-Jun-2025 1:20 PM",
+    "startUtc": "2025-06-14T03:20:00.000Z"
   },
   {
     "matchKey": "050920250614",
     "url": "https://afltables.com/afl/stats/games/2025/050920250614.html",
-    "roundLabel": "Round 15"
+    "roundLabel": "Round 15",
+    "homeTeamId": "essendon",
+    "awayTeamId": "geelong",
+    "date": "2025-06-14",
+    "localTime": "Sat 14-Jun-2025 4:15 PM",
+    "startUtc": "2025-06-14T06:15:00.000Z"
   },
   {
     "matchKey": "081220250614",
     "url": "https://afltables.com/afl/stats/games/2025/081220250614.html",
-    "roundLabel": "Round 15"
+    "roundLabel": "Round 15",
+    "homeTeamId": "north-melbourne",
+    "awayTeamId": "fremantle",
+    "date": "2025-06-14",
+    "localTime": "Sat 14-Jun-2025 5:35 PM",
+    "startUtc": "2025-06-14T09:35:00.000Z"
   },
   {
     "matchKey": "111320250615",
     "url": "https://afltables.com/afl/stats/games/2025/111320250615.html",
-    "roundLabel": "Round 15"
+    "roundLabel": "Round 15",
+    "homeTeamId": "port-adelaide",
+    "awayTeamId": "melbourne",
+    "date": "2025-06-15",
+    "localTime": "Sun 15-Jun-2025 2:50 PM",
+    "startUtc": "2025-06-15T05:20:00.000Z"
   },
   {
     "matchKey": "031820250615",
     "url": "https://afltables.com/afl/stats/games/2025/031820250615.html",
-    "roundLabel": "Round 15"
+    "roundLabel": "Round 15",
+    "homeTeamId": "west-coast",
+    "awayTeamId": "carlton",
+    "date": "2025-06-15",
+    "localTime": "Sun 15-Jun-2025 4:10 PM",
+    "startUtc": "2025-06-15T08:10:00.000Z"
   },
   {
     "matchKey": "050820250619",
     "url": "https://afltables.com/afl/stats/games/2025/050820250619.html",
-    "roundLabel": "Round 16"
+    "roundLabel": "Round 16",
+    "homeTeamId": "fremantle",
+    "awayTeamId": "essendon",
+    "date": "2025-06-19",
+    "localTime": "Thu 19-Jun-2025 6:10 PM",
+    "startUtc": "2025-06-19T10:10:00.000Z"
   },
   {
     "matchKey": "091920250620",
     "url": "https://afltables.com/afl/stats/games/2025/091920250620.html",
-    "roundLabel": "Round 16"
+    "roundLabel": "Round 16",
+    "homeTeamId": "geelong",
+    "awayTeamId": "brisbane-lions",
+    "date": "2025-06-20",
+    "localTime": "Fri 20-Jun-2025 7:40 PM",
+    "startUtc": "2025-06-20T09:40:00.000Z"
   },
   {
     "matchKey": "031220250621",
     "url": "https://afltables.com/afl/stats/games/2025/031220250621.html",
-    "roundLabel": "Round 16"
+    "roundLabel": "Round 16",
+    "homeTeamId": "carlton",
+    "awayTeamId": "north-melbourne",
+    "date": "2025-06-21",
+    "localTime": "Sat 21-Jun-2025 1:20 PM",
+    "startUtc": "2025-06-21T03:20:00.000Z"
   },
   {
     "matchKey": "131620250621",
     "url": "https://afltables.com/afl/stats/games/2025/131620250621.html",
-    "roundLabel": "Round 16"
+    "roundLabel": "Round 16",
+    "homeTeamId": "port-adelaide",
+    "awayTeamId": "sydney",
+    "date": "2025-06-21",
+    "localTime": "Sat 21-Jun-2025 3:45 PM",
+    "startUtc": "2025-06-21T06:15:00.000Z"
   },
   {
     "matchKey": "041520250621",
     "url": "https://afltables.com/afl/stats/games/2025/041520250621.html",
-    "roundLabel": "Round 16"
+    "roundLabel": "Round 16",
+    "homeTeamId": "collingwood",
+    "awayTeamId": "st-kilda",
+    "date": "2025-06-21",
+    "localTime": "Sat 21-Jun-2025 7:35 PM",
+    "startUtc": "2025-06-21T09:35:00.000Z"
   },
   {
     "matchKey": "202120250622",
     "url": "https://afltables.com/afl/stats/games/2025/202120250622.html",
-    "roundLabel": "Round 16"
+    "roundLabel": "Round 16",
+    "homeTeamId": "gws",
+    "awayTeamId": "gold-coast",
+    "date": "2025-06-22",
+    "localTime": "Sun 22-Jun-2025 1:10 PM",
+    "startUtc": "2025-06-22T03:10:00.000Z"
   },
   {
     "matchKey": "071420250622",
     "url": "https://afltables.com/afl/stats/games/2025/071420250622.html",
-    "roundLabel": "Round 16"
+    "roundLabel": "Round 16",
+    "homeTeamId": "western-bulldogs",
+    "awayTeamId": "richmond",
+    "date": "2025-06-22",
+    "localTime": "Sun 22-Jun-2025 3:20 PM",
+    "startUtc": "2025-06-22T05:20:00.000Z"
   },
   {
     "matchKey": "031320250626",
     "url": "https://afltables.com/afl/stats/games/2025/031320250626.html",
-    "roundLabel": "Round 17"
+    "roundLabel": "Round 17",
+    "homeTeamId": "port-adelaide",
+    "awayTeamId": "carlton",
+    "date": "2025-06-26",
+    "localTime": "Thu 26-Jun-2025 7:00 PM",
+    "startUtc": "2025-06-26T09:30:00.000Z"
   },
   {
     "matchKey": "071620250627",
     "url": "https://afltables.com/afl/stats/games/2025/071620250627.html",
-    "roundLabel": "Round 17"
+    "roundLabel": "Round 17",
+    "homeTeamId": "sydney",
+    "awayTeamId": "western-bulldogs",
+    "date": "2025-06-27",
+    "localTime": "Fri 27-Jun-2025 7:40 PM",
+    "startUtc": "2025-06-27T09:40:00.000Z"
   },
   {
     "matchKey": "112020250628",
     "url": "https://afltables.com/afl/stats/games/2025/112020250628.html",
-    "roundLabel": "Round 17"
+    "roundLabel": "Round 17",
+    "homeTeamId": "gold-coast",
+    "awayTeamId": "melbourne",
+    "date": "2025-06-28",
+    "localTime": "Sat 28-Jun-2025 1:20 PM",
+    "startUtc": "2025-06-28T03:20:00.000Z"
   },
   {
     "matchKey": "101220250628",
     "url": "https://afltables.com/afl/stats/games/2025/101220250628.html",
-    "roundLabel": "Round 17"
+    "roundLabel": "Round 17",
+    "homeTeamId": "hawthorn",
+    "awayTeamId": "north-melbourne",
+    "date": "2025-06-28",
+    "localTime": "Sat 28-Jun-2025 4:15 PM",
+    "startUtc": "2025-06-28T06:15:00.000Z"
   },
   {
     "matchKey": "041820250628",
     "url": "https://afltables.com/afl/stats/games/2025/041820250628.html",
-    "roundLabel": "Round 17"
+    "roundLabel": "Round 17",
+    "homeTeamId": "collingwood",
+    "awayTeamId": "west-coast",
+    "date": "2025-06-28",
+    "localTime": "Sat 28-Jun-2025 7:35 PM",
+    "startUtc": "2025-06-28T09:35:00.000Z"
   },
   {
     "matchKey": "011420250629",
     "url": "https://afltables.com/afl/stats/games/2025/011420250629.html",
-    "roundLabel": "Round 17"
+    "roundLabel": "Round 17",
+    "homeTeamId": "richmond",
+    "awayTeamId": "adelaide",
+    "date": "2025-06-29",
+    "localTime": "Sun 29-Jun-2025 3:15 PM",
+    "startUtc": "2025-06-29T05:15:00.000Z"
   },
   {
     "matchKey": "081520250629",
     "url": "https://afltables.com/afl/stats/games/2025/081520250629.html",
-    "roundLabel": "Round 17"
+    "roundLabel": "Round 17",
+    "homeTeamId": "fremantle",
+    "awayTeamId": "st-kilda",
+    "date": "2025-06-29",
+    "localTime": "Sun 29-Jun-2025 3:10 PM",
+    "startUtc": "2025-06-29T07:10:00.000Z"
   },
   {
     "matchKey": "071220250703",
     "url": "https://afltables.com/afl/stats/games/2025/071220250703.html",
-    "roundLabel": "Round 18"
+    "roundLabel": "Round 18",
+    "homeTeamId": "north-melbourne",
+    "awayTeamId": "western-bulldogs",
+    "date": "2025-07-03",
+    "localTime": "Thu 03-Jul-2025 7:30 PM",
+    "startUtc": "2025-07-03T09:30:00.000Z"
   },
   {
     "matchKey": "030420250704",
     "url": "https://afltables.com/afl/stats/games/2025/030420250704.html",
-    "roundLabel": "Round 18"
+    "roundLabel": "Round 18",
+    "homeTeamId": "carlton",
+    "awayTeamId": "collingwood",
+    "date": "2025-07-04",
+    "localTime": "Fri 04-Jul-2025 7:20 PM",
+    "startUtc": "2025-07-04T09:20:00.000Z"
   },
   {
     "matchKey": "182120250704",
     "url": "https://afltables.com/afl/stats/games/2025/182120250704.html",
-    "roundLabel": "Round 18"
+    "roundLabel": "Round 18",
+    "homeTeamId": "west-coast",
+    "awayTeamId": "gws",
+    "date": "2025-07-04",
+    "localTime": "Fri 04-Jul-2025 6:20 PM",
+    "startUtc": "2025-07-04T10:20:00.000Z"
   },
   {
     "matchKey": "052020250705",
     "url": "https://afltables.com/afl/stats/games/2025/052020250705.html",
-    "roundLabel": "Round 18"
+    "roundLabel": "Round 18",
+    "homeTeamId": "essendon",
+    "awayTeamId": "gold-coast",
+    "date": "2025-07-05",
+    "localTime": "Sat 05-Jul-2025 12:35 PM",
+    "startUtc": "2025-07-05T02:35:00.000Z"
   },
   {
     "matchKey": "091420250705",
     "url": "https://afltables.com/afl/stats/games/2025/091420250705.html",
-    "roundLabel": "Round 18"
+    "roundLabel": "Round 18",
+    "homeTeamId": "geelong",
+    "awayTeamId": "richmond",
+    "date": "2025-07-05",
+    "localTime": "Sat 05-Jul-2025 4:15 PM",
+    "startUtc": "2025-07-05T06:15:00.000Z"
   },
   {
     "matchKey": "131920250705",
     "url": "https://afltables.com/afl/stats/games/2025/131920250705.html",
-    "roundLabel": "Round 18"
+    "roundLabel": "Round 18",
+    "homeTeamId": "brisbane-lions",
+    "awayTeamId": "port-adelaide",
+    "date": "2025-07-05",
+    "localTime": "Sat 05-Jul-2025 7:35 PM",
+    "startUtc": "2025-07-05T09:35:00.000Z"
   },
   {
     "matchKey": "101520250705",
     "url": "https://afltables.com/afl/stats/games/2025/101520250705.html",
-    "roundLabel": "Round 18"
+    "roundLabel": "Round 18",
+    "homeTeamId": "st-kilda",
+    "awayTeamId": "hawthorn",
+    "date": "2025-07-05",
+    "localTime": "Sat 05-Jul-2025 7:40 PM",
+    "startUtc": "2025-07-05T09:40:00.000Z"
   },
   {
     "matchKey": "081620250706",
     "url": "https://afltables.com/afl/stats/games/2025/081620250706.html",
-    "roundLabel": "Round 18"
+    "roundLabel": "Round 18",
+    "homeTeamId": "sydney",
+    "awayTeamId": "fremantle",
+    "date": "2025-07-06",
+    "localTime": "Sun 06-Jul-2025 1:10 PM",
+    "startUtc": "2025-07-06T03:10:00.000Z"
   },
   {
     "matchKey": "011120250706",
     "url": "https://afltables.com/afl/stats/games/2025/011120250706.html",
-    "roundLabel": "Round 18"
+    "roundLabel": "Round 18",
+    "homeTeamId": "adelaide",
+    "awayTeamId": "melbourne",
+    "date": "2025-07-06",
+    "localTime": "Sun 06-Jul-2025 2:45 PM",
+    "startUtc": "2025-07-06T05:15:00.000Z"
   },
   {
     "matchKey": "031920250710",
     "url": "https://afltables.com/afl/stats/games/2025/031920250710.html",
-    "roundLabel": "Round 19"
+    "roundLabel": "Round 19",
+    "homeTeamId": "carlton",
+    "awayTeamId": "brisbane-lions",
+    "date": "2025-07-10",
+    "localTime": "Thu 10-Jul-2025 7:30 PM",
+    "startUtc": "2025-07-10T09:30:00.000Z"
   },
   {
     "matchKey": "042020250711",
     "url": "https://afltables.com/afl/stats/games/2025/042020250711.html",
-    "roundLabel": "Round 19"
+    "roundLabel": "Round 19",
+    "homeTeamId": "gold-coast",
+    "awayTeamId": "collingwood",
+    "date": "2025-07-11",
+    "localTime": "Fri 11-Jul-2025 7:40 PM",
+    "startUtc": "2025-07-11T09:40:00.000Z"
   },
   {
     "matchKey": "010720250712",
     "url": "https://afltables.com/afl/stats/games/2025/010720250712.html",
-    "roundLabel": "Round 19"
+    "roundLabel": "Round 19",
+    "homeTeamId": "western-bulldogs",
+    "awayTeamId": "adelaide",
+    "date": "2025-07-12",
+    "localTime": "Sat 12-Jul-2025 1:20 PM",
+    "startUtc": "2025-07-12T03:20:00.000Z"
   },
   {
     "matchKey": "092120250712",
     "url": "https://afltables.com/afl/stats/games/2025/092120250712.html",
-    "roundLabel": "Round 19"
+    "roundLabel": "Round 19",
+    "homeTeamId": "gws",
+    "awayTeamId": "geelong",
+    "date": "2025-07-12",
+    "localTime": "Sat 12-Jul-2025 4:15 PM",
+    "startUtc": "2025-07-12T06:15:00.000Z"
   },
   {
     "matchKey": "051420250712",
     "url": "https://afltables.com/afl/stats/games/2025/051420250712.html",
-    "roundLabel": "Round 19"
+    "roundLabel": "Round 19",
+    "homeTeamId": "richmond",
+    "awayTeamId": "essendon",
+    "date": "2025-07-12",
+    "localTime": "Sat 12-Jul-2025 7:35 PM",
+    "startUtc": "2025-07-12T09:35:00.000Z"
   },
   {
     "matchKey": "081020250712",
     "url": "https://afltables.com/afl/stats/games/2025/081020250712.html",
-    "roundLabel": "Round 19"
+    "roundLabel": "Round 19",
+    "homeTeamId": "fremantle",
+    "awayTeamId": "hawthorn",
+    "date": "2025-07-12",
+    "localTime": "Sat 12-Jul-2025 6:10 PM",
+    "startUtc": "2025-07-12T10:10:00.000Z"
   },
   {
     "matchKey": "111220250713",
     "url": "https://afltables.com/afl/stats/games/2025/111220250713.html",
-    "roundLabel": "Round 19"
+    "roundLabel": "Round 19",
+    "homeTeamId": "melbourne",
+    "awayTeamId": "north-melbourne",
+    "date": "2025-07-13",
+    "localTime": "Sun 13-Jul-2025 1:10 PM",
+    "startUtc": "2025-07-13T03:10:00.000Z"
   },
   {
     "matchKey": "151620250713",
     "url": "https://afltables.com/afl/stats/games/2025/151620250713.html",
-    "roundLabel": "Round 19"
+    "roundLabel": "Round 19",
+    "homeTeamId": "st-kilda",
+    "awayTeamId": "sydney",
+    "date": "2025-07-13",
+    "localTime": "Sun 13-Jul-2025 3:15 PM",
+    "startUtc": "2025-07-13T05:15:00.000Z"
   },
   {
     "matchKey": "131820250713",
     "url": "https://afltables.com/afl/stats/games/2025/131820250713.html",
-    "roundLabel": "Round 19"
+    "roundLabel": "Round 19",
+    "homeTeamId": "port-adelaide",
+    "awayTeamId": "west-coast",
+    "date": "2025-07-13",
+    "localTime": "Sun 13-Jul-2025 4:10 PM",
+    "startUtc": "2025-07-13T06:40:00.000Z"
   },
   {
     "matchKey": "052120250717",
     "url": "https://afltables.com/afl/stats/games/2025/052120250717.html",
-    "roundLabel": "Round 20"
+    "roundLabel": "Round 20",
+    "homeTeamId": "essendon",
+    "awayTeamId": "gws",
+    "date": "2025-07-17",
+    "localTime": "Thu 17-Jul-2025 7:30 PM",
+    "startUtc": "2025-07-17T09:30:00.000Z"
   },
   {
     "matchKey": "071920250718",
     "url": "https://afltables.com/afl/stats/games/2025/071920250718.html",
-    "roundLabel": "Round 20"
+    "roundLabel": "Round 20",
+    "homeTeamId": "brisbane-lions",
+    "awayTeamId": "western-bulldogs",
+    "date": "2025-07-18",
+    "localTime": "Fri 18-Jul-2025 7:40 PM",
+    "startUtc": "2025-07-18T09:40:00.000Z"
   },
   {
     "matchKey": "101320250719",
     "url": "https://afltables.com/afl/stats/games/2025/101320250719.html",
-    "roundLabel": "Round 20"
+    "roundLabel": "Round 20",
+    "homeTeamId": "hawthorn",
+    "awayTeamId": "port-adelaide",
+    "date": "2025-07-19",
+    "localTime": "Sat 19-Jul-2025 1:20 PM",
+    "startUtc": "2025-07-19T03:20:00.000Z"
   },
   {
     "matchKey": "121620250719",
     "url": "https://afltables.com/afl/stats/games/2025/121620250719.html",
-    "roundLabel": "Round 20"
+    "roundLabel": "Round 20",
+    "homeTeamId": "sydney",
+    "awayTeamId": "north-melbourne",
+    "date": "2025-07-19",
+    "localTime": "Sat 19-Jul-2025 4:15 PM",
+    "startUtc": "2025-07-19T06:15:00.000Z"
   },
   {
     "matchKey": "031120250719",
     "url": "https://afltables.com/afl/stats/games/2025/031120250719.html",
-    "roundLabel": "Round 20"
+    "roundLabel": "Round 20",
+    "homeTeamId": "carlton",
+    "awayTeamId": "melbourne",
+    "date": "2025-07-19",
+    "localTime": "Sat 19-Jul-2025 7:35 PM",
+    "startUtc": "2025-07-19T09:35:00.000Z"
   },
   {
     "matchKey": "141820250719",
     "url": "https://afltables.com/afl/stats/games/2025/141820250719.html",
-    "roundLabel": "Round 20"
+    "roundLabel": "Round 20",
+    "homeTeamId": "west-coast",
+    "awayTeamId": "richmond",
+    "date": "2025-07-19",
+    "localTime": "Sat 19-Jul-2025 6:10 PM",
+    "startUtc": "2025-07-19T10:10:00.000Z"
   },
   {
     "matchKey": "091520250720",
     "url": "https://afltables.com/afl/stats/games/2025/091520250720.html",
-    "roundLabel": "Round 20"
+    "roundLabel": "Round 20",
+    "homeTeamId": "geelong",
+    "awayTeamId": "st-kilda",
+    "date": "2025-07-20",
+    "localTime": "Sun 20-Jul-2025 1:10 PM",
+    "startUtc": "2025-07-20T03:10:00.000Z"
   },
   {
     "matchKey": "040820250720",
     "url": "https://afltables.com/afl/stats/games/2025/040820250720.html",
-    "roundLabel": "Round 20"
+    "roundLabel": "Round 20",
+    "homeTeamId": "collingwood",
+    "awayTeamId": "fremantle",
+    "date": "2025-07-20",
+    "localTime": "Sun 20-Jul-2025 3:15 PM",
+    "startUtc": "2025-07-20T05:15:00.000Z"
   },
   {
     "matchKey": "012020250720",
     "url": "https://afltables.com/afl/stats/games/2025/012020250720.html",
-    "roundLabel": "Round 20"
+    "roundLabel": "Round 20",
+    "homeTeamId": "adelaide",
+    "awayTeamId": "gold-coast",
+    "date": "2025-07-20",
+    "localTime": "Sun 20-Jul-2025 4:10 PM",
+    "startUtc": "2025-07-20T06:40:00.000Z"
   },
   {
     "matchKey": "031020250724",
     "url": "https://afltables.com/afl/stats/games/2025/031020250724.html",
-    "roundLabel": "Round 21"
+    "roundLabel": "Round 21",
+    "homeTeamId": "hawthorn",
+    "awayTeamId": "carlton",
+    "date": "2025-07-24",
+    "localTime": "Thu 24-Jul-2025 7:30 PM",
+    "startUtc": "2025-07-24T09:30:00.000Z"
   },
   {
     "matchKey": "050720250725",
     "url": "https://afltables.com/afl/stats/games/2025/050720250725.html",
-    "roundLabel": "Round 21"
+    "roundLabel": "Round 21",
+    "homeTeamId": "essendon",
+    "awayTeamId": "western-bulldogs",
+    "date": "2025-07-25",
+    "localTime": "Fri 25-Jul-2025 7:20 PM",
+    "startUtc": "2025-07-25T09:20:00.000Z"
   },
   {
     "matchKey": "162120250725",
     "url": "https://afltables.com/afl/stats/games/2025/162120250725.html",
-    "roundLabel": "Round 21"
+    "roundLabel": "Round 21",
+    "homeTeamId": "gws",
+    "awayTeamId": "sydney",
+    "date": "2025-07-25",
+    "localTime": "Fri 25-Jul-2025 7:50 PM",
+    "startUtc": "2025-07-25T09:50:00.000Z"
   },
   {
     "matchKey": "192020250726",
     "url": "https://afltables.com/afl/stats/games/2025/192020250726.html",
-    "roundLabel": "Round 21"
+    "roundLabel": "Round 21",
+    "homeTeamId": "gold-coast",
+    "awayTeamId": "brisbane-lions",
+    "date": "2025-07-26",
+    "localTime": "Sat 26-Jul-2025 1:20 PM",
+    "startUtc": "2025-07-26T03:20:00.000Z"
   },
   {
     "matchKey": "081820250726",
     "url": "https://afltables.com/afl/stats/games/2025/081820250726.html",
-    "roundLabel": "Round 21"
+    "roundLabel": "Round 21",
+    "homeTeamId": "fremantle",
+    "awayTeamId": "west-coast",
+    "date": "2025-07-26",
+    "localTime": "Sat 26-Jul-2025 2:15 PM",
+    "startUtc": "2025-07-26T06:15:00.000Z"
   },
   {
     "matchKey": "091220250726",
     "url": "https://afltables.com/afl/stats/games/2025/091220250726.html",
-    "roundLabel": "Round 21"
+    "roundLabel": "Round 21",
+    "homeTeamId": "north-melbourne",
+    "awayTeamId": "geelong",
+    "date": "2025-07-26",
+    "localTime": "Sat 26-Jul-2025 7:35 PM",
+    "startUtc": "2025-07-26T09:35:00.000Z"
   },
   {
     "matchKey": "011320250726",
     "url": "https://afltables.com/afl/stats/games/2025/011320250726.html",
-    "roundLabel": "Round 21"
+    "roundLabel": "Round 21",
+    "homeTeamId": "adelaide",
+    "awayTeamId": "port-adelaide",
+    "date": "2025-07-26",
+    "localTime": "Sat 26-Jul-2025 7:40 PM",
+    "startUtc": "2025-07-26T10:10:00.000Z"
   },
   {
     "matchKey": "041420250727",
     "url": "https://afltables.com/afl/stats/games/2025/041420250727.html",
-    "roundLabel": "Round 21"
+    "roundLabel": "Round 21",
+    "homeTeamId": "richmond",
+    "awayTeamId": "collingwood",
+    "date": "2025-07-27",
+    "localTime": "Sun 27-Jul-2025 2:10 PM",
+    "startUtc": "2025-07-27T04:10:00.000Z"
   },
   {
     "matchKey": "111520250727",
     "url": "https://afltables.com/afl/stats/games/2025/111520250727.html",
-    "roundLabel": "Round 21"
+    "roundLabel": "Round 21",
+    "homeTeamId": "st-kilda",
+    "awayTeamId": "melbourne",
+    "date": "2025-07-27",
+    "localTime": "Sun 27-Jul-2025 3:15 PM",
+    "startUtc": "2025-07-27T05:15:00.000Z"
   },
   {
     "matchKey": "072120250731",
     "url": "https://afltables.com/afl/stats/games/2025/072120250731.html",
-    "roundLabel": "Round 22"
+    "roundLabel": "Round 22",
+    "homeTeamId": "western-bulldogs",
+    "awayTeamId": "gws",
+    "date": "2025-07-31",
+    "localTime": "Thu 31-Jul-2025 7:30 PM",
+    "startUtc": "2025-07-31T09:30:00.000Z"
   },
   {
     "matchKey": "011020250801",
     "url": "https://afltables.com/afl/stats/games/2025/011020250801.html",
-    "roundLabel": "Round 22"
+    "roundLabel": "Round 22",
+    "homeTeamId": "adelaide",
+    "awayTeamId": "hawthorn",
+    "date": "2025-08-01",
+    "localTime": "Fri 01-Aug-2025 7:10 PM",
+    "startUtc": "2025-08-01T09:40:00.000Z"
   },
   {
     "matchKey": "111820250802",
     "url": "https://afltables.com/afl/stats/games/2025/111820250802.html",
-    "roundLabel": "Round 22"
+    "roundLabel": "Round 22",
+    "homeTeamId": "melbourne",
+    "awayTeamId": "west-coast",
+    "date": "2025-08-02",
+    "localTime": "Sat 02-Aug-2025 1:20 PM",
+    "startUtc": "2025-08-02T03:20:00.000Z"
   },
   {
     "matchKey": "142020250802",
     "url": "https://afltables.com/afl/stats/games/2025/142020250802.html",
-    "roundLabel": "Round 22"
+    "roundLabel": "Round 22",
+    "homeTeamId": "gold-coast",
+    "awayTeamId": "richmond",
+    "date": "2025-08-02",
+    "localTime": "Sat 02-Aug-2025 4:10 PM",
+    "startUtc": "2025-08-02T06:10:00.000Z"
   },
   {
     "matchKey": "051620250802",
     "url": "https://afltables.com/afl/stats/games/2025/051620250802.html",
-    "roundLabel": "Round 22"
+    "roundLabel": "Round 22",
+    "homeTeamId": "sydney",
+    "awayTeamId": "essendon",
+    "date": "2025-08-02",
+    "localTime": "Sat 02-Aug-2025 4:15 PM",
+    "startUtc": "2025-08-02T06:15:00.000Z"
   },
   {
     "matchKey": "041920250802",
     "url": "https://afltables.com/afl/stats/games/2025/041920250802.html",
-    "roundLabel": "Round 22"
+    "roundLabel": "Round 22",
+    "homeTeamId": "collingwood",
+    "awayTeamId": "brisbane-lions",
+    "date": "2025-08-02",
+    "localTime": "Sat 02-Aug-2025 7:35 PM",
+    "startUtc": "2025-08-02T09:35:00.000Z"
   },
   {
     "matchKey": "121520250803",
     "url": "https://afltables.com/afl/stats/games/2025/121520250803.html",
-    "roundLabel": "Round 22"
+    "roundLabel": "Round 22",
+    "homeTeamId": "st-kilda",
+    "awayTeamId": "north-melbourne",
+    "date": "2025-08-03",
+    "localTime": "Sun 03-Aug-2025 1:40 PM",
+    "startUtc": "2025-08-03T03:40:00.000Z"
   },
   {
     "matchKey": "091320250803",
     "url": "https://afltables.com/afl/stats/games/2025/091320250803.html",
-    "roundLabel": "Round 22"
+    "roundLabel": "Round 22",
+    "homeTeamId": "geelong",
+    "awayTeamId": "port-adelaide",
+    "date": "2025-08-03",
+    "localTime": "Sun 03-Aug-2025 3:15 PM",
+    "startUtc": "2025-08-03T05:15:00.000Z"
   },
   {
     "matchKey": "030820250803",
     "url": "https://afltables.com/afl/stats/games/2025/030820250803.html",
-    "roundLabel": "Round 22"
+    "roundLabel": "Round 22",
+    "homeTeamId": "fremantle",
+    "awayTeamId": "carlton",
+    "date": "2025-08-03",
+    "localTime": "Sun 03-Aug-2025 3:10 PM",
+    "startUtc": "2025-08-03T07:10:00.000Z"
   },
   {
     "matchKey": "041020250807",
     "url": "https://afltables.com/afl/stats/games/2025/041020250807.html",
-    "roundLabel": "Round 23"
+    "roundLabel": "Round 23",
+    "homeTeamId": "hawthorn",
+    "awayTeamId": "collingwood",
+    "date": "2025-08-07",
+    "localTime": "Thu 07-Aug-2025 7:30 PM",
+    "startUtc": "2025-08-07T09:30:00.000Z"
   },
   {
     "matchKey": "050920250808",
     "url": "https://afltables.com/afl/stats/games/2025/050920250808.html",
-    "roundLabel": "Round 23"
+    "roundLabel": "Round 23",
+    "homeTeamId": "geelong",
+    "awayTeamId": "essendon",
+    "date": "2025-08-08",
+    "localTime": "Fri 08-Aug-2025 7:40 PM",
+    "startUtc": "2025-08-08T09:40:00.000Z"
   },
   {
     "matchKey": "141520250809",
     "url": "https://afltables.com/afl/stats/games/2025/141520250809.html",
-    "roundLabel": "Round 23"
+    "roundLabel": "Round 23",
+    "homeTeamId": "richmond",
+    "awayTeamId": "st-kilda",
+    "date": "2025-08-09",
+    "localTime": "Sat 09-Aug-2025 1:20 PM",
+    "startUtc": "2025-08-09T03:20:00.000Z"
   },
   {
     "matchKey": "161920250809",
     "url": "https://afltables.com/afl/stats/games/2025/161920250809.html",
-    "roundLabel": "Round 23"
+    "roundLabel": "Round 23",
+    "homeTeamId": "brisbane-lions",
+    "awayTeamId": "sydney",
+    "date": "2025-08-09",
+    "localTime": "Sat 09-Aug-2025 4:15 PM",
+    "startUtc": "2025-08-09T06:15:00.000Z"
   },
   {
     "matchKey": "032020250809",
     "url": "https://afltables.com/afl/stats/games/2025/032020250809.html",
-    "roundLabel": "Round 23"
+    "roundLabel": "Round 23",
+    "homeTeamId": "carlton",
+    "awayTeamId": "gold-coast",
+    "date": "2025-08-09",
+    "localTime": "Sat 09-Aug-2025 7:35 PM",
+    "startUtc": "2025-08-09T09:35:00.000Z"
   },
   {
     "matchKey": "081320250809",
     "url": "https://afltables.com/afl/stats/games/2025/081320250809.html",
-    "roundLabel": "Round 23"
+    "roundLabel": "Round 23",
+    "homeTeamId": "port-adelaide",
+    "awayTeamId": "fremantle",
+    "date": "2025-08-09",
+    "localTime": "Sat 09-Aug-2025 7:40 PM",
+    "startUtc": "2025-08-09T10:10:00.000Z"
   },
   {
     "matchKey": "122120250810",
     "url": "https://afltables.com/afl/stats/games/2025/122120250810.html",
-    "roundLabel": "Round 23"
+    "roundLabel": "Round 23",
+    "homeTeamId": "gws",
+    "awayTeamId": "north-melbourne",
+    "date": "2025-08-10",
+    "localTime": "Sun 10-Aug-2025 1:40 PM",
+    "startUtc": "2025-08-10T03:40:00.000Z"
   },
   {
     "matchKey": "071120250810",
     "url": "https://afltables.com/afl/stats/games/2025/071120250810.html",
-    "roundLabel": "Round 23"
+    "roundLabel": "Round 23",
+    "homeTeamId": "melbourne",
+    "awayTeamId": "western-bulldogs",
+    "date": "2025-08-10",
+    "localTime": "Sun 10-Aug-2025 3:15 PM",
+    "startUtc": "2025-08-10T05:15:00.000Z"
   },
   {
     "matchKey": "011820250810",
     "url": "https://afltables.com/afl/stats/games/2025/011820250810.html",
-    "roundLabel": "Round 23"
+    "roundLabel": "Round 23",
+    "homeTeamId": "west-coast",
+    "awayTeamId": "adelaide",
+    "date": "2025-08-10",
+    "localTime": "Sun 10-Aug-2025 3:10 PM",
+    "startUtc": "2025-08-10T07:10:00.000Z"
   },
   {
     "matchKey": "051520250815",
     "url": "https://afltables.com/afl/stats/games/2025/051520250815.html",
-    "roundLabel": "Round 24"
+    "roundLabel": "Round 24",
+    "homeTeamId": "essendon",
+    "awayTeamId": "st-kilda",
+    "date": "2025-08-15",
+    "localTime": "Fri 15-Aug-2025 7:20 PM",
+    "startUtc": "2025-08-15T09:20:00.000Z"
   },
   {
     "matchKey": "081920250815",
     "url": "https://afltables.com/afl/stats/games/2025/081920250815.html",
-    "roundLabel": "Round 24"
+    "roundLabel": "Round 24",
+    "homeTeamId": "fremantle",
+    "awayTeamId": "brisbane-lions",
+    "date": "2025-08-15",
+    "localTime": "Fri 15-Aug-2025 6:35 PM",
+    "startUtc": "2025-08-15T10:35:00.000Z"
   },
   {
     "matchKey": "202120250816",
     "url": "https://afltables.com/afl/stats/games/2025/202120250816.html",
-    "roundLabel": "Round 24"
+    "roundLabel": "Round 24",
+    "homeTeamId": "gold-coast",
+    "awayTeamId": "gws",
+    "date": "2025-08-16",
+    "localTime": "Sat 16-Aug-2025 12:35 PM",
+    "startUtc": "2025-08-16T02:35:00.000Z"
   },
   {
     "matchKey": "031320250816",
     "url": "https://afltables.com/afl/stats/games/2025/031320250816.html",
-    "roundLabel": "Round 24"
+    "roundLabel": "Round 24",
+    "homeTeamId": "carlton",
+    "awayTeamId": "port-adelaide",
+    "date": "2025-08-16",
+    "localTime": "Sat 16-Aug-2025 1:20 PM",
+    "startUtc": "2025-08-16T03:20:00.000Z"
   },
   {
     "matchKey": "101120250816",
     "url": "https://afltables.com/afl/stats/games/2025/101120250816.html",
-    "roundLabel": "Round 24"
+    "roundLabel": "Round 24",
+    "homeTeamId": "hawthorn",
+    "awayTeamId": "melbourne",
+    "date": "2025-08-16",
+    "localTime": "Sat 16-Aug-2025 4:15 PM",
+    "startUtc": "2025-08-16T06:15:00.000Z"
   },
   {
     "matchKey": "010420250816",
     "url": "https://afltables.com/afl/stats/games/2025/010420250816.html",
-    "roundLabel": "Round 24"
+    "roundLabel": "Round 24",
+    "homeTeamId": "adelaide",
+    "awayTeamId": "collingwood",
+    "date": "2025-08-16",
+    "localTime": "Sat 16-Aug-2025 7:05 PM",
+    "startUtc": "2025-08-16T09:35:00.000Z"
   },
   {
     "matchKey": "121420250817",
     "url": "https://afltables.com/afl/stats/games/2025/121420250817.html",
-    "roundLabel": "Round 24"
+    "roundLabel": "Round 24",
+    "homeTeamId": "north-melbourne",
+    "awayTeamId": "richmond",
+    "date": "2025-08-17",
+    "localTime": "Sun 17-Aug-2025 1:10 PM",
+    "startUtc": "2025-08-17T03:10:00.000Z"
   },
   {
     "matchKey": "091620250817",
     "url": "https://afltables.com/afl/stats/games/2025/091620250817.html",
-    "roundLabel": "Round 24"
+    "roundLabel": "Round 24",
+    "homeTeamId": "sydney",
+    "awayTeamId": "geelong",
+    "date": "2025-08-17",
+    "localTime": "Sun 17-Aug-2025 3:15 PM",
+    "startUtc": "2025-08-17T05:15:00.000Z"
   },
   {
     "matchKey": "071820250817",
     "url": "https://afltables.com/afl/stats/games/2025/071820250817.html",
-    "roundLabel": "Round 24"
+    "roundLabel": "Round 24",
+    "homeTeamId": "western-bulldogs",
+    "awayTeamId": "west-coast",
+    "date": "2025-08-17",
+    "localTime": "Sun 17-Aug-2025 4:40 PM",
+    "startUtc": "2025-08-17T06:40:00.000Z"
   },
   {
     "matchKey": "030520250821",
     "url": "https://afltables.com/afl/stats/games/2025/030520250821.html",
-    "roundLabel": "Round 25"
+    "roundLabel": "Round 25",
+    "homeTeamId": "essendon",
+    "awayTeamId": "carlton",
+    "date": "2025-08-21",
+    "localTime": "Thu 21-Aug-2025 7:30 PM",
+    "startUtc": "2025-08-21T09:30:00.000Z"
   },
   {
     "matchKey": "041120250822",
     "url": "https://afltables.com/afl/stats/games/2025/041120250822.html",
-    "roundLabel": "Round 25"
+    "roundLabel": "Round 25",
+    "homeTeamId": "collingwood",
+    "awayTeamId": "melbourne",
+    "date": "2025-08-22",
+    "localTime": "Fri 22-Aug-2025 7:10 PM",
+    "startUtc": "2025-08-22T09:10:00.000Z"
   },
   {
     "matchKey": "132020250822",
     "url": "https://afltables.com/afl/stats/games/2025/132020250822.html",
-    "roundLabel": "Round 25"
+    "roundLabel": "Round 25",
+    "homeTeamId": "port-adelaide",
+    "awayTeamId": "gold-coast",
+    "date": "2025-08-22",
+    "localTime": "Fri 22-Aug-2025 7:40 PM",
+    "startUtc": "2025-08-22T10:10:00.000Z"
   },
   {
     "matchKey": "011220250823",
     "url": "https://afltables.com/afl/stats/games/2025/011220250823.html",
-    "roundLabel": "Round 25"
+    "roundLabel": "Round 25",
+    "homeTeamId": "north-melbourne",
+    "awayTeamId": "adelaide",
+    "date": "2025-08-23",
+    "localTime": "Sat 23-Aug-2025 1:20 PM",
+    "startUtc": "2025-08-23T03:20:00.000Z"
   },
   {
     "matchKey": "091420250823",
     "url": "https://afltables.com/afl/stats/games/2025/091420250823.html",
-    "roundLabel": "Round 25"
+    "roundLabel": "Round 25",
+    "homeTeamId": "richmond",
+    "awayTeamId": "geelong",
+    "date": "2025-08-23",
+    "localTime": "Sat 23-Aug-2025 4:15 PM",
+    "startUtc": "2025-08-23T06:15:00.000Z"
   },
   {
     "matchKey": "161820250823",
     "url": "https://afltables.com/afl/stats/games/2025/161820250823.html",
-    "roundLabel": "Round 25"
+    "roundLabel": "Round 25",
+    "homeTeamId": "west-coast",
+    "awayTeamId": "sydney",
+    "date": "2025-08-23",
+    "localTime": "Sat 23-Aug-2025 5:35 PM",
+    "startUtc": "2025-08-23T09:35:00.000Z"
   },
   {
     "matchKey": "152120250824",
     "url": "https://afltables.com/afl/stats/games/2025/152120250824.html",
-    "roundLabel": "Round 25"
+    "roundLabel": "Round 25",
+    "homeTeamId": "gws",
+    "awayTeamId": "st-kilda",
+    "date": "2025-08-24",
+    "localTime": "Sun 24-Aug-2025 12:20 PM",
+    "startUtc": "2025-08-24T02:20:00.000Z"
   },
   {
     "matchKey": "070820250824",
     "url": "https://afltables.com/afl/stats/games/2025/070820250824.html",
-    "roundLabel": "Round 25"
+    "roundLabel": "Round 25",
+    "homeTeamId": "western-bulldogs",
+    "awayTeamId": "fremantle",
+    "date": "2025-08-24",
+    "localTime": "Sun 24-Aug-2025 3:15 PM",
+    "startUtc": "2025-08-24T05:15:00.000Z"
   },
   {
     "matchKey": "101920250824",
     "url": "https://afltables.com/afl/stats/games/2025/101920250824.html",
-    "roundLabel": "Round 25"
+    "roundLabel": "Round 25",
+    "homeTeamId": "brisbane-lions",
+    "awayTeamId": "hawthorn",
+    "date": "2025-08-24",
+    "localTime": "Sun 24-Aug-2025 7:20 PM",
+    "startUtc": "2025-08-24T09:20:00.000Z"
   },
   {
     "matchKey": "010420250904",
     "url": "https://afltables.com/afl/stats/games/2025/010420250904.html",
-    "roundLabel": "Qualifying Final"
+    "roundLabel": "Qualifying Final",
+    "homeTeamId": "adelaide",
+    "awayTeamId": "collingwood",
+    "date": "2025-09-04",
+    "localTime": "Thu 04-Sep-2025 7:10 PM",
+    "startUtc": "2025-09-04T09:40:00.000Z"
   },
   {
     "matchKey": "091920250905",
     "url": "https://afltables.com/afl/stats/games/2025/091920250905.html",
-    "roundLabel": "Qualifying Final"
+    "roundLabel": "Qualifying Final",
+    "homeTeamId": "geelong",
+    "awayTeamId": "brisbane-lions",
+    "date": "2025-09-05",
+    "localTime": "Fri 05-Sep-2025 7:40 PM",
+    "startUtc": "2025-09-05T09:40:00.000Z"
   },
   {
     "matchKey": "102120250906",
     "url": "https://afltables.com/afl/stats/games/2025/102120250906.html",
-    "roundLabel": "Elimination Final"
+    "roundLabel": "Elimination Final",
+    "homeTeamId": "gws",
+    "awayTeamId": "hawthorn",
+    "date": "2025-09-06",
+    "localTime": "Sat 06-Sep-2025 3:15 PM",
+    "startUtc": "2025-09-06T05:15:00.000Z"
   },
   {
     "matchKey": "082020250906",
     "url": "https://afltables.com/afl/stats/games/2025/082020250906.html",
-    "roundLabel": "Elimination Final"
+    "roundLabel": "Elimination Final",
+    "homeTeamId": "fremantle",
+    "awayTeamId": "gold-coast",
+    "date": "2025-09-06",
+    "localTime": "Sat 06-Sep-2025 5:35 PM",
+    "startUtc": "2025-09-06T09:35:00.000Z"
   },
   {
     "matchKey": "011020250912",
     "url": "https://afltables.com/afl/stats/games/2025/011020250912.html",
-    "roundLabel": "Semi Final"
+    "roundLabel": "Semi Final",
+    "homeTeamId": "adelaide",
+    "awayTeamId": "hawthorn",
+    "date": "2025-09-12",
+    "localTime": "Fri 12-Sep-2025 7:10 PM",
+    "startUtc": "2025-09-12T09:40:00.000Z"
   },
   {
     "matchKey": "192020250913",
     "url": "https://afltables.com/afl/stats/games/2025/192020250913.html",
-    "roundLabel": "Semi Final"
+    "roundLabel": "Semi Final",
+    "homeTeamId": "brisbane-lions",
+    "awayTeamId": "gold-coast",
+    "date": "2025-09-13",
+    "localTime": "Sat 13-Sep-2025 7:35 PM",
+    "startUtc": "2025-09-13T09:35:00.000Z"
   },
   {
     "matchKey": "091020250919",
     "url": "https://afltables.com/afl/stats/games/2025/091020250919.html",
-    "roundLabel": "Preliminary Final"
+    "roundLabel": "Preliminary Final",
+    "homeTeamId": "geelong",
+    "awayTeamId": "hawthorn",
+    "date": "2025-09-19",
+    "localTime": "Fri 19-Sep-2025 7:40 PM",
+    "startUtc": "2025-09-19T09:40:00.000Z"
   },
   {
     "matchKey": "041920250920",
     "url": "https://afltables.com/afl/stats/games/2025/041920250920.html",
-    "roundLabel": "Preliminary Final"
+    "roundLabel": "Preliminary Final",
+    "homeTeamId": "collingwood",
+    "awayTeamId": "brisbane-lions",
+    "date": "2025-09-20",
+    "localTime": "Sat 20-Sep-2025 5:15 PM",
+    "startUtc": "2025-09-20T07:15:00.000Z"
   },
   {
     "matchKey": "091920250927",
     "url": "https://afltables.com/afl/stats/games/2025/091920250927.html",
-    "roundLabel": "Grand Final"
+    "roundLabel": "Grand Final",
+    "homeTeamId": "geelong",
+    "awayTeamId": "brisbane-lions",
+    "date": "2025-09-27",
+    "localTime": "Sat 27-Sep-2025 2:30 PM",
+    "startUtc": "2025-09-27T04:30:00.000Z"
   }
 ]

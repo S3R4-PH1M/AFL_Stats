@@ -5,6 +5,7 @@ export const PACKAGE = '@afl/core';
 export const DATA_CONTRACT_VERSION = 'v1';
 
 export * from './schemas.ts';
+export * from './squiggle.ts';
 export * from './stats.ts';
 export * from './teams.ts';
 export * from './venues.ts';

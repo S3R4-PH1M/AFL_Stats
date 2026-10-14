@@ -53,6 +53,12 @@ const CORE = 1998; // to confirm (M7)
 const EXTENDED = 2002; // to confirm (M7)
 const FULL = 2003;
 
+/**
+ * First season of the modern era (§6.3): every stat is recorded and `teams.ts` maps every club
+ * name AFL Tables uses. Earlier seasons need the team lineage from M7.
+ */
+export const FIRST_SEASON = FULL;
+
 type Row = [code: string, column: StatColumn, label: string, description: string, first: number];
 
 const ROWS: readonly Row[] = [
