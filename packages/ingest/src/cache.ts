@@ -26,6 +26,11 @@ export interface RawCacheEntry {
 
 export interface RawCache {
   get(key: string): Promise<RawCacheEntry | undefined>;
+  /**
+   * A cheap existence check (valid meta and a body present) that doesn't read or unzip the body.
+   * A corrupt body is only noticed by `get`, which treats it as a miss.
+   */
+  has(key: string): Promise<boolean>;
   put(key: string, body: Buffer, meta: RawCacheMeta): Promise<void>;
 }
 
@@ -95,6 +100,7 @@ export interface FsLike {
   writeFile(path: string, data: Buffer | string): Promise<void>;
   rename(from: string, to: string): Promise<void>;
   rm(path: string, options: { force: true }): Promise<void>;
+  stat(path: string): Promise<unknown>;
 }
 
 /**
@@ -106,6 +112,24 @@ export class FsRawCache implements RawCache {
     readonly rootDir: string,
     private readonly fs: FsLike = nodeFs,
   ) {}
+
+  async has(key: string): Promise<boolean> {
+    const paths = this.paths(key);
+    const metaText = await readIfExists(this.fs, paths.meta);
+    if (metaText === undefined) return false;
+    try {
+      if (!parseMeta(metaText.toString('utf8'))) return false;
+    } catch {
+      return false; // corrupt JSON
+    }
+    try {
+      await this.fs.stat(paths.body);
+      return true;
+    } catch (error) {
+      if ((error as NodeJS.ErrnoException).code === 'ENOENT') return false;
+      throw error;
+    }
+  }
 
   async get(key: string): Promise<RawCacheEntry | undefined> {
     const paths = this.paths(key);

@@ -7,8 +7,10 @@
  * - `winner` and `winnerteamid` are null for a draw.
  *
  * These are source schemas, so they're non-strict: unknown upstream fields are dropped, not
- * rejected. Scores may be null only for games that aren't complete (an assumption: the fixtures
- * hold completed games only).
+ * rejected. Assumptions, since the fixtures hold completed games only: scores may be null until a
+ * game has started, and teams may be null for a final whose teams aren't decided yet (Squiggle
+ * lists later finals before the earlier weeks are played). A started game needs both teams, and a
+ * complete one needs its scores.
  */
 import { z } from 'zod';
 import { Season } from './schemas.ts';
@@ -36,10 +38,11 @@ export const SquiggleGame = z
     roundname: z.string().min(1),
     is_final: z.int().min(0).max(6),
     is_grand_final: z.union([z.literal(0), z.literal(1)]),
-    hteamid: id,
-    ateamid: id,
-    hteam: z.string().min(1),
-    ateam: z.string().min(1),
+    /** NULL while a final's teams are undecided. */
+    hteamid: id.nullable(),
+    ateamid: id.nullable(),
+    hteam: z.string().min(1).nullable(),
+    ateam: z.string().min(1).nullable(),
     hgoals: nullableCount,
     hbehinds: nullableCount,
     hscore: nullableCount,
@@ -58,6 +61,10 @@ export const SquiggleGame = z
     /** 0–100; 100 is final. */
     complete: z.int().min(0).max(100),
   })
+  .refine(
+    (g) => g.complete === 0 || (g.hteamid !== null && g.ateamid !== null),
+    'started game without teams',
+  )
   .refine(
     (g) =>
       g.complete < 100 ||

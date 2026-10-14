@@ -31,6 +31,9 @@ class MemoryCache implements RawCache {
   async get(key: string) {
     return this.entries.get(key);
   }
+  async has(key: string) {
+    return this.entries.has(key);
+  }
   async put(key: string, body: Buffer, meta: RawCacheMeta) {
     this.puts += 1;
     this.entries.set(key, { body, meta });

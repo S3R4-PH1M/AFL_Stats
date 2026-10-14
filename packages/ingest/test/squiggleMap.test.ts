@@ -6,10 +6,9 @@ import { parsePageDateTime } from '../src/afltables/time.ts';
 import {
   applySquiggle,
   assertTeamsMapped,
-  gameLocalDate,
+  gameJoinKey,
   isComplete,
   SquiggleIndex,
-  squiggleTeamId,
   startTimeWarning,
 } from '../src/squiggle/map.ts';
 import { MATCH_FIXTURES, readAfltables, readFixtureBytes } from './helpers.ts';
@@ -41,12 +40,12 @@ describe('joining AFL Tables matches to Squiggle games', () => {
         homeTeamId: match.home_team_id,
         awayTeamId: match.away_team_id,
       };
-      const matching = games.filter(
-        (g) =>
-          gameLocalDate(g) === key.date &&
-          squiggleTeamId(g.hteamid, g.hteam, '2025') === key.homeTeamId &&
-          squiggleTeamId(g.ateamid, g.ateam, '2025') === key.awayTeamId,
-      );
+      const matching = games.filter((g) => {
+        const k = gameJoinKey(g);
+        return (
+          k?.date === key.date && k.homeTeamId === key.homeTeamId && k.awayTeamId === key.awayTeamId
+        );
+      });
       expect(matching).toHaveLength(1);
       expect(index.find(key)).toBe(matching[0]);
     },
@@ -78,8 +77,8 @@ describe('joining AFL Tables matches to Squiggle games', () => {
       date: '2025-07-13 00:20:00',
     };
     const lateIndex = new SquiggleIndex([late]);
-    const home = squiggleTeamId(late.hteamid, late.hteam, 'test');
-    const away = squiggleTeamId(late.ateamid, late.ateam, 'test');
+    const { homeTeamId: home, awayTeamId: away } = gameJoinKey(late) ?? {};
+    if (!home || !away) throw new Error('no teams');
     expect(lateIndex.find({ date: '2025-07-12', homeTeamId: home, awayTeamId: away })).toBe(late);
     expect(lateIndex.find({ date: '2025-07-13', homeTeamId: home, awayTeamId: away })).toBe(
       undefined,
@@ -92,6 +91,23 @@ describe('joining AFL Tables matches to Squiggle games', () => {
     expect(
       index.find({ date: link.date, homeTeamId: link.awayTeamId, awayTeamId: link.homeTeamId }),
     ).toBe(undefined);
+  });
+
+  it('gives each indexed game its key, and leaves out a final whose teams are undecided', () => {
+    const [first] = games;
+    if (!first) throw new Error('no game');
+    expect(index.keyFor(first)).toEqual({
+      date: '2025-03-07',
+      homeTeamId: 'sydney',
+      awayTeamId: 'hawthorn',
+    });
+    const undecided = { ...first, id: 2, hteamid: null, ateamid: null, hteam: null, ateam: null };
+    expect(gameJoinKey(undecided)).toBeUndefined();
+    const withUndecided = new SquiggleIndex([first, undecided]);
+    expect(withUndecided.keyFor(undecided)).toBeUndefined();
+    expect(
+      withUndecided.find({ date: '2025-03-07', homeTeamId: 'sydney', awayTeamId: 'hawthorn' }),
+    ).toBe(first);
   });
 
   it('throws on two games with the same key', () => {
