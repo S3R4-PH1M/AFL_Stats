@@ -3,5 +3,11 @@ export { DATA_CONTRACT_VERSION } from '@afl/core';
 
 export const PACKAGE = '@afl/ingest';
 
+export * from './afltables/decode.ts';
+export * from './afltables/matchPage.ts';
+export * from './afltables/parseScore.ts';
+export * from './afltables/rounds.ts';
+export * from './afltables/seasonPage.ts';
+export * from './afltables/time.ts';
 export * from './cache.ts';
 export * from './http.ts';
