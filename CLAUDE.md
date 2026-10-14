@@ -22,7 +22,11 @@ Workspace packages export their TypeScript source directly (`exports` → `src/i
 - `npm test`: Vitest across all workspaces.
 - `npm run e2e`: Playwright smoke tests against `vite preview`. Run `npm run build` first.
 - `npm run dev`: Vite dev server for `apps/web`.
-- `npm run refresh -- --offline`: rebuild everything from the raw cache with no network. *Arrives in M1.*
+- `npm run ingest -- --season 2025 [--force] [--offline]`: fill the raw cache (`data/raw/`) from Squiggle and AFL Tables. Needs `CONTACT_EMAIL` unless `--offline`. Safe to interrupt and re-run.
+- `npm run rebuild`: `db:build && db:test && publish`, all offline from the raw cache. Use it after parser or model changes; never re-fetch to fix a parser.
+  - `npm run db:build`: recreate `data/afl.duckdb` (`--raw <dir>`, `--db <path>`, `--season <YYYY>`).
+  - `npm run db:test`: run the SQL data tests (`--db <path>`); exits 1 on any failure.
+  - `npm run publish`: write the JSON shards. *Arrives in M1e.*
 
 ## Rules
 

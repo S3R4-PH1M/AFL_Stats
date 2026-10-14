@@ -15,7 +15,12 @@
     "test": "vitest run",
     "e2e": "npm -w apps/web run e2e",
     "check": "biome check . && tsc -b",
-    "format": "biome check --write ."
+    "format": "biome check --write .",
+    "ingest": "tsx packages/ingest/src/cli.ts",
+    "db:build": "tsx packages/warehouse/src/build.ts",
+    "db:test": "tsx packages/warehouse/src/test.ts",
+    "publish": "tsx packages/publish/src/cli.ts",
+    "rebuild": "npm run db:build && npm run db:test && npm run publish"
   },
   "devDependencies": {
     "@biomejs/biome": "2.5.15",
