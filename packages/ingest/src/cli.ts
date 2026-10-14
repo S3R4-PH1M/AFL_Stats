@@ -15,9 +15,8 @@ import { parseArgs } from 'node:util';
 import { FsRawCache } from './cache.ts';
 import { contactEmailFromEnv, createHttpClient } from './http.ts';
 import { formatSummary, runIngest } from './ingest.ts';
+import { parseSeasonArg } from './seasonArg.ts';
 
-/** The modern era (§6.3): `core/teams.ts` maps every club name AFL Tables uses from here on. */
-const FIRST_SEASON = 2003;
 const USAGE = 'usage: npm run ingest -- --season <YYYY> [--force] [--offline] [--cache-dir <dir>]';
 const REPO_ROOT = fileURLToPath(new URL('../../../', import.meta.url));
 
@@ -53,13 +52,8 @@ function parseCliArgs(argv: string[]): CliArgs | string {
   } catch (error) {
     return (error as Error).message;
   }
-  const season = Number(values.season);
-  if (!values.season || !Number.isInteger(season) || season < FIRST_SEASON || season > 2100) {
-    return (
-      `--season must be a year from ${FIRST_SEASON} to 2100 (got ${values.season ?? 'nothing'}); ` +
-      'earlier seasons need the team lineage from M7'
-    );
-  }
+  const season = parseSeasonArg(values.season);
+  if (typeof season === 'string') return season;
   return {
     season,
     force: values.force ?? false,
