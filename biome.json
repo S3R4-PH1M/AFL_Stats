@@ -12,6 +12,8 @@
       "!**/dist",
       "!**/data",
       "!**/docs",
+      "!packages/ingest/test/fixtures/afltables",
+      "!packages/ingest/test/fixtures/squiggle",
       "!**/playwright-report",
       "!**/test-results"
     ]
