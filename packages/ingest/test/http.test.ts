@@ -290,14 +290,50 @@ describe('abort after consecutive failures', () => {
     expect(await failure(client.get(SEASON))).toBeInstanceOf(RunAbortedError);
   });
 
-  it('resets the count on a success or a 404', async () => {
-    // Without the resets, GAMES' first retry (5th failure) or TEAMS' second would abort.
-    const { client, fetch } = setup([503, 503, 503, 503, 404, 503, 503, 503, 200, 503, 503, 200]);
+  it('resets the count on a success', async () => {
+    // Without the reset, TEAMS' first request would be the fifth failure in a row.
+    const { client, fetch } = setup([503, 503, 503, 503, 200, 503, 503, 503, 200]);
     expect(await failure(client.get(SEASON))).toBeInstanceOf(HttpError);
-    expect(await failure(client.get(MATCH))).toBeInstanceOf(NotFoundError);
     expect((await client.get(GAMES)).fromCache).toBe(false);
     expect((await client.get(TEAMS)).fromCache).toBe(false);
-    expect(fetch).toHaveBeenCalledTimes(12);
+    expect(fetch).toHaveBeenCalledTimes(9);
+  });
+
+  it('neither counts nor resets on a 404', async () => {
+    const { client, fetch } = setup([503, 503, 503, 503, 404, 410, 503]);
+    expect(await failure(client.get(SEASON))).toBeInstanceOf(HttpError);
+    expect(await failure(client.get(MATCH))).toBeInstanceOf(NotFoundError);
+    expect(
+      await failure(client.get('https://afltables.com/afl/stats/games/2025/010520250322.html')),
+    ).toBeInstanceOf(NotFoundError);
+    expect(await failure(client.get(GAMES))).toBeInstanceOf(RunAbortedError);
+    expect(fetch).toHaveBeenCalledTimes(7);
+  });
+});
+
+describe('redirects and error detail', () => {
+  it('does not follow redirects, and fails without retrying', async () => {
+    const { client, fetch, cache } = setup([[301, { Location: 'http://elsewhere.example/' }]]);
+    const error = await failure(client.get(SEASON));
+    expect(error).toBeInstanceOf(HttpError);
+    expect(error.message).toContain('redirect to http://elsewhere.example/');
+    expect(fetch).toHaveBeenCalledTimes(1);
+    expect(fetch.mock.calls[0]?.[1]?.redirect).toBe('manual');
+    expect(cache.puts).toBe(0);
+  });
+
+  it('reports the low-level cause of a network error', async () => {
+    const dns = () =>
+      new TypeError('fetch failed', {
+        cause: Object.assign(new Error('getaddrinfo ENOTFOUND afltables.com'), {
+          code: 'ENOTFOUND',
+        }),
+      });
+    const { client } = setup([dns(), dns(), dns(), dns()]);
+    const error = await failure(client.get(SEASON));
+    expect(error).toBeInstanceOf(NetworkError);
+    expect(error.message).toContain('TypeError: ENOTFOUND');
+    expect(error.message).not.toContain(EMAIL);
   });
 });
 
@@ -339,6 +375,47 @@ describe('cache and refresh policy', () => {
     expect((await client.get(SEASON, { maxAgeMs: 0 })).fromCache).toBe(false);
     expect((await client.get(SEASON, { maxAgeMs: 0 })).fromCache).toBe(true);
     expect(fetch).toHaveBeenCalledTimes(1);
+  });
+
+  it('treats equivalent URLs as one page for the once-per-run rule', async () => {
+    const { client, fetch } = setup();
+    await client.get('https://api.squiggle.com.au?q=teams', { force: true });
+    const again = await client.get('https://api.squiggle.com.au/?q=teams', { force: true });
+    expect(again.fromCache).toBe(true);
+    expect(fetch).toHaveBeenCalledTimes(1);
+  });
+
+  it.each([
+    ['a 503 after retries', [503, 503, 503, 503], HttpError],
+    ['a 404', [404], NotFoundError],
+    [
+      'a network error',
+      [new TypeError('a'), new TypeError('b'), new TypeError('c'), new TypeError('d')],
+      NetworkError,
+    ],
+  ] as const)(
+    'falls back to the stale copy when a maxAgeMs refresh hits %s',
+    async (_, replies, type) => {
+      const { client, cache } = setup([...replies]);
+      cache.seed(SEASON, 'stale', new Date(START - 3_600_000).toISOString());
+      const result = await client.get(SEASON, { maxAgeMs: 0 });
+      expect(result.fromCache).toBe(true);
+      expect(result.body.toString()).toBe('stale');
+      expect(result.refreshError).toBeInstanceOf(type);
+    },
+  );
+
+  it('does not fall back for force, or when the run aborts', async () => {
+    const forced = setup([404]);
+    forced.cache.seed(SEASON, 'cached');
+    expect(await failure(forced.client.get(SEASON, { force: true }))).toBeInstanceOf(NotFoundError);
+
+    const aborting = setup([503, 503, 503, 503, 503]);
+    aborting.cache.seed(SEASON, 'stale', new Date(START - 3_600_000).toISOString());
+    expect(await failure(aborting.client.get(MATCH))).toBeInstanceOf(HttpError);
+    expect(await failure(aborting.client.get(SEASON, { maxAgeMs: 0 }))).toBeInstanceOf(
+      RunAbortedError,
+    );
   });
 
   it('offline: serves any cached copy, errors on a miss, needs no email', async () => {

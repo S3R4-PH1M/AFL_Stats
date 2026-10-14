@@ -1,5 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import {
+  LadderRow,
   MatchDetailFile,
   MatchRow,
   MetaFile,
@@ -147,6 +148,10 @@ describe('published v1 schemas', () => {
       SeasonLadderFile.safeParse({ season: 2025, rounds: [{ roundNo: 1, rows: [ladderRow] }] })
         .success,
     ).toBe(true);
+    // A team yet to play after Opening Round has 0 for and 0 against: no percentage.
+    const unplayed = { ...ladderRow, played: 0, wins: 0, pts: 0, pointsFor: 0, pointsAgainst: 0 };
+    expect(LadderRow.safeParse({ ...unplayed, percentage: null }).success).toBe(true);
+    expect(LadderRow.safeParse({ ...unplayed, percentage: Number.NaN }).success).toBe(false);
 
     const match = { ...summary, home: side, away: { ...side, teamId: 'west-coast' } };
     expect(SeasonMatchesFile.safeParse({ season: 2025, matches: [match] }).success).toBe(true);

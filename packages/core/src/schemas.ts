@@ -126,7 +126,8 @@ export const LadderRow = z.strictObject({
   pts: count,
   pointsFor: count,
   pointsAgainst: count,
-  percentage: z.number().nonnegative(),
+  /** For ÷ against × 100. NULL when there are no points against yet (e.g. not yet played). */
+  percentage: z.number().nonnegative().nullable(),
 });
 export type LadderRow = z.infer<typeof LadderRow>;
 

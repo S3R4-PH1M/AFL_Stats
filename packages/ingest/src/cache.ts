@@ -99,7 +99,7 @@ export interface FsLike {
 
 /**
  * Local mirror in `data/raw/`. Each entry is `{key}.gz` plus a `{key}.meta.json` sidecar.
- * The sidecar is written last and acts as the commit marker: a body without one is a miss.
+ * A body without a sidecar, or an unreadable entry, is a miss, so an online run refetches it.
  */
 export class FsRawCache implements RawCache {
   constructor(
@@ -113,17 +113,33 @@ export class FsRawCache implements RawCache {
     if (metaText === undefined) return undefined;
     const gz = await readIfExists(this.fs, paths.body);
     if (gz === undefined) return undefined;
-    const meta = JSON.parse(metaText.toString('utf8')) as RawCacheMeta;
-    return { body: await gunzipAsync(gz), meta };
+    try {
+      const meta = parseMeta(metaText.toString('utf8'));
+      return meta && { body: await gunzipAsync(gz), meta };
+    } catch {
+      return undefined; // corrupt JSON or gzip
+    }
   }
 
+  /**
+   * Both files are written to temp names first, then renamed body-then-meta. A failure before
+   * the renames leaves the previous entry untouched.
+   */
   async put(key: string, body: Buffer, meta: RawCacheMeta): Promise<void> {
     const paths = this.paths(key);
     await this.fs.mkdir(dirname(paths.body), { recursive: true });
-    // Drop the old marker first, so a crash between the two writes reads as a miss.
-    await this.fs.rm(paths.meta, { force: true });
-    await this.writeAtomic(paths.body, await gzipAsync(body));
-    await this.writeAtomic(paths.meta, `${JSON.stringify(meta, null, 2)}\n`);
+    const bodyTmp = tempName(paths.body);
+    const metaTmp = tempName(paths.meta);
+    try {
+      await this.fs.writeFile(bodyTmp, await gzipAsync(body));
+      await this.fs.writeFile(metaTmp, `${JSON.stringify(meta, null, 2)}\n`);
+      await this.fs.rename(bodyTmp, paths.body);
+      await this.fs.rename(metaTmp, paths.meta);
+    } catch (error) {
+      await this.fs.rm(bodyTmp, { force: true });
+      await this.fs.rm(metaTmp, { force: true });
+      throw error;
+    }
   }
 
   private paths(key: string): { body: string; meta: string } {
@@ -131,17 +147,22 @@ export class FsRawCache implements RawCache {
     const base = join(this.rootDir, ...key.split('/'));
     return { body: `${base}.gz`, meta: `${base}.meta.json` };
   }
+}
 
-  private async writeAtomic(target: string, data: Buffer | string): Promise<void> {
-    const tmp = `${target}.tmp-${process.pid}-${randomBytes(4).toString('hex')}`;
-    try {
-      await this.fs.writeFile(tmp, data);
-      await this.fs.rename(tmp, target);
-    } catch (error) {
-      await this.fs.rm(tmp, { force: true });
-      throw error;
-    }
+function tempName(target: string): string {
+  return `${target}.tmp-${process.pid}-${randomBytes(4).toString('hex')}`;
+}
+
+function parseMeta(text: string): RawCacheMeta | undefined {
+  const value = JSON.parse(text) as Partial<RawCacheMeta> | null;
+  if (
+    typeof value?.url !== 'string' ||
+    typeof value.fetchedAt !== 'string' ||
+    typeof value.status !== 'number'
+  ) {
+    return undefined;
   }
+  return { url: value.url, fetchedAt: value.fetchedAt, status: value.status };
 }
 
 async function readIfExists(fs: FsLike, path: string): Promise<Buffer | undefined> {

@@ -105,6 +105,17 @@ describe('FsRawCache', () => {
     expect(await cache.get('afltables/seasons/2025.html')).toBeUndefined();
   });
 
+  it.each([
+    ['corrupt meta JSON', '2025.html.meta.json', '{"url": "trunc'],
+    ['meta missing fields', '2025.html.meta.json', '{"url": "x"}'],
+    ['corrupt gzip body', '2025.html.gz', 'not gzip'],
+  ])('treats %s as a miss', async (_, file, content) => {
+    const cache = new FsRawCache(root);
+    await cache.put('afltables/seasons/2025.html', seasonPage, meta);
+    await fs.writeFile(join(root, 'afltables', 'seasons', file), content);
+    expect(await cache.get('afltables/seasons/2025.html')).toBeUndefined();
+  });
+
   it('writes atomically and leaves no temp files', async () => {
     const cache = new FsRawCache(root);
     await cache.put('afltables/seasons/2025.html', Buffer.from('old'), meta);
@@ -113,7 +124,7 @@ describe('FsRawCache', () => {
     expect((await cache.get('afltables/seasons/2025.html'))?.body.equals(seasonPage)).toBe(true);
   });
 
-  it('cleans up and keeps the previous body when a rename fails', async () => {
+  it('keeps the previous entry readable, and cleans up, when a write fails', async () => {
     const good = new FsRawCache(root);
     await good.put('afltables/seasons/2025.html', Buffer.from('previous'), meta);
 
@@ -131,11 +142,10 @@ describe('FsRawCache', () => {
       'disk full',
     );
 
-    expect(await listFiles(root)).toEqual(['2025.html.gz']);
-    const gz = await fs.readFile(join(root, 'afltables', 'seasons', '2025.html.gz'));
-    expect(gunzipSync(gz).toString()).toBe('previous');
-    // The marker was removed before the write, so the half-updated entry reads as a miss.
-    expect(await good.get('afltables/seasons/2025.html')).toBeUndefined();
+    expect(await listFiles(root)).toEqual(['2025.html.gz', '2025.html.meta.json']);
+    const previous = await good.get('afltables/seasons/2025.html');
+    expect(previous?.body.toString()).toBe('previous');
+    expect(previous?.meta).toEqual(meta);
   });
 
   it.each(['../escape.html', 'a/../../b', '/abs.html', 'a\\b.html', 'C:/x.html', 'a//b'])(

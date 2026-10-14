@@ -4,8 +4,10 @@
  * - User-Agent with the project URL and a contact email; refuses to start without one.
  * - One request at a time through a single queue, at least 2 s apart for AFL Tables and 1 s for Squiggle.
  * - 30 s timeout. 429, 5xx and network errors back off 2 s, 4 s, 8 s, honouring `Retry-After`.
- * - Other 4xx fail at once. Five consecutive failed requests abort the run.
+ * - Other 4xx and redirects (never followed) fail at once. Five consecutive failed requests abort
+ *   the run; 404/410 neither count nor reset, only a 200 resets.
  * - Every successful response goes to the raw cache; cache hits never touch the network.
+ *   A failed `maxAgeMs` refresh falls back to the stale cached copy (`refreshError` set).
  *
  * The UA and email are never logged or put in error messages.
  */
@@ -48,6 +50,8 @@ export interface GetResult {
   fromCache: boolean;
   fetchedAt: string;
   status: number;
+  /** Set when a `maxAgeMs` refresh failed and the stale cached copy was returned instead. */
+  refreshError?: HttpError | NetworkError;
 }
 
 export interface HttpClient {
@@ -167,15 +171,14 @@ export function createHttpClient(options: HttpClientOptions): HttpClient {
     const controller = new AbortController();
     const timer = setTimeout(() => controller.abort(), timeoutMs);
     try {
-      const res = await fetchImpl(url, { headers, signal: controller.signal, redirect: 'follow' });
+      // Redirects are not followed: they could leave the allowlisted hosts and the throttle.
+      const res = await fetchImpl(url, { headers, signal: controller.signal, redirect: 'manual' });
       const body = Buffer.from(await res.arrayBuffer());
       return { kind: 'response', status: res.status, headers: res.headers, body };
     } catch (error) {
       const reason = controller.signal.aborted
         ? `timed out after ${timeoutMs} ms`
-        : error instanceof Error
-          ? error.name
-          : 'unknown error';
+        : describeError(error);
       return { kind: 'error', reason };
     } finally {
       clearTimeout(timer);
@@ -199,8 +202,13 @@ export function createHttpClient(options: HttpClientOptions): HttpClient {
     return Number.isNaN(at) ? 0 : Math.max(0, at - now());
   }
 
-  async function fetchAndStore(url: string, key: string, host: string): Promise<GetResult> {
-    if (fetchedThisRun.has(url)) {
+  async function fetchAndStore(
+    url: string,
+    key: string,
+    host: string,
+    gap: number,
+  ): Promise<GetResult> {
+    if (fetchedThisRun.has(key)) {
       const entry = await cache.get(key);
       if (entry) return fromCache(entry);
     }
@@ -208,7 +216,6 @@ export function createHttpClient(options: HttpClientOptions): HttpClient {
     for (let retry = 0; ; retry++) {
       if (abortedBy !== undefined) throw new RunAbortedError(abortedBy);
 
-      const gap = MIN_GAP_MS[host] ?? 0;
       const last = lastRequestEnd.get(host);
       if (last !== undefined) {
         const wait = last + gap - now();
@@ -226,14 +233,16 @@ export function createHttpClient(options: HttpClientOptions): HttpClient {
           consecutiveFailures = 0;
           const fetchedAt = new Date(now()).toISOString();
           await cache.put(key, result.body, { url, fetchedAt, status });
-          fetchedThisRun.add(url);
+          fetchedThisRun.add(key);
           return { body: result.body, fromCache: false, fetchedAt, status };
         }
-        if (status === 404 || status === 410) {
-          consecutiveFailures = 0;
-          throw new NotFoundError(url, status);
-        }
+        // Neither counts towards nor resets the abort limit: AFL Tables can lag (A2).
+        if (status === 404 || status === 410) throw new NotFoundError(url, status);
         recordFailure(`HTTP ${status} for ${url}`);
+        if (status >= 300 && status < 400) {
+          const location = result.headers.get('location');
+          throw new HttpError(url, status, `redirect to ${location ?? 'unknown location'}`);
+        }
         if (status !== 429 && status < 500) throw new HttpError(url, status);
         failure = new HttpError(url, status);
         waitMs = retryAfterMs(result.headers.get('retry-after'));
@@ -257,19 +266,44 @@ export function createHttpClient(options: HttpClientOptions): HttpClient {
 
   return {
     async get(url, { force = false, maxAgeMs } = {}) {
+      // cacheKeyForUrl is the allowlist: it throws for any other host or page type.
       const key = cacheKeyForUrl(url);
-      const host = new URL(url).host;
-      if (!offline && !(host in MIN_GAP_MS)) throw new Error(`Host not allowed: ${host}`);
 
       const cached = await cache.get(key);
       if (cached) {
         const age = now() - Date.parse(cached.meta.fetchedAt);
         const fresh = maxAgeMs === undefined || age < maxAgeMs;
-        if (offline || fetchedThisRun.has(url) || (!force && fresh)) return fromCache(cached);
+        if (offline || fetchedThisRun.has(key) || (!force && fresh)) return fromCache(cached);
       } else if (offline) {
         throw new OfflineCacheMissError(url);
       }
-      return enqueue(() => fetchAndStore(url, key, host));
+
+      const host = new URL(url).host;
+      const gap = MIN_GAP_MS[host];
+      if (gap === undefined) throw new Error(`No request spacing configured for ${host}`);
+      const request = enqueue(() => fetchAndStore(url, key, host, gap));
+      if (!cached || force) return request;
+
+      // A stale refresh that fails falls back to the copy we already hold; an abort still stops the run.
+      try {
+        return await request;
+      } catch (error) {
+        if (!(error instanceof HttpError || error instanceof NetworkError)) throw error;
+        return { ...fromCache(cached), refreshError: error };
+      }
     },
   };
+}
+
+/** Error name plus the low-level cause (e.g. ENOTFOUND, ECONNRESET). Never includes headers. */
+function describeError(error: unknown): string {
+  if (!(error instanceof Error)) return 'unknown error';
+  const cause = error.cause as { code?: unknown; message?: unknown } | undefined;
+  const detail =
+    typeof cause?.code === 'string'
+      ? cause.code
+      : typeof cause?.message === 'string'
+        ? cause.message
+        : error.message;
+  return detail ? `${error.name}: ${detail}` : error.name;
 }
