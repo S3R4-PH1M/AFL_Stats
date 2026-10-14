@@ -4,6 +4,7 @@
  * AFL Tables pages declare no charset and are plain ASCII with HTML entities, so the fallback is
  * `windows-1252` (a superset of latin1). Entities are left for cheerio to decode.
  */
+import { TextDecoder } from 'node:util';
 
 const FALLBACK_ENCODING = 'windows-1252';
 const META_CHARSET = /<meta\b[^>]*\bcharset\s*=\s*["']?\s*([\w.:-]+)/i;

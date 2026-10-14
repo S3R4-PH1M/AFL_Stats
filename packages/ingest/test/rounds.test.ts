@@ -31,10 +31,7 @@ describe('normaliseRound', () => {
     });
   });
 
-  it.each(['', 'Finals', 'Round', 'Round 0', 'Ladder', 'Grand Finals'])(
-    'rejects %j',
-    (raw) => {
-      expect(() => normaliseRound(raw)).toThrow(UnknownRoundError);
-    },
-  );
+  it.each(['', 'Finals', 'Round', 'Round 0', 'Ladder', 'Grand Finals'])('rejects %j', (raw) => {
+    expect(() => normaliseRound(raw)).toThrow(UnknownRoundError);
+  });
 });

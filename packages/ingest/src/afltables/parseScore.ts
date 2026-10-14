@@ -26,7 +26,10 @@ export class ScoreParseError extends Error {
 const PERIOD = /(\d+)\.(\d+)\.\s*(\d+)/y;
 
 export function parseQuarterScores(text: string): QuarterScoreParsed[] {
-  const input = text.replace(/&nbsp;/g, ' ').replace(/\s+/g, ' ').trim();
+  const input = text
+    .replace(/&nbsp;/g, ' ')
+    .replace(/\s+/g, ' ')
+    .trim();
   const quarters: QuarterScoreParsed[] = [];
   let pos = 0;
   while (pos < input.length) {
