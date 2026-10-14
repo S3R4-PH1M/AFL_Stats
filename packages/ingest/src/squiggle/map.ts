@@ -46,26 +46,47 @@ export interface JoinKey {
 
 const keyOf = ({ date, homeTeamId, awayTeamId }: JoinKey) => `${date}|${homeTeamId}|${awayTeamId}`;
 
-/** Squiggle games by join key. Two games with the same key are an error. */
+/**
+ * A game's join key, or undefined while its teams are undecided (a later final listed early).
+ * Throws, naming the team, for a Squiggle team that doesn't map.
+ */
+export function gameJoinKey(game: SquiggleGame): JoinKey | undefined {
+  if (game.hteamid === null || game.ateamid === null) return undefined;
+  const context = `games ${game.year}`;
+  return {
+    date: gameLocalDate(game),
+    homeTeamId: squiggleTeamId(game.hteamid, game.hteam ?? '?', context),
+    awayTeamId: squiggleTeamId(game.ateamid, game.ateam ?? '?', context),
+  };
+}
+
+/**
+ * Squiggle games by join key. Two games with the same key are an error. Games whose teams are
+ * undecided have no key and never join.
+ */
 export class SquiggleIndex {
   private readonly byKey = new Map<string, SquiggleGame>();
+  private readonly keys = new Map<SquiggleGame, JoinKey>();
 
   constructor(games: readonly SquiggleGame[]) {
     for (const game of games) {
-      const context = `games ${game.year}`;
-      const key = keyOf({
-        date: gameLocalDate(game),
-        homeTeamId: squiggleTeamId(game.hteamid, game.hteam, context),
-        awayTeamId: squiggleTeamId(game.ateamid, game.ateam, context),
-      });
+      const joinKey = gameJoinKey(game);
+      if (!joinKey) continue;
+      const key = keyOf(joinKey);
       const other = this.byKey.get(key);
       if (other) throw new Error(`2 Squiggle games (${other.id}, ${game.id}) share the key ${key}`);
       this.byKey.set(key, game);
+      this.keys.set(game, joinKey);
     }
   }
 
   find(key: JoinKey): SquiggleGame | undefined {
     return this.byKey.get(keyOf(key));
+  }
+
+  /** The key a game was indexed under; undefined for an undecided or unknown game. */
+  keyFor(game: SquiggleGame): JoinKey | undefined {
+    return this.keys.get(game);
   }
 }
 

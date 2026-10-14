@@ -1,8 +1,29 @@
-import { STAT_COLUMNS } from '@afl/core';
+import { SquiggleGamesResponse, STAT_COLUMNS } from '@afl/core';
 import { decodeHtml, type ParsedMatchPage, parseMatchPage } from '@afl/ingest';
 import { describe, expect, it } from 'vitest';
 import { applyBrownlowRule, COLUMNS, LoadBatch } from '../src/load.ts';
-import { readFixture } from './fixtureCache.ts';
+import { readFixture, readJsonFixture } from './fixtureCache.ts';
+
+describe('LoadBatch.addSquiggle', () => {
+  it('skips a final whose teams are not decided yet', () => {
+    const [first] = SquiggleGamesResponse.parse(readJsonFixture('squiggle/games-2025.json')).games;
+    if (!first) throw new Error('no game');
+    const undecided = {
+      ...first,
+      id: 99998,
+      is_final: 6,
+      is_grand_final: 1 as const,
+      hteamid: null,
+      ateamid: null,
+      hteam: null,
+      ateam: null,
+      complete: 0,
+    };
+    const batch = new LoadBatch();
+    batch.addSquiggle(2025, [first, undecided], []);
+    expect(batch.rows.squiggle_game.map((r) => r[0])).toEqual([first.id]);
+  });
+});
 
 function page(name: string): ParsedMatchPage {
   const [season, matchKey] = name.split('-') as [string, string];

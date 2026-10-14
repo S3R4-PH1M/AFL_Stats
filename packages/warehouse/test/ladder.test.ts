@@ -4,7 +4,7 @@ import {
   type SquiggleStanding,
   SquiggleStandingsResponse,
 } from '@afl/core';
-import { gameLocalDate, squiggleTeamId, unixtimeIso } from '@afl/ingest';
+import { gameJoinKey, unixtimeIso } from '@afl/ingest';
 import { afterAll, beforeAll, describe, expect, it } from 'vitest';
 import { applySchema, runModels } from '../src/build.ts';
 import { closeDb, type Db, type DuckDBValue, insertRows, openDb, queryRows } from '../src/db.ts';
@@ -24,6 +24,8 @@ const standings = SquiggleStandingsResponse.parse(
 
 function matchRow(g: SquiggleGame): DuckDBValue[] {
   const final = g.is_final > 0;
+  const key = gameJoinKey(g);
+  if (!key) throw new Error(`game ${g.id} has no teams`);
   return [
     String(g.id).padStart(12, '0'),
     g.id,
@@ -33,12 +35,12 @@ function matchRow(g: SquiggleGame): DuckDBValue[] {
     final,
     g.is_grand_final === 1,
     unixtimeIso(g),
-    gameLocalDate(g),
+    key.date,
     g.localtime,
     g.venue,
     null,
-    squiggleTeamId(g.hteamid, g.hteam, 'test'),
-    squiggleTeamId(g.ateamid, g.ateam, 'test'),
+    key.homeTeamId,
+    key.awayTeamId,
     g.hscore,
     g.ascore,
     '2026-10-14T00:00:00.000Z',

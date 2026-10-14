@@ -134,6 +134,7 @@ describe('FsRawCache', () => {
       writeFile: (p, d) => fs.writeFile(p, d),
       rm: (p, o) => fs.rm(p, o),
       readdir: (p, o) => fs.readdir(p, o),
+      stat: (p) => fs.stat(p),
       rename: async () => {
         throw new Error('disk full');
       },
@@ -169,6 +170,23 @@ describe('FsRawCache', () => {
       'afltables/seasons/2003.html',
       'afltables/seasons/2025.html',
     ]);
+  });
+
+  it('has() checks for a complete entry without reading the body', async () => {
+    const cache = new FsRawCache(root);
+    const key = 'afltables/seasons/2025.html';
+    expect(await cache.has(key)).toBe(false);
+    await cache.put(key, seasonPage, meta);
+    expect(await cache.has(key)).toBe(true);
+
+    const dir = join(root, 'afltables', 'seasons');
+    await fs.rm(join(dir, '2025.html.gz'));
+    expect(await cache.has(key)).toBe(false); // meta without a body
+
+    await fs.writeFile(join(dir, '2024.html.gz'), 'orphan body');
+    expect(await cache.has('afltables/seasons/2024.html')).toBe(false); // body without meta
+    await fs.writeFile(join(dir, '2024.html.meta.json'), '{not json');
+    expect(await cache.has('afltables/seasons/2024.html')).toBe(false); // corrupt meta
   });
 
   it.each(['../escape.html', 'a/../../b', '/abs.html', 'a\\b.html', 'C:/x.html', 'a//b'])(

@@ -17,18 +17,13 @@ import { cacheKeyForUrl, type RawCache } from './cache.ts';
 import {
   type GetOptions,
   type HttpClient,
+  MAX_CONSECUTIVE_FAILURES,
   NotFoundError,
   OfflineCacheMissError,
   RunAbortedError,
 } from './http.ts';
 import { fetchGames, fetchStandings, fetchTeams } from './squiggle/client.ts';
-import {
-  assertTeamsMapped,
-  gameLocalDate,
-  isComplete,
-  SquiggleIndex,
-  squiggleTeamId,
-} from './squiggle/map.ts';
+import { assertTeamsMapped, isComplete, SquiggleIndex } from './squiggle/map.ts';
 
 export interface IngestOptions {
   season: number;
@@ -46,13 +41,22 @@ export interface IngestSummary {
   season: number;
   /** Squiggle games with `complete === 100`. */
   squiggleComplete: number;
-  notComplete: number;
+  /** Squiggle games not yet complete (including finals whose teams are undecided). */
+  squiggleNotComplete: number;
   seasonPageLinks: number;
+  /** Requested from the network this run. */
   fetched: string[];
+  /** Already in the raw cache (or served from it offline). */
   cached: string[];
+  /** Season-page matches whose Squiggle game isn't complete: never fetched. */
+  notComplete: string[];
   /** Match keys that 404'd, or `{date} {home} v {away}` for complete games with no season-page link. */
   notYetPublished: string[];
+  /** Matches still to fetch when the run aborted. */
+  notAttempted: string[];
   failed: { matchKey: string; reason: string }[];
+  /** E.g. a refresh that failed, so a stale cached copy was used. */
+  warnings: string[];
   aborted: boolean;
 }
 
@@ -67,9 +71,28 @@ export function seasonRefresh(season: number, now: number, force = false): GetOp
   return { maxAgeMs: Math.max(0, now - Date.UTC(season + 1, 0, 1)) };
 }
 
+/** Records a failed refresh: `http.ts` then serves the stale cached copy instead of failing. */
+function warnOnStaleRefresh(http: HttpClient, warnings: string[]): HttpClient {
+  return {
+    async get(url, options) {
+      const result = await http.get(url, options);
+      if (result.refreshError) {
+        warnings.push(
+          `refresh failed, using the copy cached at ${result.fetchedAt}: ${result.refreshError.message}`,
+        );
+      }
+      return result;
+    },
+  };
+}
+
+const matchKeyOf = (url: string) => /(\d{12})\.html$/.exec(url)?.[1] ?? url;
+
 export async function runIngest(opts: IngestOptions, deps: IngestDeps): Promise<IngestSummary> {
   const { season, force = false } = opts;
-  const { http, cache } = deps;
+  const { cache } = deps;
+  const warnings: string[] = [];
+  const http = warnOnStaleRefresh(deps.http, warnings);
   const refresh = seasonRefresh(season, deps.now(), force);
 
   assertTeamsMapped(await fetchTeams(http, refresh));
@@ -82,12 +105,15 @@ export async function runIngest(opts: IngestOptions, deps: IngestDeps): Promise<
   const summary: IngestSummary = {
     season,
     squiggleComplete: games.filter(isComplete).length,
-    notComplete: games.filter((g) => !isComplete(g)).length,
+    squiggleNotComplete: games.filter((g) => !isComplete(g)).length,
     seasonPageLinks: links.length,
     fetched: [],
     cached: [],
+    notComplete: [],
     notYetPublished: [],
+    notAttempted: [],
     failed: [],
+    warnings,
     aborted: false,
   };
 
@@ -100,27 +126,28 @@ export async function runIngest(opts: IngestOptions, deps: IngestDeps): Promise<
       continue;
     }
     linked.add(game.id);
-    if (!isComplete(game)) continue;
-    if (!force && (await cache.get(cacheKeyForUrl(link.url)))) summary.cached.push(link.matchKey);
-    else toFetch.push(link.url);
+    if (!isComplete(game)) summary.notComplete.push(link.matchKey);
+    else if (!force && (await cache.has(cacheKeyForUrl(link.url)))) {
+      summary.cached.push(link.matchKey);
+    } else toFetch.push(link.url);
   }
   for (const game of games) {
-    if (isComplete(game) && !linked.has(game.id)) {
-      const context = `games ${season}`;
-      const home = squiggleTeamId(game.hteamid, game.hteam, context);
-      const away = squiggleTeamId(game.ateamid, game.ateam, context);
-      summary.notYetPublished.push(`${gameLocalDate(game)} ${home} v ${away}`);
+    const key = index.keyFor(game);
+    if (key && isComplete(game) && !linked.has(game.id)) {
+      summary.notYetPublished.push(`${key.date} ${key.homeTeamId} v ${key.awayTeamId}`);
     }
   }
 
-  for (const url of toFetch) {
-    const matchKey = /(\d{12})\.html$/.exec(url)?.[1] ?? url;
+  for (const [i, url] of toFetch.entries()) {
+    const matchKey = matchKeyOf(url);
     try {
-      await http.get(url, { force });
-      summary.fetched.push(matchKey);
+      const result = await http.get(url, { force });
+      // Offline (even with --force) the page comes from the cache: never report it as fetched.
+      (result.fromCache ? summary.cached : summary.fetched).push(matchKey);
     } catch (error) {
       if (error instanceof RunAbortedError) {
         summary.aborted = true;
+        summary.notAttempted = toFetch.slice(i).map(matchKeyOf);
         break;
       }
       if (error instanceof NotFoundError) summary.notYetPublished.push(matchKey);
@@ -142,15 +169,20 @@ export function formatSummary(s: IngestSummary): string {
     return `  ${label.padEnd(17)} ${String(items.length).padStart(4)}${list}`;
   };
   return [
-    `ingest ${s.season}: ${s.squiggleComplete} complete in Squiggle (${s.notComplete} not complete), ` +
+    `ingest ${s.season}: ${s.squiggleComplete} complete in Squiggle (${s.squiggleNotComplete} not complete), ` +
       `${s.seasonPageLinks} on the AFL Tables season page`,
     line('fetched', s.fetched),
     line('cached', s.cached),
+    line('not complete', s.notComplete),
     line('not yet published', s.notYetPublished),
+    ...(s.aborted ? [line('not attempted', s.notAttempted)] : []),
     line(
       'failed',
       s.failed.map((f) => `${f.matchKey}: ${f.reason}`),
     ),
-    ...(s.aborted ? ['aborted after 5 consecutive failed requests; re-run to resume'] : []),
+    ...s.warnings.map((w) => `warning: ${w}`),
+    ...(s.aborted
+      ? [`aborted after ${MAX_CONSECUTIVE_FAILURES} consecutive failed requests; re-run to resume`]
+      : []),
   ].join('\n');
 }

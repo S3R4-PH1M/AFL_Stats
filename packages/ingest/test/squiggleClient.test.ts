@@ -15,6 +15,9 @@ class MemoryCache implements RawCache {
   async get(key: string) {
     return this.entries.get(key);
   }
+  async has(key: string) {
+    return this.entries.has(key);
+  }
   async put(key: string, body: Buffer, meta: RawCacheEntry['meta']) {
     this.entries.set(key, { body, meta });
   }
@@ -127,6 +130,26 @@ describe('Squiggle response errors', () => {
     const broken = { ...upcoming, complete: 100 };
     const { http: bad } = client(new Map([[games, json({ games: [broken] })]]));
     await expect(fetchGames(bad, 2025)).rejects.toThrow(/complete game without scores/);
+  });
+
+  it('accepts a final whose teams are undecided, but not a started game without teams', async () => {
+    const body = JSON.parse(fixturesByUrl().get(games)?.toString() ?? '{}');
+    const undecided = {
+      ...body.games[0],
+      complete: 0,
+      hteamid: null,
+      ateamid: null,
+      hteam: null,
+      ateam: null,
+      hscore: null,
+      ascore: null,
+    };
+    const { http: ok } = client(new Map([[games, json({ games: [undecided] })]]));
+    await expect(fetchGames(ok, 2025)).resolves.toMatchObject([{ hteamid: null }]);
+
+    const started = { ...undecided, complete: 20 };
+    const { http: bad } = client(new Map([[games, json({ games: [started] })]]));
+    await expect(fetchGames(bad, 2025)).rejects.toThrow(/started game without teams/);
   });
 
   it('strips unknown upstream fields rather than failing', async () => {

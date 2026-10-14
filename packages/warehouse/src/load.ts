@@ -24,7 +24,7 @@ import {
 } from '@afl/core';
 import {
   applySquiggle,
-  gameLocalDate,
+  gameJoinKey,
   type ParsedMatchPage,
   parsePageDateTime,
   squiggleTeamId,
@@ -258,14 +258,18 @@ export class LoadBatch {
     for (const person of page.people) this.addPerson(person, m.match_id);
   }
 
-  /** A season's Squiggle games and standings. */
+  /**
+   * A season's Squiggle games and standings. A final whose teams are undecided isn't loaded: it
+   * can't be joined, and it isn't a home-and-away game, so `season_load` doesn't need it.
+   */
   addSquiggle(
     season: number,
     games: readonly SquiggleGame[],
     standings: readonly SquiggleStanding[],
   ): void {
-    const context = `games ${season}`;
     for (const g of games) {
+      const key = gameJoinKey(g);
+      if (!key) continue;
       this.rows.squiggle_game.push([
         g.id,
         g.year,
@@ -273,8 +277,8 @@ export class LoadBatch {
         g.roundname,
         g.is_final > 0,
         g.is_grand_final === 1,
-        squiggleTeamId(g.hteamid, g.hteam, context),
-        squiggleTeamId(g.ateamid, g.ateam, context),
+        key.homeTeamId,
+        key.awayTeamId,
         g.hgoals,
         g.hbehinds,
         g.hscore,
@@ -282,7 +286,7 @@ export class LoadBatch {
         g.abehinds,
         g.ascore,
         g.venue,
-        gameLocalDate(g),
+        key.date,
         unixtimeIso(g),
         g.complete,
       ]);

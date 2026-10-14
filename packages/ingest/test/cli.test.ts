@@ -132,6 +132,10 @@ describe('ingest CLI against the fixtures', () => {
     expect(aborted.code).toBe(2);
     expect(aborted.out).toMatch(/aborted after 5 consecutive failed requests; re-run to resume/);
     expect(count(aborted.out, 'cached')).toBe(4);
+    // The first page used 4 failed attempts, the second tripped the limit: every other link is
+    // accounted for as not attempted.
+    expect(count(aborted.out, 'failed')).toBe(1);
+    expect(count(aborted.out, 'not attempted')).toBe(211);
 
     const resumed = await run(['--season', '2025']);
     expect(resumed.code).toBe(0);
@@ -154,6 +158,27 @@ describe('ingest CLI against the fixtures', () => {
     expect(count(r.out, 'failed')).toBe(212);
     expect(r.out).toMatch(/not cached \(offline\)/);
     expect(r.code).toBe(1);
+  });
+
+  it('--offline --force serves from the cache and reports it as cached, not fetched', async () => {
+    await run(['--season', '2025']);
+    const r = await run(['--season', '2025', '--offline', '--force'], { env: {} });
+    expect(r.calls).toEqual([]);
+    expect(count(r.out, 'fetched')).toBe(0);
+    expect(count(r.out, 'cached')).toBe(4);
+  });
+
+  it('warns when a refresh fails and a stale cached copy is used', async () => {
+    const midSeason = Date.parse('2025-12-01T00:00:00.000Z');
+    await run(['--season', '2025'], { now: midSeason });
+    const routes = fixturesByUrl();
+    routes.set(SQUIGGLE[1] ?? '', 500);
+    const r = await run(['--season', '2025'], { routes, now: midSeason });
+    expect(r.code).toBe(0);
+    expect(r.out).toMatch(
+      /^warning: refresh failed, using the copy cached at 2025-12-01T00:00:00\.000Z: HTTP 500 for https:\/\/api\.squiggle\.com\.au\/\?q=games;year=2025/m,
+    );
+    expect(count(r.out, 'cached')).toBe(4);
   });
 
   it('refuses to run online without CONTACT_EMAIL, and makes no request', async () => {
@@ -190,12 +215,19 @@ describe('ingest CLI against the fixtures', () => {
     [['--season']],
     [['--season', 'abc']],
     [['--season', '1800']],
+    [['--season', '2002']],
     [['--season', '2025', '--bogus']],
   ])('rejects bad arguments %j with usage and exit 2', async (args) => {
     const r = await run(args);
     expect(r.code).toBe(2);
     expect(r.err).toMatch(/usage: npm run ingest -- --season <YYYY>/i);
     expect(r.calls).toEqual([]);
+  });
+
+  it('explains that seasons before 2003 arrive with the team lineage', async () => {
+    const r = await run(['--season', '1995']);
+    expect(r.err).toContain('--season must be a year from 2003 to 2100 (got 1995)');
+    expect(r.err).toContain('M7');
   });
 });
 
@@ -228,7 +260,41 @@ describe('ingest CLI joins against Squiggle', () => {
     });
     const r = await run(['--season', '2025'], { routes });
     expect(r.out).toContain('215 complete in Squiggle (1 not complete)');
+    expect(r.out).toMatch(/^ {2}not complete +1 {3}141820250511$/m);
     expect(r.calls).not.toContain(matchUrl('141820250511'));
+  });
+
+  it('accepts a final whose teams are not decided yet, and never joins it', async () => {
+    const routes = editedGames((g) => {
+      const first = g[0];
+      if (!first) return;
+      g.push({
+        ...first,
+        id: 99998,
+        round: 29,
+        roundname: 'Grand Final',
+        is_final: 6,
+        is_grand_final: 1,
+        hteamid: null,
+        ateamid: null,
+        hteam: null,
+        ateam: null,
+        hgoals: null,
+        hbehinds: null,
+        hscore: null,
+        agoals: null,
+        abehinds: null,
+        ascore: null,
+        winner: null,
+        winnerteamid: null,
+        complete: 0,
+      });
+    });
+    const r = await run(['--season', '2025'], { routes });
+    expect(r.err).toBe('');
+    expect(r.code).toBe(0);
+    expect(r.out).toContain('216 complete in Squiggle (1 not complete)');
+    expect(count(r.out, 'not yet published')).toBe(212);
   });
 
   it('reports a complete Squiggle game with no AFL Tables link as not yet published', async () => {
@@ -248,16 +314,21 @@ describe('formatSummary', () => {
     const summary: IngestSummary = {
       season: 2025,
       squiggleComplete: 12,
-      notComplete: 0,
+      squiggleNotComplete: 0,
       seasonPageLinks: 12,
       fetched: [],
       cached: [],
+      notComplete: [],
       notYetPublished: keys,
+      notAttempted: [],
       failed: [{ matchKey: '141820250511', reason: 'HTTP 403' }],
+      warnings: ['refresh failed'],
       aborted: false,
     };
     const text = formatSummary(summary);
     expect(text).toContain(`not yet published   12   ${keys.slice(0, 10).join(', ')} … and 2 more`);
     expect(text).toContain('failed               1   141820250511: HTTP 403');
+    expect(text).toContain('warning: refresh failed');
+    expect(text).not.toContain('not attempted');
   });
 });
