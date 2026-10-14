@@ -2,3 +2,6 @@
 export { DATA_CONTRACT_VERSION } from '@afl/core';
 
 export const PACKAGE = '@afl/ingest';
+
+export * from './cache.ts';
+export * from './http.ts';
