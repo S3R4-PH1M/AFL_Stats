@@ -25,7 +25,7 @@ import {
   type ListableRawCache,
   OfflineCacheMissError,
   parseMatchPage,
-  parsePageDateTime,
+  parseSeasonArg,
   parseSeasonPage,
   SquiggleIndex,
   seasonPageUrl,
@@ -86,25 +86,30 @@ export async function buildWarehouse(options: BuildOptions): Promise<BuildReport
   batch.seed();
   // Offline: db:build never touches the network, and needs no contact email.
   const http = createHttpClient({ cache, offline: true });
-  const seasons = [...(options.seasons ?? (await cachedSeasons(cache)))].sort((a, b) => a - b);
+  const requested = options.seasons ?? (await cachedSeasons(cache));
+  const seasons = [...new Set(requested)].sort((a, b) => a - b);
   const notCached: string[] = [];
 
   for (const season of seasons) {
     const page = await http.get(seasonPageUrl(season));
     const links = parseSeasonPage(decodeHtml(page.body), season);
 
-    let games: SquiggleGame[] = [];
-    let standings: SquiggleStanding[] = [];
-    try {
-      games = await fetchGames(http, season);
-      standings = await fetchStandings(http, season);
-    } catch (error) {
-      if (!(error instanceof OfflineCacheMissError)) throw error;
-      batch.warnings.push(
-        `${season}: Squiggle ${games.length ? 'standings' : 'games'} not cached; ` +
-          `run npm run ingest -- --season ${season}`,
-      );
-    }
+    /** A Squiggle response from the cache, or [] with a warning naming what is missing. */
+    const squiggle = async <T>(what: string, read: () => Promise<T[]>): Promise<T[]> => {
+      try {
+        return await read();
+      } catch (error) {
+        if (!(error instanceof OfflineCacheMissError)) throw error;
+        batch.warnings.push(
+          `${season}: Squiggle ${what} not cached; run npm run ingest -- --season ${season}`,
+        );
+        return [];
+      }
+    };
+    const games: SquiggleGame[] = await squiggle('games', () => fetchGames(http, season));
+    const standings: SquiggleStanding[] = await squiggle('standings', () =>
+      fetchStandings(http, season),
+    );
     batch.addSquiggle(season, games, standings);
     const index = new SquiggleIndex(games);
 
@@ -120,12 +125,9 @@ export async function buildWarehouse(options: BuildOptions): Promise<BuildReport
         continue;
       }
       const parsed = parseMatchPage(decodeHtml(body), { season, matchKey: link.matchKey });
-      const game = index.find({
-        date: parsePageDateTime(parsed.match.local_time).date,
-        homeTeamId: parsed.match.home_team_id,
-        awayTeamId: parsed.match.away_team_id,
-      });
-      batch.addMatch(parsed, game, fetchedAt);
+      // The same key ingest used to decide the page was worth fetching. If the match page
+      // disagrees with its season-page row on date or teams, data test 070 reports it.
+      batch.addMatch(parsed, index.find(link), fetchedAt);
       loaded += 1;
     }
     log(`  ${season}: ${loaded} of ${links.length} matches cached, ${games.length} Squiggle games`);
@@ -165,11 +167,14 @@ async function main(argv: string[]): Promise<number> {
   }
   const rawDir = resolve(values.raw ?? join(REPO_ROOT, 'data', 'raw'));
   const dbPath = resolve(values.db ?? join(REPO_ROOT, 'data', 'afl.duckdb'));
-  const seasons = values.season?.map(Number);
-  if (seasons?.some((s) => !Number.isInteger(s))) {
-    console.error(`--season must be a year (got ${values.season?.join(', ')})`);
+  const parsed = values.season?.map(parseSeasonArg);
+  const invalid = parsed?.find((s): s is string => typeof s === 'string');
+  if (invalid) {
+    console.error(invalid);
+    console.error('usage: npm run db:build -- [--raw <dir>] [--db <path>] [--season <YYYY> …]');
     return 2;
   }
+  const seasons = parsed as number[] | undefined;
 
   await mkdir(dirname(dbPath), { recursive: true });
   await rm(dbPath, { force: true });

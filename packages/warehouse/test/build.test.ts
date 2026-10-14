@@ -1,8 +1,36 @@
 import { afterAll, beforeAll, describe, expect, it } from 'vitest';
-import type { BuildReport } from '../src/build.ts';
-import { closeDb, type Db, queryRows } from '../src/db.ts';
+import { type BuildReport, buildWarehouse } from '../src/build.ts';
+import { closeDb, type Db, openDb, queryRows } from '../src/db.ts';
 import { runSqlTests, type SqlTestResult } from '../src/tests.ts';
-import { buildFixtureDb, FIXTURE_FETCHED_AT } from './fixtureCache.ts';
+import { buildFixtureDb, FIXTURE_FETCHED_AT, FIXTURE_URLS, fixtureCache } from './fixtureCache.ts';
+
+/** Builds a fresh in-memory warehouse from a subset of the fixtures. */
+async function buildFrom(paths: string[], seasons?: number[]): Promise<BuildReport> {
+  const { cache, cleanup } = await fixtureCache(paths);
+  const fresh = await openDb(':memory:');
+  try {
+    return await buildWarehouse({ conn: fresh.conn, cache, seasons });
+  } finally {
+    closeDb(fresh);
+    await cleanup();
+  }
+}
+
+describe('db:build options and partial caches', () => {
+  it('loads a season named twice only once', async () => {
+    const report = await buildFrom(Object.keys(FIXTURE_URLS), [2025, 2025]);
+    expect(report.seasons).toEqual([2025]);
+    expect(report.matches).toBe(4);
+  });
+
+  it('names the Squiggle response that is missing (standings, with games cached)', async () => {
+    const paths = Object.keys(FIXTURE_URLS).filter((p) => p !== 'squiggle/standings-2025.json');
+    const report = await buildFrom(paths, [2025]);
+    expect(report.warnings.filter((w) => w.includes('Squiggle'))).toEqual([
+      '2025: Squiggle standings not cached; run npm run ingest -- --season 2025',
+    ]);
+  });
+});
 
 let db: Db;
 let report: BuildReport;
@@ -112,6 +140,10 @@ describe('db:build from the fixtures (in-memory DuckDB)', () => {
     expect(report.warnings).toContain(
       '2003: Squiggle games not cached; run npm run ingest -- --season 2003',
     );
+    expect(report.warnings).toContain(
+      '2003: Squiggle standings not cached; run npm run ingest -- --season 2003',
+    );
+    expect(report.warnings.filter((w) => w.startsWith('2025: Squiggle'))).toEqual([]);
   });
 
   it('keeps the rushed behinds and the Totals row for reconciliation', async () => {

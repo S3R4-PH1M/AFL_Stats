@@ -128,7 +128,12 @@ const TABLE_ORDER: readonly TableName[] = [
   'squiggle_standing',
 ];
 
-const BR_FIRST_SEASON = STAT_DEFINITIONS.find((d) => d.column === 'br')?.firstSeason ?? 0;
+const BR_FIRST_SEASON = (() => {
+  const br = STAT_DEFINITIONS.find((d) => d.column === 'br');
+  // Without it the Brownlow rule would null BR in every season: fail fast instead.
+  if (!br) throw new Error('core/stats.ts has no "br" stat definition (needed for decision D-b)');
+  return br.firstSeason;
+})();
 
 /**
  * Decision D-b: a home-and-away match inside BR's coverage whose votes sum to 0 hasn't had its

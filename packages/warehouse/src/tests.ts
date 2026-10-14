@@ -28,6 +28,7 @@ export interface SqlTestResult {
 }
 
 const REQUIRES = /^--\s*requires:\s*(.+)$/;
+const COUNT_COLUMN = '__failing_rows';
 
 export async function loadSqlTests(conn: DuckDBConnection): Promise<SqlTest[]> {
   const files = (await readdir(TESTS_DIR)).filter((f) => f.endsWith('.sql')).sort();
@@ -57,12 +58,13 @@ export async function runSqlTest(conn: DuckDBConnection, test: SqlTest): Promise
     const [row] = await queryRows(conn, `SELECT (${test.requires}) AS ok`);
     if (row?.ok !== true) return { ...base, status: 'skip', failing: 0, sample: [] };
   }
-  const [counted] = await queryRows(conn, `SELECT count(*) AS n FROM (\n${test.sql}\n)`);
-  const failing = Number(counted?.n ?? 0);
-  const sample =
-    failing > 0
-      ? await queryRows(conn, `SELECT * FROM (\n${test.sql}\n) LIMIT ${SAMPLE_ROWS}`)
-      : [];
+  // One pass: the window count is computed over every failing row before LIMIT applies.
+  const rows = await queryRows(
+    conn,
+    `SELECT *, count(*) OVER () AS ${COUNT_COLUMN} FROM (\n${test.sql}\n) LIMIT ${SAMPLE_ROWS}`,
+  );
+  const failing = Number(rows[0]?.[COUNT_COLUMN] ?? 0);
+  const sample = rows.map(({ [COUNT_COLUMN]: _, ...row }) => row);
   return { ...base, status: failing > 0 ? 'fail' : 'pass', failing, sample };
 }
 
