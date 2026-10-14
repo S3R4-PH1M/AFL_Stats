@@ -29,6 +29,14 @@ describe('parsePageDateTime', () => {
     });
   });
 
+  it('accepts the season page form, without a comma after the weekday', () => {
+    expect(parsePageDateTime('Fri 15-Aug-2025 6:35 PM (8:35 PM)')).toEqual({
+      date: '2025-08-15',
+      localTime: 'Fri 15-Aug-2025 6:35 PM',
+      startUtc: '2025-08-15T10:35:00.000Z',
+    });
+  });
+
   it('reads 12 PM as noon and 12 AM as midnight', () => {
     expect(parsePageDateTime('Sun, 11-May-2025 12:05 PM').startUtc).toBe(
       '2025-05-11T02:05:00.000Z',

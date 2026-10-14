@@ -8,6 +8,7 @@
  * next AEST day while keeping a daylight-saving venue (1:20 PM (12:20 PM)) on the same day.
  *
  * This is the fallback: Squiggle's `unixtime` is joined in M1d and stays the primary source.
+ * Match pages write the weekday as `Sat, `, season pages as `Sat ` (no comma); both are accepted.
  */
 
 export interface PageDateTime {
@@ -28,7 +29,7 @@ export class PageDateError extends Error {
 
 const MONTHS = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
 const DATE_TIME =
-  /^((?:[A-Z][a-z]{2}, )?(\d{1,2})-([A-Z][a-z]{2})-(\d{4}) (\d{1,2}):(\d{2}) ([AP]M))(?: \((\d{1,2}):(\d{2}) ([AP]M)\))?$/;
+  /^((?:[A-Z][a-z]{2},? )?(\d{1,2})-([A-Z][a-z]{2})-(\d{4}) (\d{1,2}):(\d{2}) ([AP]M))(?: \((\d{1,2}):(\d{2}) ([AP]M)\))?$/;
 const AEST_OFFSET_MIN = 10 * 60;
 const DAY_MIN = 24 * 60;
 
