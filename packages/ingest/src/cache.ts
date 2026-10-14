@@ -34,6 +34,12 @@ export interface RawCache {
   put(key: string, body: Buffer, meta: RawCacheMeta): Promise<void>;
 }
 
+/** A cache that can enumerate its keys (`db:build` finds the cached seasons; R2 lists in M2). */
+export interface ListableRawCache extends RawCache {
+  /** Keys of complete entries (body and meta) under `prefix`, sorted. */
+  list(prefix: string): Promise<string[]>;
+}
+
 export class UncacheableUrlError extends Error {
   constructor(url: string) {
     super(`No raw-cache layout for URL ${url}`);
@@ -100,6 +106,7 @@ export interface FsLike {
   writeFile(path: string, data: Buffer | string): Promise<void>;
   rename(from: string, to: string): Promise<void>;
   rm(path: string, options: { force: true }): Promise<void>;
+  readdir(path: string, options: { recursive: true }): Promise<string[]>;
   stat(path: string): Promise<unknown>;
 }
 
@@ -107,7 +114,7 @@ export interface FsLike {
  * Local mirror in `data/raw/`. Each entry is `{key}.gz` plus a `{key}.meta.json` sidecar.
  * A body without a sidecar, or an unreadable entry, is a miss, so an online run refetches it.
  */
-export class FsRawCache implements RawCache {
+export class FsRawCache implements ListableRawCache {
   constructor(
     readonly rootDir: string,
     private readonly fs: FsLike = nodeFs,
@@ -164,6 +171,25 @@ export class FsRawCache implements RawCache {
       await this.fs.rm(metaTmp, { force: true });
       throw error;
     }
+  }
+
+  /** Entries with both a body and a sidecar; temp files and orphans are skipped. */
+  async list(prefix: string): Promise<string[]> {
+    const dir = prefix.replace(/\/+$/, '');
+    if (dir !== '' && !isSafeKey(dir)) throw new Error(`Unsafe raw-cache prefix "${prefix}"`);
+    let files: string[];
+    try {
+      files = await this.fs.readdir(join(this.rootDir, ...dir.split('/')), { recursive: true });
+    } catch (error) {
+      if ((error as NodeJS.ErrnoException).code === 'ENOENT') return [];
+      throw error;
+    }
+    const names = new Set(files.map((f) => (dir ? `${dir}/` : '') + f.replaceAll('\\', '/')));
+    return [...names]
+      .filter((n) => n.endsWith('.meta.json'))
+      .map((n) => n.slice(0, -'.meta.json'.length))
+      .filter((key) => names.has(`${key}.gz`))
+      .sort();
   }
 
   private paths(key: string): { body: string; meta: string } {

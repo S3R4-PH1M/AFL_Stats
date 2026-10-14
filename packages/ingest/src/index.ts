@@ -11,6 +11,7 @@ export * from './afltables/seasonPage.ts';
 export * from './afltables/time.ts';
 export * from './cache.ts';
 export * from './http.ts';
+export * from './ingest.ts';
 export * from './seasonArg.ts';
 export * from './squiggle/client.ts';
 export * from './squiggle/map.ts';

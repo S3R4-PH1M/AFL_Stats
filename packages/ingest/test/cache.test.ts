@@ -133,6 +133,7 @@ describe('FsRawCache', () => {
       readFile: (p) => fs.readFile(p),
       writeFile: (p, d) => fs.writeFile(p, d),
       rm: (p, o) => fs.rm(p, o),
+      readdir: (p, o) => fs.readdir(p, o),
       stat: (p) => fs.stat(p),
       rename: async () => {
         throw new Error('disk full');
@@ -147,6 +148,28 @@ describe('FsRawCache', () => {
     const previous = await good.get('afltables/seasons/2025.html');
     expect(previous?.body.toString()).toBe('previous');
     expect(previous?.meta).toEqual(meta);
+  });
+
+  it('lists the complete entries under a prefix, sorted, ignoring temp and orphan files', async () => {
+    const cache = new FsRawCache(root);
+    expect(await cache.list('afltables/seasons/')).toEqual([]);
+    await cache.put('afltables/seasons/2025.html', seasonPage, meta);
+    await cache.put('afltables/seasons/2003.html', seasonPage, meta);
+    await cache.put('afltables/2025/141820250511.html', seasonPage, meta);
+    const dir = join(root, 'afltables', 'seasons');
+    await fs.writeFile(join(dir, '2024.html.gz'), 'orphan body, no meta');
+    await fs.writeFile(join(dir, '2023.html.meta.json'), '{}');
+    await fs.writeFile(join(dir, '2022.html.gz.tmp-1-abcd'), 'temp');
+
+    expect(await cache.list('afltables/seasons/')).toEqual([
+      'afltables/seasons/2003.html',
+      'afltables/seasons/2025.html',
+    ]);
+    expect(await cache.list('afltables/')).toEqual([
+      'afltables/2025/141820250511.html',
+      'afltables/seasons/2003.html',
+      'afltables/seasons/2025.html',
+    ]);
   });
 
   it('has() checks for a complete entry without reading the body', async () => {
