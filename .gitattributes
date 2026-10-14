@@ -2,3 +2,4 @@
 *.gz binary
 *.png binary
 *.duckdb binary
+packages/ingest/test/fixtures/** -text
