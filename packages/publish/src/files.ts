@@ -50,9 +50,14 @@ export function serialize(file: PublishedFile): string {
   return `${JSON.stringify(result.data)}\n`;
 }
 
-export interface BuiltFiles {
-  seasons: number[];
+export interface SeasonCounts {
+  season: number;
   matches: number;
+  ladderRounds: number;
+}
+
+export interface BuiltFiles {
+  seasons: SeasonCounts[];
   files: PublishedFile[];
 }
 
@@ -60,26 +65,24 @@ export interface BuiltFiles {
 export async function buildFiles(conn: DuckDBConnection): Promise<BuiltFiles> {
   const meta = await queryMeta(conn);
   const files: PublishedFile[] = [{ path: 'meta.json', schema: MetaFile, data: meta }];
-  let matches = 0;
+  const seasons: SeasonCounts[] = [];
   for (const season of meta.seasons) {
-    files.push({
-      path: `seasons/${season}/ladder.json`,
-      schema: SeasonLadderFile,
-      data: await querySeasonLadder(conn, season),
-    });
+    const ladder = await querySeasonLadder(conn, season);
+    const matches = await querySeasonMatches(conn, season);
+    files.push({ path: `seasons/${season}/ladder.json`, schema: SeasonLadderFile, data: ladder });
     files.push({
       path: `seasons/${season}/matches.json`,
       schema: SeasonMatchesFile,
-      data: await querySeasonMatches(conn, season),
+      data: matches,
     });
-    for (const detail of await queryMatchDetails(conn, season)) {
+    for (const detail of await queryMatchDetails(conn, season, matches.matches)) {
       files.push({
         path: `matches/${season}/${detail.matchId}.json`,
         schema: MatchDetailFile,
         data: detail,
       });
-      matches += 1;
     }
+    seasons.push({ season, matches: matches.matches.length, ladderRounds: ladder.rounds.length });
   }
-  return { seasons: meta.seasons, matches, files };
+  return { seasons, files };
 }

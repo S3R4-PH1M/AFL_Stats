@@ -29,9 +29,11 @@ import { type DuckDBConnection, queryRows, type Row } from '@afl/warehouse';
 
 const STAT_SELECT = STAT_COLUMNS.join(', ');
 
-/** DuckDB → JS: TIMESTAMPTZ arrives as a `Date`. */
+/** DuckDB → JS: TIMESTAMPTZ arrives as a `Date` or null. Anything else is a driver change: fail. */
 function iso(value: unknown): string | null {
-  return value instanceof Date ? value.toISOString() : null;
+  if (value === null || value === undefined) return null;
+  if (value instanceof Date) return value.toISOString();
+  throw new Error(`publish: expected a TIMESTAMPTZ as a Date, got ${typeof value}`);
 }
 
 function statValues(row: Row): StatValues {
@@ -207,11 +209,13 @@ export async function querySeasonMatches(
   return { season, matches: await querySummaries(conn, season) };
 }
 
+/** Pass `summaries` from `querySeasonMatches` to avoid querying the matches twice. */
 export async function queryMatchDetails(
   conn: DuckDBConnection,
   season: number,
+  summaries?: readonly MatchSummary[],
 ): Promise<MatchDetailFile[]> {
-  const summaries = await querySummaries(conn, season);
+  summaries ??= await querySummaries(conn, season);
   const players = await queryRows(
     conn,
     `SELECT pm.match_id, pm.team_id, pm.player_id, p.display_name, pm.jumper, pm.sub_status,

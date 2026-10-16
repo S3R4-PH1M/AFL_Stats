@@ -86,7 +86,7 @@ function RootError({ error }: ErrorComponentProps) {
             : String(error)}
       </p>
       <p>
-        <a href="/">Try again</a>
+        <a href={import.meta.env.BASE_URL}>Try again</a>
       </p>
     </main>
   );

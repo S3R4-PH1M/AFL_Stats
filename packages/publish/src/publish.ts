@@ -20,7 +20,7 @@ export interface PublishReport {
  * anything is written, and the error lists every invalid file.
  */
 export async function publish({ conn, outDir, log }: PublishOptions): Promise<PublishReport> {
-  const { seasons, matches, files } = await buildFiles(conn);
+  const { seasons, files } = await buildFiles(conn);
   const entries: [string, string][] = [];
   const failures: PublishValidationError['failures'][number][] = [];
   for (const file of files) {
@@ -33,12 +33,12 @@ export async function publish({ conn, outDir, log }: PublishOptions): Promise<Pu
   }
   if (failures.length > 0) throw new PublishValidationError(failures);
 
-  for (const season of seasons) {
-    const ladder = files.find((f) => f.path === `seasons/${season}/ladder.json`);
-    const rounds = (ladder?.data as { rounds: unknown[] } | undefined)?.rounds.length ?? 0;
-    const count = files.filter((f) => f.path.startsWith(`matches/${season}/`)).length;
-    log?.(`  ${season}: ${count} matches, ${rounds} ladder rounds`);
-  }
+  for (const s of seasons)
+    log?.(`  ${s.season}: ${s.matches} matches, ${s.ladderRounds} ladder rounds`);
   await writeFiles(outDir, entries);
-  return { seasons, files: entries.length, matches };
+  return {
+    seasons: seasons.map((s) => s.season),
+    files: entries.length,
+    matches: seasons.reduce((n, s) => n + s.matches, 0),
+  };
 }
