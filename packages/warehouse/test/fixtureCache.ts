@@ -36,11 +36,11 @@ export function readJsonFixture<T>(path: string): T {
   return JSON.parse(readFixture(path).toString('utf8')) as T;
 }
 
-/** A temp-dir `FsRawCache` holding the fixtures under their real cache keys. */
-export async function fixtureCache(
+/** Writes the fixtures into the raw cache at `dir` under their real cache keys (`fixtures:seed`). */
+export async function seedFixtureCache(
+  dir: string,
   paths: readonly string[] = Object.keys(FIXTURE_URLS),
-): Promise<{ cache: FsRawCache; cleanup: () => Promise<void> }> {
-  const dir = await mkdtemp(join(tmpdir(), 'afl-warehouse-'));
+): Promise<FsRawCache> {
   const cache = new FsRawCache(dir);
   for (const path of paths) {
     const url = FIXTURE_URLS[path];
@@ -51,6 +51,15 @@ export async function fixtureCache(
       status: 200,
     });
   }
+  return cache;
+}
+
+/** A temp-dir `FsRawCache` holding the fixtures under their real cache keys. */
+export async function fixtureCache(
+  paths: readonly string[] = Object.keys(FIXTURE_URLS),
+): Promise<{ cache: FsRawCache; cleanup: () => Promise<void> }> {
+  const dir = await mkdtemp(join(tmpdir(), 'afl-warehouse-'));
+  const cache = await seedFixtureCache(dir, paths);
   return { cache, cleanup: () => rm(dir, { recursive: true, force: true }) };
 }
 

@@ -19,6 +19,7 @@
     "ingest": "tsx packages/ingest/src/cli.ts",
     "db:build": "tsx packages/warehouse/src/build.ts",
     "db:test": "tsx packages/warehouse/src/test.ts",
+    "fixtures:seed": "tsx packages/warehouse/test/seedRaw.ts",
     "publish": "tsx packages/publish/src/cli.ts",
     "rebuild": "npm run db:build && npm run db:test && npm run publish"
   },
