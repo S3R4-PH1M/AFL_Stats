@@ -1,0 +1,106 @@
+{
+  "season": 2003,
+  "matches": [
+    {
+      "matchId": "010320030629",
+      "squiggleId": null,
+      "season": 2003,
+      "roundNo": 13,
+      "roundLabel": "Round 13",
+      "isFinal": false,
+      "isGrandFinal": false,
+      "startUtc": "2003-06-29T04:10:00.000Z",
+      "localTime": "Sun, 29-Jun-2003 2:10 PM",
+      "venue": "Princes Park",
+      "attendance": 19242,
+      "home": {
+        "teamId": "carlton",
+        "goals": 7,
+        "behinds": 8,
+        "score": 50,
+        "quarters": [
+          {
+            "quarter": 1,
+            "goals": 3,
+            "behinds": 5,
+            "points": 23,
+            "cumGoals": 3,
+            "cumBehinds": 5,
+            "cumPoints": 23
+          },
+          {
+            "quarter": 2,
+            "goals": 0,
+            "behinds": 0,
+            "points": 0,
+            "cumGoals": 3,
+            "cumBehinds": 5,
+            "cumPoints": 23
+          },
+          {
+            "quarter": 3,
+            "goals": 1,
+            "behinds": 3,
+            "points": 9,
+            "cumGoals": 4,
+            "cumBehinds": 8,
+            "cumPoints": 32
+          },
+          {
+            "quarter": 4,
+            "goals": 3,
+            "behinds": 0,
+            "points": 18,
+            "cumGoals": 7,
+            "cumBehinds": 8,
+            "cumPoints": 50
+          }
+        ]
+      },
+      "away": {
+        "teamId": "adelaide",
+        "goals": 13,
+        "behinds": 14,
+        "score": 92,
+        "quarters": [
+          {
+            "quarter": 1,
+            "goals": 4,
+            "behinds": 3,
+            "points": 27,
+            "cumGoals": 4,
+            "cumBehinds": 3,
+            "cumPoints": 27
+          },
+          {
+            "quarter": 2,
+            "goals": 2,
+            "behinds": 2,
+            "points": 14,
+            "cumGoals": 6,
+            "cumBehinds": 5,
+            "cumPoints": 41
+          },
+          {
+            "quarter": 3,
+            "goals": 5,
+            "behinds": 1,
+            "points": 31,
+            "cumGoals": 11,
+            "cumBehinds": 6,
+            "cumPoints": 72
+          },
+          {
+            "quarter": 4,
+            "goals": 2,
+            "behinds": 8,
+            "points": 20,
+            "cumGoals": 13,
+            "cumBehinds": 14,
+            "cumPoints": 92
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,306 @@
+{
+  "version": "v1",
+  "dataAsOf": "2026-10-14T00:00:00.000Z",
+  "seasons": [2003, 2025],
+  "teams": [
+    {
+      "teamId": "adelaide",
+      "name": "Adelaide",
+      "abbrev": "ADE"
+    },
+    {
+      "teamId": "brisbane-lions",
+      "name": "Brisbane Lions",
+      "abbrev": "BRI"
+    },
+    {
+      "teamId": "carlton",
+      "name": "Carlton",
+      "abbrev": "CAR"
+    },
+    {
+      "teamId": "collingwood",
+      "name": "Collingwood",
+      "abbrev": "COL"
+    },
+    {
+      "teamId": "essendon",
+      "name": "Essendon",
+      "abbrev": "ESS"
+    },
+    {
+      "teamId": "fremantle",
+      "name": "Fremantle",
+      "abbrev": "FRE"
+    },
+    {
+      "teamId": "geelong",
+      "name": "Geelong",
+      "abbrev": "GEE"
+    },
+    {
+      "teamId": "gold-coast",
+      "name": "Gold Coast",
+      "abbrev": "GCS"
+    },
+    {
+      "teamId": "gws",
+      "name": "Greater Western Sydney",
+      "abbrev": "GWS"
+    },
+    {
+      "teamId": "hawthorn",
+      "name": "Hawthorn",
+      "abbrev": "HAW"
+    },
+    {
+      "teamId": "melbourne",
+      "name": "Melbourne",
+      "abbrev": "MEL"
+    },
+    {
+      "teamId": "north-melbourne",
+      "name": "North Melbourne",
+      "abbrev": "NOR"
+    },
+    {
+      "teamId": "port-adelaide",
+      "name": "Port Adelaide",
+      "abbrev": "POR"
+    },
+    {
+      "teamId": "richmond",
+      "name": "Richmond",
+      "abbrev": "RIC"
+    },
+    {
+      "teamId": "st-kilda",
+      "name": "St Kilda",
+      "abbrev": "STK"
+    },
+    {
+      "teamId": "sydney",
+      "name": "Sydney",
+      "abbrev": "SYD"
+    },
+    {
+      "teamId": "west-coast",
+      "name": "West Coast",
+      "abbrev": "WCE"
+    },
+    {
+      "teamId": "western-bulldogs",
+      "name": "Western Bulldogs",
+      "abbrev": "WBD"
+    }
+  ],
+  "stats": [
+    {
+      "code": "KI",
+      "column": "ki",
+      "label": "Kicks",
+      "description": "Kicks",
+      "firstSeason": 1998,
+      "higherIsBetter": true,
+      "displayOrder": 1
+    },
+    {
+      "code": "MK",
+      "column": "mk",
+      "label": "Marks",
+      "description": "Marks",
+      "firstSeason": 1998,
+      "higherIsBetter": true,
+      "displayOrder": 2
+    },
+    {
+      "code": "HB",
+      "column": "hb",
+      "label": "Handballs",
+      "description": "Handballs",
+      "firstSeason": 1998,
+      "higherIsBetter": true,
+      "displayOrder": 3
+    },
+    {
+      "code": "DI",
+      "column": "di",
+      "label": "Disposals",
+      "description": "Kicks plus handballs",
+      "firstSeason": 1998,
+      "higherIsBetter": true,
+      "displayOrder": 4
+    },
+    {
+      "code": "GL",
+      "column": "gl",
+      "label": "Goals",
+      "description": "Goals kicked",
+      "firstSeason": 1998,
+      "higherIsBetter": true,
+      "displayOrder": 5
+    },
+    {
+      "code": "BH",
+      "column": "bh",
+      "label": "Behinds",
+      "description": "Behinds kicked (excludes rushed behinds)",
+      "firstSeason": 1998,
+      "higherIsBetter": true,
+      "displayOrder": 6
+    },
+    {
+      "code": "HO",
+      "column": "ho",
+      "label": "Hit-outs",
+      "description": "Ruck hit-outs",
+      "firstSeason": 1998,
+      "higherIsBetter": true,
+      "displayOrder": 7
+    },
+    {
+      "code": "TK",
+      "column": "tk",
+      "label": "Tackles",
+      "description": "Tackles",
+      "firstSeason": 1998,
+      "higherIsBetter": true,
+      "displayOrder": 8
+    },
+    {
+      "code": "RB",
+      "column": "rb",
+      "label": "Rebound 50s",
+      "description": "Rebounds out of the defensive 50",
+      "firstSeason": 1998,
+      "higherIsBetter": true,
+      "displayOrder": 9
+    },
+    {
+      "code": "IF",
+      "column": "if50",
+      "label": "Inside 50s",
+      "description": "Entries into the forward 50",
+      "firstSeason": 1998,
+      "higherIsBetter": true,
+      "displayOrder": 10
+    },
+    {
+      "code": "CL",
+      "column": "cl",
+      "label": "Clearances",
+      "description": "Clearances from stoppages",
+      "firstSeason": 1998,
+      "higherIsBetter": true,
+      "displayOrder": 11
+    },
+    {
+      "code": "CG",
+      "column": "cg",
+      "label": "Clangers",
+      "description": "Errors: turnovers, free kicks against and similar",
+      "firstSeason": 1998,
+      "higherIsBetter": false,
+      "displayOrder": 12
+    },
+    {
+      "code": "FF",
+      "column": "ff",
+      "label": "Free kicks for",
+      "description": "Free kicks awarded to the player",
+      "firstSeason": 1998,
+      "higherIsBetter": true,
+      "displayOrder": 13
+    },
+    {
+      "code": "FA",
+      "column": "fa",
+      "label": "Free kicks against",
+      "description": "Free kicks paid against the player",
+      "firstSeason": 1998,
+      "higherIsBetter": false,
+      "displayOrder": 14
+    },
+    {
+      "code": "BR",
+      "column": "br",
+      "label": "Brownlow votes",
+      "description": "Brownlow Medal votes",
+      "firstSeason": 1998,
+      "higherIsBetter": true,
+      "displayOrder": 15
+    },
+    {
+      "code": "CP",
+      "column": "cp",
+      "label": "Contested possessions",
+      "description": "Possessions won in contest",
+      "firstSeason": 2002,
+      "higherIsBetter": true,
+      "displayOrder": 16
+    },
+    {
+      "code": "UP",
+      "column": "up",
+      "label": "Uncontested possessions",
+      "description": "Possessions won without contest",
+      "firstSeason": 2002,
+      "higherIsBetter": true,
+      "displayOrder": 17
+    },
+    {
+      "code": "CM",
+      "column": "cm",
+      "label": "Contested marks",
+      "description": "Marks taken in contest",
+      "firstSeason": 2002,
+      "higherIsBetter": true,
+      "displayOrder": 18
+    },
+    {
+      "code": "MI",
+      "column": "mi",
+      "label": "Marks inside 50",
+      "description": "Marks taken inside the forward 50",
+      "firstSeason": 2002,
+      "higherIsBetter": true,
+      "displayOrder": 19
+    },
+    {
+      "code": "1%",
+      "column": "one_pct",
+      "label": "One percenters",
+      "description": "Spoils, smothers, shepherds and similar",
+      "firstSeason": 2002,
+      "higherIsBetter": true,
+      "displayOrder": 20
+    },
+    {
+      "code": "BO",
+      "column": "bo",
+      "label": "Bounces",
+      "description": "Bounces while running with the ball",
+      "firstSeason": 2002,
+      "higherIsBetter": true,
+      "displayOrder": 21
+    },
+    {
+      "code": "GA",
+      "column": "ga",
+      "label": "Goal assists",
+      "description": "Disposals leading directly to a goal",
+      "firstSeason": 2003,
+      "higherIsBetter": true,
+      "displayOrder": 22
+    },
+    {
+      "code": "%P",
+      "column": "pct_played",
+      "label": "% played",
+      "description": "Percentage of game time on the ground",
+      "firstSeason": 2003,
+      "higherIsBetter": true,
+      "displayOrder": 23
+    }
+  ]
+}

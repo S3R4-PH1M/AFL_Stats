@@ -2,3 +2,8 @@
 export { DATA_CONTRACT_VERSION } from '@afl/core';
 
 export const PACKAGE = '@afl/publish';
+
+export * from './files.ts';
+export * from './publish.ts';
+export * from './queries.ts';
+export * from './write.ts';

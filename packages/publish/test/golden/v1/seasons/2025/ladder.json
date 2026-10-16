@@ -1,0 +1,161 @@
+{
+  "season": 2025,
+  "rounds": [
+    {
+      "roundNo": 2,
+      "roundLabel": "Round 2",
+      "rows": [
+        {
+          "rank": 1,
+          "teamId": "adelaide",
+          "played": 1,
+          "wins": 1,
+          "losses": 0,
+          "draws": 0,
+          "pts": 4,
+          "pointsFor": 161,
+          "pointsAgainst": 100,
+          "percentage": 161
+        },
+        {
+          "rank": 2,
+          "teamId": "essendon",
+          "played": 1,
+          "wins": 0,
+          "losses": 1,
+          "draws": 0,
+          "pts": 0,
+          "pointsFor": 100,
+          "pointsAgainst": 161,
+          "percentage": 62.11
+        },
+        {
+          "rank": 3,
+          "teamId": "brisbane-lions",
+          "played": 0,
+          "wins": 0,
+          "losses": 0,
+          "draws": 0,
+          "pts": 0,
+          "pointsFor": 0,
+          "pointsAgainst": 0,
+          "percentage": null
+        },
+        {
+          "rank": 4,
+          "teamId": "north-melbourne",
+          "played": 0,
+          "wins": 0,
+          "losses": 0,
+          "draws": 0,
+          "pts": 0,
+          "pointsFor": 0,
+          "pointsAgainst": 0,
+          "percentage": null
+        },
+        {
+          "rank": 5,
+          "teamId": "richmond",
+          "played": 0,
+          "wins": 0,
+          "losses": 0,
+          "draws": 0,
+          "pts": 0,
+          "pointsFor": 0,
+          "pointsAgainst": 0,
+          "percentage": null
+        },
+        {
+          "rank": 6,
+          "teamId": "west-coast",
+          "played": 0,
+          "wins": 0,
+          "losses": 0,
+          "draws": 0,
+          "pts": 0,
+          "pointsFor": 0,
+          "pointsAgainst": 0,
+          "percentage": null
+        }
+      ]
+    },
+    {
+      "roundNo": 9,
+      "roundLabel": "Round 9",
+      "rows": [
+        {
+          "rank": 1,
+          "teamId": "adelaide",
+          "played": 1,
+          "wins": 1,
+          "losses": 0,
+          "draws": 0,
+          "pts": 4,
+          "pointsFor": 161,
+          "pointsAgainst": 100,
+          "percentage": 161
+        },
+        {
+          "rank": 2,
+          "teamId": "richmond",
+          "played": 1,
+          "wins": 1,
+          "losses": 0,
+          "draws": 0,
+          "pts": 4,
+          "pointsFor": 81,
+          "pointsAgainst": 79,
+          "percentage": 102.53
+        },
+        {
+          "rank": 3,
+          "teamId": "brisbane-lions",
+          "played": 1,
+          "wins": 0,
+          "losses": 0,
+          "draws": 1,
+          "pts": 2,
+          "pointsFor": 71,
+          "pointsAgainst": 71,
+          "percentage": 100
+        },
+        {
+          "rank": 4,
+          "teamId": "north-melbourne",
+          "played": 1,
+          "wins": 0,
+          "losses": 0,
+          "draws": 1,
+          "pts": 2,
+          "pointsFor": 71,
+          "pointsAgainst": 71,
+          "percentage": 100
+        },
+        {
+          "rank": 5,
+          "teamId": "west-coast",
+          "played": 1,
+          "wins": 0,
+          "losses": 1,
+          "draws": 0,
+          "pts": 0,
+          "pointsFor": 79,
+          "pointsAgainst": 81,
+          "percentage": 97.53
+        },
+        {
+          "rank": 6,
+          "teamId": "essendon",
+          "played": 1,
+          "wins": 0,
+          "losses": 1,
+          "draws": 0,
+          "pts": 0,
+          "pointsFor": 100,
+          "pointsAgainst": 161,
+          "percentage": 62.11
+        }
+      ]
+    }
+  ]
+}

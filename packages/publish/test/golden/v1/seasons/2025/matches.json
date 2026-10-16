@@ -1,0 +1,409 @@
+{
+  "season": 2025,
+  "matches": [
+    {
+      "matchId": "010520250322",
+      "squiggleId": 37105,
+      "season": 2025,
+      "roundNo": 2,
+      "roundLabel": "Round 2",
+      "isFinal": false,
+      "isGrandFinal": false,
+      "startUtc": "2025-03-22T02:20:00.000Z",
+      "localTime": "Sat, 22-Mar-2025 1:20 PM",
+      "venue": "M.C.G.",
+      "attendance": 46688,
+      "home": {
+        "teamId": "essendon",
+        "goals": 15,
+        "behinds": 10,
+        "score": 100,
+        "quarters": [
+          {
+            "quarter": 1,
+            "goals": 3,
+            "behinds": 2,
+            "points": 20,
+            "cumGoals": 3,
+            "cumBehinds": 2,
+            "cumPoints": 20
+          },
+          {
+            "quarter": 2,
+            "goals": 2,
+            "behinds": 2,
+            "points": 14,
+            "cumGoals": 5,
+            "cumBehinds": 4,
+            "cumPoints": 34
+          },
+          {
+            "quarter": 3,
+            "goals": 4,
+            "behinds": 3,
+            "points": 27,
+            "cumGoals": 9,
+            "cumBehinds": 7,
+            "cumPoints": 61
+          },
+          {
+            "quarter": 4,
+            "goals": 6,
+            "behinds": 3,
+            "points": 39,
+            "cumGoals": 15,
+            "cumBehinds": 10,
+            "cumPoints": 100
+          }
+        ]
+      },
+      "away": {
+        "teamId": "adelaide",
+        "goals": 25,
+        "behinds": 11,
+        "score": 161,
+        "quarters": [
+          {
+            "quarter": 1,
+            "goals": 5,
+            "behinds": 5,
+            "points": 35,
+            "cumGoals": 5,
+            "cumBehinds": 5,
+            "cumPoints": 35
+          },
+          {
+            "quarter": 2,
+            "goals": 6,
+            "behinds": 3,
+            "points": 39,
+            "cumGoals": 11,
+            "cumBehinds": 8,
+            "cumPoints": 74
+          },
+          {
+            "quarter": 3,
+            "goals": 7,
+            "behinds": 2,
+            "points": 44,
+            "cumGoals": 18,
+            "cumBehinds": 10,
+            "cumPoints": 118
+          },
+          {
+            "quarter": 4,
+            "goals": 7,
+            "behinds": 1,
+            "points": 43,
+            "cumGoals": 25,
+            "cumBehinds": 11,
+            "cumPoints": 161
+          }
+        ]
+      }
+    },
+    {
+      "matchId": "141820250511",
+      "squiggleId": 37168,
+      "season": 2025,
+      "roundNo": 9,
+      "roundLabel": "Round 9",
+      "isFinal": false,
+      "isGrandFinal": false,
+      "startUtc": "2025-05-11T03:10:00.000Z",
+      "localTime": "Sun, 11-May-2025 1:10 PM",
+      "venue": "M.C.G.",
+      "attendance": 29539,
+      "home": {
+        "teamId": "richmond",
+        "goals": 11,
+        "behinds": 15,
+        "score": 81,
+        "quarters": [
+          {
+            "quarter": 1,
+            "goals": 3,
+            "behinds": 4,
+            "points": 22,
+            "cumGoals": 3,
+            "cumBehinds": 4,
+            "cumPoints": 22
+          },
+          {
+            "quarter": 2,
+            "goals": 4,
+            "behinds": 3,
+            "points": 27,
+            "cumGoals": 7,
+            "cumBehinds": 7,
+            "cumPoints": 49
+          },
+          {
+            "quarter": 3,
+            "goals": 3,
+            "behinds": 2,
+            "points": 20,
+            "cumGoals": 10,
+            "cumBehinds": 9,
+            "cumPoints": 69
+          },
+          {
+            "quarter": 4,
+            "goals": 1,
+            "behinds": 6,
+            "points": 12,
+            "cumGoals": 11,
+            "cumBehinds": 15,
+            "cumPoints": 81
+          }
+        ]
+      },
+      "away": {
+        "teamId": "west-coast",
+        "goals": 11,
+        "behinds": 13,
+        "score": 79,
+        "quarters": [
+          {
+            "quarter": 1,
+            "goals": 2,
+            "behinds": 3,
+            "points": 15,
+            "cumGoals": 2,
+            "cumBehinds": 3,
+            "cumPoints": 15
+          },
+          {
+            "quarter": 2,
+            "goals": 5,
+            "behinds": 3,
+            "points": 33,
+            "cumGoals": 7,
+            "cumBehinds": 6,
+            "cumPoints": 48
+          },
+          {
+            "quarter": 3,
+            "goals": 2,
+            "behinds": 5,
+            "points": 17,
+            "cumGoals": 9,
+            "cumBehinds": 11,
+            "cumPoints": 65
+          },
+          {
+            "quarter": 4,
+            "goals": 2,
+            "behinds": 2,
+            "points": 14,
+            "cumGoals": 11,
+            "cumBehinds": 13,
+            "cumPoints": 79
+          }
+        ]
+      }
+    },
+    {
+      "matchId": "121920250511",
+      "squiggleId": 37170,
+      "season": 2025,
+      "roundNo": 9,
+      "roundLabel": "Round 9",
+      "isFinal": false,
+      "isGrandFinal": false,
+      "startUtc": "2025-05-11T06:40:00.000Z",
+      "localTime": "Sun, 11-May-2025 4:40 PM",
+      "venue": "Bellerive Oval",
+      "attendance": 7395,
+      "home": {
+        "teamId": "north-melbourne",
+        "goals": 10,
+        "behinds": 11,
+        "score": 71,
+        "quarters": [
+          {
+            "quarter": 1,
+            "goals": 1,
+            "behinds": 0,
+            "points": 6,
+            "cumGoals": 1,
+            "cumBehinds": 0,
+            "cumPoints": 6
+          },
+          {
+            "quarter": 2,
+            "goals": 2,
+            "behinds": 2,
+            "points": 14,
+            "cumGoals": 3,
+            "cumBehinds": 2,
+            "cumPoints": 20
+          },
+          {
+            "quarter": 3,
+            "goals": 3,
+            "behinds": 4,
+            "points": 22,
+            "cumGoals": 6,
+            "cumBehinds": 6,
+            "cumPoints": 42
+          },
+          {
+            "quarter": 4,
+            "goals": 4,
+            "behinds": 5,
+            "points": 29,
+            "cumGoals": 10,
+            "cumBehinds": 11,
+            "cumPoints": 71
+          }
+        ]
+      },
+      "away": {
+        "teamId": "brisbane-lions",
+        "goals": 10,
+        "behinds": 11,
+        "score": 71,
+        "quarters": [
+          {
+            "quarter": 1,
+            "goals": 2,
+            "behinds": 3,
+            "points": 15,
+            "cumGoals": 2,
+            "cumBehinds": 3,
+            "cumPoints": 15
+          },
+          {
+            "quarter": 2,
+            "goals": 4,
+            "behinds": 1,
+            "points": 25,
+            "cumGoals": 6,
+            "cumBehinds": 4,
+            "cumPoints": 40
+          },
+          {
+            "quarter": 3,
+            "goals": 1,
+            "behinds": 5,
+            "points": 11,
+            "cumGoals": 7,
+            "cumBehinds": 9,
+            "cumPoints": 51
+          },
+          {
+            "quarter": 4,
+            "goals": 3,
+            "behinds": 2,
+            "points": 20,
+            "cumGoals": 10,
+            "cumBehinds": 11,
+            "cumPoints": 71
+          }
+        ]
+      }
+    },
+    {
+      "matchId": "091920250927",
+      "squiggleId": 37323,
+      "season": 2025,
+      "roundNo": null,
+      "roundLabel": "Grand Final",
+      "isFinal": true,
+      "isGrandFinal": true,
+      "startUtc": "2025-09-27T04:30:00.000Z",
+      "localTime": "Sat, 27-Sep-2025 2:30 PM",
+      "venue": "M.C.G.",
+      "attendance": 100022,
+      "home": {
+        "teamId": "geelong",
+        "goals": 11,
+        "behinds": 9,
+        "score": 75,
+        "quarters": [
+          {
+            "quarter": 1,
+            "goals": 2,
+            "behinds": 3,
+            "points": 15,
+            "cumGoals": 2,
+            "cumBehinds": 3,
+            "cumPoints": 15
+          },
+          {
+            "quarter": 2,
+            "goals": 3,
+            "behinds": 3,
+            "points": 21,
+            "cumGoals": 5,
+            "cumBehinds": 6,
+            "cumPoints": 36
+          },
+          {
+            "quarter": 3,
+            "goals": 1,
+            "behinds": 2,
+            "points": 8,
+            "cumGoals": 6,
+            "cumBehinds": 8,
+            "cumPoints": 44
+          },
+          {
+            "quarter": 4,
+            "goals": 5,
+            "behinds": 1,
+            "points": 31,
+            "cumGoals": 11,
+            "cumBehinds": 9,
+            "cumPoints": 75
+          }
+        ]
+      },
+      "away": {
+        "teamId": "brisbane-lions",
+        "goals": 18,
+        "behinds": 14,
+        "score": 122,
+        "quarters": [
+          {
+            "quarter": 1,
+            "goals": 1,
+            "behinds": 6,
+            "points": 12,
+            "cumGoals": 1,
+            "cumBehinds": 6,
+            "cumPoints": 12
+          },
+          {
+            "quarter": 2,
+            "goals": 4,
+            "behinds": 0,
+            "points": 24,
+            "cumGoals": 5,
+            "cumBehinds": 6,
+            "cumPoints": 36
+          },
+          {
+            "quarter": 3,
+            "goals": 4,
+            "behinds": 3,
+            "points": 27,
+            "cumGoals": 9,
+            "cumBehinds": 9,
+            "cumPoints": 63
+          },
+          {
+            "quarter": 4,
+            "goals": 9,
+            "behinds": 5,
+            "points": 59,
+            "cumGoals": 18,
+            "cumBehinds": 14,
+            "cumPoints": 122
+          }
+        ]
+      }
+    }
+  ]
+}

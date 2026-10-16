@@ -1,0 +1,35 @@
+{
+  "season": 2003,
+  "rounds": [
+    {
+      "roundNo": 13,
+      "roundLabel": "Round 13",
+      "rows": [
+        {
+          "rank": 1,
+          "teamId": "adelaide",
+          "played": 1,
+          "wins": 1,
+          "losses": 0,
+          "draws": 0,
+          "pts": 4,
+          "pointsFor": 92,
+          "pointsAgainst": 50,
+          "percentage": 184
+        },
+        {
+          "rank": 2,
+          "teamId": "carlton",
+          "played": 1,
+          "wins": 0,
+          "losses": 1,
+          "draws": 0,
+          "pts": 0,
+          "pointsFor": 50,
+          "pointsAgainst": 92,
+          "percentage": 54.35
+        }
+      ]
+    }
+  ]
+}
