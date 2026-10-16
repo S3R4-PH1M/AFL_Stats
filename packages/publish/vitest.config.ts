@@ -4,5 +4,6 @@ export default defineProject({
   test: {
     name: 'publish',
     environment: 'node',
+    setupFiles: ['./test/setup.ts'],
   },
 });
