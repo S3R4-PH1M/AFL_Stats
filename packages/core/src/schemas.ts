@@ -107,7 +107,11 @@ export type PlayerRow = z.infer<typeof PlayerRow>;
 /** `meta.json` */
 export const MetaFile = z.strictObject({
   version: z.literal('v1'),
-  builtAt: isoInstant,
+  /**
+   * Latest raw-cache fetch time of any published match page. Not the build time, so a rebuild with
+   * no data change writes identical files.
+   */
+  dataAsOf: isoInstant,
   seasons: z.array(Season),
   teams: z.array(
     z.strictObject({
@@ -150,7 +154,10 @@ export const SeasonLadderFile = z.strictObject({
   season: Season,
   rounds: z.array(
     z.strictObject({
+      /** Squiggle round for joined matches: Opening Round = 0 (decision D-a). */
       roundNo: z.int().nonnegative(),
+      /** The round's `round_label`, e.g. "Opening Round" or "Round 9". */
+      roundLabel: z.string().min(1),
       rows: z.array(LadderRow),
     }),
   ),
@@ -217,7 +224,9 @@ export type BoxScoreLine = z.infer<typeof BoxScoreLine>;
 export const MatchDetailSide = z.strictObject({
   ...MatchSide.shape,
   players: z.array(BoxScoreLine),
+  /** The page's Totals row. Its BH includes `rushedBehinds`, which are credited to no player. */
   totals: StatValues,
+  rushedBehinds: count,
 });
 export type MatchDetailSide = z.infer<typeof MatchDetailSide>;
 

@@ -144,13 +144,16 @@ describe('published v1 schemas', () => {
   it('accepts meta.json built from core', () => {
     const meta = {
       version: 'v1',
-      builtAt: '2026-10-14T04:00:00.000Z',
+      dataAsOf: '2026-10-14T04:00:00.000Z',
       seasons: [2025],
       teams: TEAMS.map(({ teamId, name, abbrev }) => ({ teamId, name, abbrev })),
       stats: STAT_DEFINITIONS.map((s) => ({ ...s })),
     };
     expect(MetaFile.parse(meta)).toEqual(meta);
     expect(MetaFile.safeParse({ ...meta, version: 'v2' }).success).toBe(false);
+    // `dataAsOf` (latest source fetch) replaced a wall-clock build time, so output is deterministic.
+    const { dataAsOf, ...rest } = meta;
+    expect(MetaFile.safeParse({ ...rest, builtAt: dataAsOf }).success).toBe(false);
   });
 
   it('accepts ladder, matches and match detail files', () => {
@@ -166,10 +169,10 @@ describe('published v1 schemas', () => {
       pointsAgainst: 80,
       percentage: 125,
     };
-    expect(
-      SeasonLadderFile.safeParse({ season: 2025, rounds: [{ roundNo: 1, rows: [ladderRow] }] })
-        .success,
-    ).toBe(true);
+    const round = { roundNo: 0, roundLabel: 'Opening Round', rows: [ladderRow] };
+    expect(SeasonLadderFile.safeParse({ season: 2025, rounds: [round] }).success).toBe(true);
+    const { roundLabel: _, ...unlabelled } = round;
+    expect(SeasonLadderFile.safeParse({ season: 2025, rounds: [unlabelled] }).success).toBe(false);
     // A team yet to play after Opening Round has 0 for and 0 against: no percentage.
     const unplayed = { ...ladderRow, played: 0, wins: 0, pts: 0, pointsFor: 0, pointsAgainst: 0 };
     expect(LadderRow.safeParse({ ...unplayed, percentage: null }).success).toBe(true);
@@ -190,9 +193,16 @@ describe('published v1 schemas', () => {
         },
       ],
       totals: stats,
+      rushedBehinds: 4,
     };
     const detail = { ...summary, home: detailSide, away: { ...detailSide, teamId: 'west-coast' } };
     expect(MatchDetailFile.safeParse(detail).success).toBe(true);
     expect(MatchDetailFile.safeParse({ ...detail, extra: 1 }).success).toBe(false);
+    // The Totals row's BH includes rushed behinds, so the box score needs them to reconcile.
+    const { rushedBehinds: __, ...noRushed } = detailSide;
+    expect(MatchDetailFile.safeParse({ ...detail, home: noRushed }).success).toBe(false);
+    expect(
+      MatchDetailFile.safeParse({ ...detail, home: { ...detailSide, rushedBehinds: -1 } }).success,
+    ).toBe(false);
   });
 });
