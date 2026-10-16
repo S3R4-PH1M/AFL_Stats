@@ -1,5 +1,6 @@
 # Local-only planning docs (not published)
 docs/proposal.md
+docs/prompts/
 
 # Dependencies and build output
 node_modules/
