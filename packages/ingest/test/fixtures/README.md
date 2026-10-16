@@ -35,3 +35,22 @@ These differ from the proposal's §6 and matter for the parsers in M1c:
 - **Match key** = the two 2-digit AFL Tables team codes in ascending order, then `YYYYMMDD`, e.g. `1418` + `20250511`. It doesn't say which team is home.
 - **Player IDs** can contain **digits** (`B/Bailey_Williams1`, `J/Jack_Graham2`, `J/Jack_Ross3`, `L/Luke_Trainor1`, `T/Tom_Lynch1` in the normal match) and **hyphens** (`A/Alex_Neal-Bullen` in `2025-010520250322.html`, `L/Luke_Davies-Uniacke` in `2025-121920250511.html`). Don't whitelist characters. Take everything between `players/` and `.html` (e.g. `/players\/([A-Z]\/[^/"]+)\.html/`), and assert 22 or 23 IDs per team.
 - **Team sizes:** each match page has two "Match Statistics" tables, each ending in a "Totals" row. Every player row has a `players/…` link. There are 22 players per team in 2003 and 23 per team in 2025 (22 plus the sub).
+
+## Findings while building (M1c–M1d)
+
+Checked against these fixtures with the parsers and the warehouse. Each is covered by a test.
+
+**AFL Tables**
+- **Round numbers:** AFL Tables numbers 2025's Opening Round as Round 1, so its 2025 rounds are Squiggle's + 1 (the R9 Richmond v West Coast page says `Round: 10`). The warehouse uses Squiggle's numbering for matches joined to Squiggle.
+- **Season page rows:** each match table has two team rows, with the **home team first** (216 of 216 agree with Squiggle). The date is written `Fri 15-Aug-2025 6:35 PM`, with no comma after the weekday; match pages write `Sat, 22-Mar-2025`.
+- **Postponed games** stay in their original round's block on the season page, so page order is round order, not date order.
+- **Rushed behinds:** each Match Statistics footer has a "Rushed" row, present only when above 0. The Totals row's BH includes rushed behinds, so Σ player BH + rushed = team behinds, and Σ player GL = team goals.
+- **Brownlow votes:** every 2025 home-and-away fixture's BR column sums to 6 (3-2-1); the Grand Final has none. A page cached before the count shows BR blank (read as 0), so the loader stores BR as NULL until the page is re-fetched after the count.
+
+**Squiggle**
+- **`date` is Melbourne time** (in the game's `tz`, `+10:00` or `+11:00`); **`localtime` is the venue's local time**. They differ for 64 of the 216 games. Join on the date part of `localtime`, so a late Perth game can't land on the next day.
+- **`is_final`** is a number: 0 home-and-away, 2 elimination, 3 qualifying, 4 semi, 5 preliminary, 6 Grand Final. `is_grand_final` is 0 or 1.
+- **`winner` and `winnerteamid`** are null for a draw (R9 North Melbourne v Brisbane Lions).
+- **Postponed games are filed under the round they were played in:** 2025's Brisbane Lions v Geelong is Squiggle round 3, while AFL Tables keeps it in its Opening Round block. Squiggle's round 0 therefore has 2 games.
+- **Finals before their teams are known** may be listed with null teams (assumed; the fixtures only hold completed games). They're accepted while not started and never joined.
+- **Standings `percentage`** is unrounded; the ladder derived from `games-2025.json` (4 points a win, 2 a draw, then percentage) reproduces `standings-2025.json` exactly.
