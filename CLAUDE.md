@@ -38,7 +38,7 @@ Workspace packages export their TypeScript source directly (`exports` → `src/i
 - Every parser change needs a golden-file test. Commit fixtures before the parser.
 - Generate SQL models from `stat_definition` where possible.
 - Respect the published data contract in `packages/core/src/schemas.ts`. Changing it means bumping `data/v1` to `v2`.
-- Don't commit `data/`, `apps/web/public/data/` or `docs/proposal.md`.
+- Don't commit `data/`, `apps/web/public/data/`, `docs/proposal.md` or `docs/prompts/` (local session prompts).
 
 ## Definition of done
 
