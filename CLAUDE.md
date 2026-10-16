@@ -26,7 +26,8 @@ Workspace packages export their TypeScript source directly (`exports` → `src/i
 - `npm run rebuild`: `db:build && db:test && publish`, all offline from the raw cache. Use it after parser or model changes; never re-fetch to fix a parser.
   - `npm run db:build`: recreate `data/afl.duckdb` (`--raw <dir>`, `--db <path>`, `--season <YYYY>`).
   - `npm run db:test`: run the SQL data tests (`--db <path>`); exits 1 on any failure.
-  - `npm run publish`: write the JSON shards. *Arrives in M1e.*
+  - `npm run publish`: write the JSON shards to `apps/web/public/data/v1` (`--db <path>`, `--out <dir>`); validates every file and fails on any invalid one.
+- `npm run fixtures:seed -- --raw <dir>`: write the committed fixtures into a raw cache (refuses a non-empty dir without `--force`). CI uses it to build the site with fixture data.
 
 ## Rules
 

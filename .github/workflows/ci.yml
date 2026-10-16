@@ -32,9 +32,13 @@ jobs:
       - name: Unit tests
         run: npm test
 
-      # Fixture data is added to the build in M1; for now this is the plain SPA build.
-      - name: Build web
-        run: npm run build
+      # Seeds data/raw from the committed fixtures, then db:build + db:test + publish (§13).
+      # 090 (ladder vs Squiggle) is skipped: the fixtures hold a partial season.
+      - name: Build web with fixture data
+        run: |
+          npm run fixtures:seed -- --raw data/raw
+          npm run rebuild
+          npm run build
 
       - name: Install Playwright Chromium
         run: npx -w apps/web playwright install --with-deps chromium
