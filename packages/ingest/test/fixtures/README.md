@@ -41,7 +41,7 @@ These differ from the proposal's §6 and matter for the parsers in M1c:
 Checked against these fixtures with the parsers and the warehouse. Each is covered by a test.
 
 **AFL Tables**
-- **Round numbers:** AFL Tables numbers 2025's Opening Round as Round 1, so its 2025 rounds are Squiggle's + 1 (the R9 Richmond v West Coast page says `Round: 10`). The warehouse uses Squiggle's numbering for matches joined to Squiggle.
+- **Round numbers:** AFL Tables numbers 2025's Opening Round as Round 1, so most of its 2025 rounds are Squiggle's + 1 (the R9 Richmond v West Coast page says `Round: 10`). Postponed games break the rule (see Squiggle below): AFL Tables' Round 1 holds 4 games, but Squiggle files two of them under rounds 3 and 24. The warehouse uses Squiggle's round for **home-and-away** matches joined to Squiggle; finals keep the AFL Tables label with `round_no` NULL (decision D-a).
 - **Season page rows:** each match table has two team rows, with the **home team first** (216 of 216 agree with Squiggle). The date is written `Fri 15-Aug-2025 6:35 PM`, with no comma after the weekday; match pages write `Sat, 22-Mar-2025`.
 - **Postponed games** stay in their original round's block on the season page, so page order is round order, not date order.
 - **Rushed behinds:** each Match Statistics footer has a "Rushed" row, present only when above 0. The Totals row's BH includes rushed behinds, so Σ player BH + rushed = team behinds, and Σ player GL = team goals.
@@ -51,6 +51,6 @@ Checked against these fixtures with the parsers and the warehouse. Each is cover
 - **`date` is Melbourne time** (in the game's `tz`, `+10:00` or `+11:00`); **`localtime` is the venue's local time**. They differ for 64 of the 216 games. Join on the date part of `localtime`, so a late Perth game can't land on the next day.
 - **`is_final`** is a number: 0 home-and-away, 2 elimination, 3 qualifying, 4 semi, 5 preliminary, 6 Grand Final. `is_grand_final` is 0 or 1.
 - **`winner` and `winnerteamid`** are null for a draw (R9 North Melbourne v Brisbane Lions).
-- **Postponed games are filed under the round they were played in:** 2025's Brisbane Lions v Geelong is Squiggle round 3, while AFL Tables keeps it in its Opening Round block. Squiggle's round 0 therefore has 2 games.
+- **Postponed games are filed under the round they were played in.** Two 2025 Opening Round games were postponed: Brisbane Lions v Geelong (29 Mar) is Squiggle round 3, and Gold Coast v Essendon (27 Aug) is Squiggle round 24. AFL Tables keeps both in its Opening Round block (its Round 1). Squiggle's round 0 therefore has only 2 games, Sydney v Hawthorn and GWS v Collingwood.
 - **Finals before their teams are known** may be listed with null teams (assumed; the fixtures only hold completed games). They're accepted while not started and never joined.
 - **Standings `percentage`** is unrounded; the ladder derived from `games-2025.json` (4 points a win, 2 a draw, then percentage) reproduces `standings-2025.json` exactly.

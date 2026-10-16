@@ -49,4 +49,5 @@ Workspace packages export their TypeScript source directly (`exports` → `src/i
 - One milestone task per session. Plan first, then implement.
 - Use a feature branch and a PR per milestone, so `ci.yml` checks it. Review the diff (`/code-review`) before merging.
 - `main` only accepts PRs whose branch is up to date with `main` and whose `ci` check passed. Run `gh pr update-branch <n>` when it falls behind.
-- Stacked PRs: retarget the upper PR to `main` (`gh pr edit <n> --base main`) **before** merging the lower one with `--delete-branch`. Deleting a PR's base branch closes it.
+- Stacked PRs: retarget the upper PR to `main` (`gh pr edit <n> --base main`) **before** the lower one is merged with `--delete-branch`. Deleting a PR's base branch closes it.
+- The user merges PRs. When a PR is ready and `ci` is green, give them the command (`! gh pr merge <n> --merge`, plus `--delete-branch` for a stacked lower PR once the upper PR is retargeted) instead of running it.
