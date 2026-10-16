@@ -32,8 +32,13 @@ test('choosing a round updates the URL and the ladder', async ({ page }) => {
   // Round 2 (Squiggle numbering) is in the fixtures and in the full season.
   await select.selectOption({ label: 'Round 2' });
   await expect(page).toHaveURL(/\/season\/2025\?round=2$/);
+  // Adelaide won Round 2 in both datasets; its totals differ (fixtures hold one game), and
+  // "Port Adelaide" also matches /Adelaide/, so match the row header exactly.
   const ladder = page.getByRole('table', { name: 'Ladder after Round 2' });
-  await expect(ladder.getByRole('row', { name: /Adelaide/ })).toContainText('161');
+  const adelaide = ladder.getByRole('row').filter({
+    has: page.getByRole('rowheader', { name: 'Adelaide', exact: true }),
+  });
+  await expect(adelaide.getByRole('cell').nth(2)).toHaveText(/^[1-9]\d*$/); // W ≥ 1
 
   // The round survives a reload: it lives in the URL.
   await page.reload();
