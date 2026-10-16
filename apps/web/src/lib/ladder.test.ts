@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import { ladder } from '../test/sample.ts';
-import { roundOptions, selectRound, sortLadder } from './ladder.ts';
+import { parseRoundSearch, roundOptions, selectRound, sortLadder } from './ladder.ts';
 
 describe('roundOptions', () => {
   it('lists the published rounds with their labels, Opening Round first', () => {
@@ -35,5 +35,20 @@ describe('sortLadder', () => {
     const shuffled = [rows[2], rows[0], rows[1]].filter((r) => r !== undefined);
     expect(sortLadder(shuffled).map((r) => r.teamId)).toEqual(['richmond', 'adelaide', 'essendon']);
     expect(shuffled.map((r) => r.rank)).toEqual([3, 1, 2]);
+  });
+});
+
+describe('parseRoundSearch', () => {
+  it.each([
+    [9, { round: 9 }],
+    [0, { round: 0 }],
+    ['9', { round: 9 }],
+    [undefined, {}],
+    ['', {}],
+    [-1, {}],
+    [1.5, {}],
+    ['nine', {}],
+  ])('%j → %j', (value, expected) => {
+    expect(parseRoundSearch(value)).toEqual(expected);
   });
 });

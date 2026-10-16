@@ -21,3 +21,13 @@ export function selectRound(file: SeasonLadderFile, roundNo?: number): LadderRou
 export function sortLadder(rows: readonly LadderRow[]): LadderRow[] {
   return [...rows].sort((a, b) => a.rank - b.rank);
 }
+
+export interface SeasonSearch {
+  round?: number;
+}
+
+/** `?round=` → a round number, dropping anything that isn't a non-negative integer. */
+export function parseRoundSearch(value: unknown): SeasonSearch {
+  const round = typeof value === 'string' && value.trim() !== '' ? Number(value) : value;
+  return typeof round === 'number' && Number.isInteger(round) && round >= 0 ? { round } : {};
+}

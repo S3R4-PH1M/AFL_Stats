@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
-import { matches, meta } from '../test/sample.ts';
-import { groupByRound, teamNames } from './matches.ts';
+import { matches, meta, richmondWestCoast } from '../test/sample.ts';
+import { groupByRound, matchTitle, resultText, teamNames } from './matches.ts';
 
 describe('groupByRound', () => {
   it('groups matches by round in file order, with finals last', () => {
@@ -27,5 +27,27 @@ describe('teamNames', () => {
     const name = teamNames(meta);
     expect(name('west-coast')).toBe('West Coast');
     expect(name('unknown-team')).toBe('unknown-team');
+  });
+});
+
+describe('matchTitle and resultText', () => {
+  const name = teamNames(meta);
+
+  it('names the home side first', () => {
+    expect(matchTitle(richmondWestCoast, name)).toBe('Richmond v West Coast');
+  });
+
+  it('describes a win by its margin', () => {
+    expect(resultText(richmondWestCoast, name)).toBe('Richmond won by 2 points');
+    const [, , gf] = matches.matches;
+    if (!gf) throw new Error('no final');
+    expect(resultText(gf, name)).toBe('Brisbane Lions won by 47 points');
+  });
+
+  it('describes a draw and a one-point win', () => {
+    const level = { ...richmondWestCoast.away, score: 81 };
+    expect(resultText({ ...richmondWestCoast, away: level }, name)).toBe('Match drawn');
+    const close = { ...richmondWestCoast.away, score: 80 };
+    expect(resultText({ ...richmondWestCoast, away: close }, name)).toBe('Richmond won by 1 point');
   });
 });
